@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Weapons/Explosive.gd" type="Script" id=1]
+[ext_resource path="res://SubScenes/VisualEffects/EnergyExplosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Audio/SoundEffects/EnergyExplosion.wav" type="AudioStream" id=3]
+
+[sub_resource type="SphereShape" id=1]
+resource_local_to_scene = true
+radius = 10.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "LightAnim"
+length = 3.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:light_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.580392, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2, 3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:light_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.658824, -0.25, 0, 0.25, 0, 0.960784, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2, 3 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:light_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2, 3 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:light_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2, 3 )
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:light_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:light_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:light_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:light_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[node name="Explosive" type="Spatial"]
+script = ExtResource( 1 )
+damage_amount = 35.0
+
+[node name="EnergyExplosion" parent="." instance=ExtResource( 2 )]
+transform = Transform( 12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0 )
+
+[node name="AreaDamage" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 6
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="AreaDamage"]
+shape = SubResource( 1 )
+
+[node name="TimerExplode" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="TimerDie" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 10.0
+autoplay = true
+bus = "SoundFX"
+
+[node name="ExplosionLight" type="OmniLight" parent="."]
+light_energy = 2.0
+omni_range = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ExplosionLight"]
+autoplay = "LightAnim"
+anims/LightAnim = SubResource( 3 )
+anims/RESET = SubResource( 2 )
+
+[connection signal="timeout" from="TimerExplode" to="." method="_on_TimerExplode_timeout"]
+[connection signal="timeout" from="TimerDie" to="." method="_on_TimerDie_timeout"]

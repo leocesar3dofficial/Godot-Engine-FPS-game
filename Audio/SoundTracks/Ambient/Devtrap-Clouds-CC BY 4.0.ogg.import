@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Devtrap-Clouds-CC BY 4.0.ogg-6054c8837f819d1d80379a045d2e5c3e.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Ambient/Devtrap-Clouds-CC BY 4.0.ogg"
+dest_files=[ "res://.import/Devtrap-Clouds-CC BY 4.0.ogg-6054c8837f819d1d80379a045d2e5c3e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

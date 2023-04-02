@@ -1,0 +1,225 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Scripts/AI/Turret/GatlingGun.gd" type="Script" id=1]
+[ext_resource path="res://Materials/Emission.material" type="Material" id=2]
+[ext_resource path="res://Audio/SoundEffects/SciFiGunFire01.wav" type="AudioStream" id=3]
+[ext_resource path="res://SubScenes/VisualEffects/MultipleExplosions.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/AI/Other/TankEnemy.gd" type="Script" id=5]
+[ext_resource path="res://Audio/SoundEffects/Impact04.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/SoundEffects/Impact03.wav" type="AudioStream" id=7]
+[ext_resource path="res://SubScenes/VisualEffects/CarWheelSmoke.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/Generators/Spawn.gd" type="Script" id=9]
+[ext_resource path="res://Models/Barrels.mesh" type="ArrayMesh" id=10]
+[ext_resource path="res://SubScenes/Props/VehicleWheel.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SubScenes/Props/MissileLauncherAttached.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Audio/SoundEffects/TruckHighSpeed.wav" type="AudioStream" id=13]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemy2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Audio/SoundEffects/TruckRunning.wav" type="AudioStream" id=15]
+[ext_resource path="res://Audio/SoundEffects/TruckIdle.wav" type="AudioStream" id=16]
+[ext_resource path="res://SubScenes/Other/DestroyFarAway.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scripts/Player/Weapons/RecoilMoveOnly.gd" type="Script" id=18]
+[ext_resource path="res://Scripts/General/DamageReceiver.gd" type="Script" id=19]
+[ext_resource path="res://Audio/SoundEffects/Impact05.wav" type="AudioStream" id=20]
+[ext_resource path="res://Materials/Primary.material" type="Material" id=21]
+[ext_resource path="res://Models/TankBody.mesh" type="ArrayMesh" id=22]
+[ext_resource path="res://Models/TurretBase.mesh" type="ArrayMesh" id=23]
+[ext_resource path="res://Materials/PrimaryRed.material" type="Material" id=25]
+[ext_resource path="res://Materials/EmissionOrange.material" type="Material" id=27]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.5
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 6.45833, 2.58311, 7.2189 )
+
+[sub_resource type="SphereShape" id=3]
+radius = 60.0
+
+[node name="TankEnemy" type="VehicleBody"]
+collision_layer = 4
+collision_mask = 7
+mass = 400.0
+physics_material_override = SubResource( 1 )
+script = ExtResource( 5 )
+force = 1600.0
+idle_sfx = ExtResource( 16 )
+running_sfx = ExtResource( 15 )
+high_speed_sfx = ExtResource( 13 )
+
+[node name="DamageReceiver" type="Node" parent="."]
+script = ExtResource( 19 )
+hit_meshes_paths = [ NodePath("../TankBody") ]
+blink_material = ExtResource( 2 )
+die_effect = ExtResource( 4 )
+hit_points = 60.0
+die_effect_offset = 2.0
+audio_player_path = NodePath("../Grunts")
+grunts = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 20 ) ]
+enum_unit_type = 0
+die_effect_scale = 7.0
+wait_time_to_free = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.89579, -0.613433 )
+shape = SubResource( 2 )
+
+[node name="TankBody" type="MeshInstance" parent="."]
+transform = Transform( 1.70274, 0, 0, 0, 1.70274, 0, 0, 0, 1.70274, 0, 7.07247, 0 )
+mesh = ExtResource( 22 )
+material/0 = ExtResource( 21 )
+material/1 = ExtResource( 27 )
+material/2 = ExtResource( 25 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48204, 0 )
+collision_layer = 0
+collision_mask = 2
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24589, 0 )
+shape = SubResource( 3 )
+
+[node name="VehicleWheel" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.78295, 4.27089 )
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.05
+wheel_radius = 2.6
+wheel_rest_length = 1.0
+wheel_friction_slip = 10.0
+suspension_travel = 2.0
+suspension_stiffness = 2.0
+damping_compression = 0.88
+
+[node name="VehicleWheel" parent="VehicleWheel" instance=ExtResource( 11 )]
+transform = Transform( 1.34647, 0, 0, 0, 1.34647, 0, 0, 0, 1.34647, 0, 0, 0 )
+
+[node name="VehicleWheel2" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.78295, 4.27089 )
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.05
+wheel_radius = 2.6
+wheel_rest_length = 1.0
+wheel_friction_slip = 10.0
+suspension_travel = 2.0
+suspension_stiffness = 2.0
+damping_compression = 0.88
+
+[node name="VehicleWheel2" parent="VehicleWheel2" instance=ExtResource( 11 )]
+transform = Transform( 1.34647, 0, 0, 0, 1.34647, 0, 0, 0, 1.34647, 0, 0, 0 )
+
+[node name="VehicleWheel3" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.78295, -6 )
+use_as_traction = true
+wheel_roll_influence = 0.05
+wheel_radius = 2.6
+wheel_rest_length = 1.0
+wheel_friction_slip = 10.0
+suspension_travel = 2.0
+suspension_stiffness = 2.0
+damping_compression = 0.88
+
+[node name="VehicleWheel3" parent="VehicleWheel3" instance=ExtResource( 11 )]
+transform = Transform( 1.34647, 0, 0, 0, 1.34647, 0, 0, 0, 1.34647, 0, 0, 0 )
+
+[node name="VehicleWheel4" type="VehicleWheel" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.78295, -6 )
+use_as_traction = true
+wheel_roll_influence = 0.05
+wheel_radius = 2.6
+wheel_rest_length = 1.0
+wheel_friction_slip = 10.0
+suspension_travel = 2.0
+suspension_stiffness = 2.0
+damping_compression = 0.88
+
+[node name="VehicleWheel4" parent="VehicleWheel4" instance=ExtResource( 11 )]
+transform = Transform( 1.34647, 0, 0, 0, 1.34647, 0, 0, 0, 1.34647, 0, 0, 0 )
+
+[node name="CarWheelSmoke" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.80254, -6 )
+
+[node name="CarWheelSmoke2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4.80254, -6 )
+
+[node name="CarWheelSmoke3" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4.80254, 3 )
+
+[node name="CarWheelSmoke4" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4.80254, 3 )
+
+[node name="Turret" type="Spatial" parent="."]
+transform = Transform( -1.60539, 0, -5.23103e-07, 0, 1.60539, 0, 5.23103e-07, 0, -1.60539, 0, 9.34825, 0 )
+script = ExtResource( 1 )
+base_path = NodePath("Base")
+barrel_path = NodePath("Base/Barrels")
+rotation_speed = 12.0
+min_barrel_x = -0.2
+max_barrel_x = 1.2
+top_node_path = NodePath("..")
+area_node_path = NodePath("../Area")
+attack_range = 400
+origin_offset = Vector3( 0, 0.5, 0 )
+target_offset = Vector3( 0, 5, 0 )
+fire_points_paths = [ NodePath("Base/Barrels/FirePoints/GunPoint"), NodePath("Base/Barrels/FirePoints/GunPoint2") ]
+gun_fire_sound_effect = ExtResource( 3 )
+projectile = ExtResource( 14 )
+use_object_pooling = true
+
+[node name="Base" type="Spatial" parent="Turret"]
+
+[node name="Model" type="MeshInstance" parent="Turret/Base"]
+mesh = ExtResource( 23 )
+material/0 = ExtResource( 21 )
+material/1 = ExtResource( 25 )
+material/2 = ExtResource( 27 )
+
+[node name="Barrels" type="Spatial" parent="Turret/Base"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.409902, 0 )
+script = ExtResource( 18 )
+
+[node name="Model" type="MeshInstance" parent="Turret/Base/Barrels"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01578e-07, 0.0857849, -0.925537 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 21 )
+
+[node name="FirePoints" type="Spatial" parent="Turret/Base/Barrels"]
+transform = Transform( 0.999995, 1.90768e-05, 0.00301936, 0, 0.99998, -0.00631805, -0.00301942, 0.00631802, 0.999976, 0, 0.0701203, -1.548 )
+
+[node name="GunPoint" type="Position3D" parent="Turret/Base/Barrels/FirePoints"]
+transform = Transform( 1, 0, 1.62981e-09, -9.09495e-12, 1, 0, 0, 0, 1, 0.372322, -0.0110936, -1.75294 )
+
+[node name="GunPoint2" type="Position3D" parent="Turret/Base/Barrels/FirePoints"]
+transform = Transform( 1, 0, 1.62981e-09, -9.09495e-12, 1, 0, 0, 0, 1, -0.384686, -0.0110407, -1.74455 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Turret"]
+unit_db = 20.0
+bus = "SoundFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.80693, 0 )
+bus = "SoundFX"
+
+[node name="Grunts" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.80693, 0 )
+unit_db = 20.0
+bus = "SoundFX"
+
+[node name="VehicleSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.00123, -1.74197 )
+unit_db = 30.0
+max_distance = 100.0
+bus = "SoundFX"
+
+[node name="SpawnRocketLauncher" type="VisibilityNotifier" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 8.95838, -7.19518 )
+script = ExtResource( 9 )
+entities = [ ExtResource( 12 ) ]
+parent_to_self = true
+one_time = true
+enum_unit_type = 2
+
+[node name="DestroyFarAway" parent="." instance=ExtResource( 17 )]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bausic Productions-Not alone-CC BY 4.0.ogg-d367c65ca9d2ece093af85150e72e902.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Ambient/Bausic Productions-Not alone-CC BY 4.0.ogg"
+dest_files=[ "res://.import/Bausic Productions-Not alone-CC BY 4.0.ogg-d367c65ca9d2ece093af85150e72e902.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WaterDive.wav-e2ddb8b0190e756422ff587832bc9d52.sample"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/WaterDive.wav"
+dest_files=[ "res://.import/WaterDive.wav-e2ddb8b0190e756422ff587832bc9d52.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

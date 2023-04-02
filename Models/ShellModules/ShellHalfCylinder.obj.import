@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ShellHalfCylinder.obj-614a78f3e581e3ccfa8b50c6165c5107.mesh"
+
+[deps]
+
+files=[ "res://.import/ShellHalfCylinder.obj-614a78f3e581e3ccfa8b50c6165c5107.mesh" ]
+
+source_file="res://Models/ShellModules/ShellHalfCylinder.obj"
+dest_files=[ "res://.import/ShellHalfCylinder.obj-614a78f3e581e3ccfa8b50c6165c5107.mesh", "res://.import/ShellHalfCylinder.obj-614a78f3e581e3ccfa8b50c6165c5107.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -1,0 +1,147 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Materials/Primary.material" type="Material" id=1]
+[ext_resource path="res://Materials/PrimaryRed.material" type="Material" id=2]
+[ext_resource path="res://Materials/PrimaryWhite.material" type="Material" id=3]
+[ext_resource path="res://Materials/EmissionBlue.material" type="Material" id=4]
+[ext_resource path="res://Models/CockpitPlayer.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Materials/PrimaryBlue.material" type="Material" id=6]
+[ext_resource path="res://Materials/HexGlass.material" type="Material" id=7]
+[ext_resource path="res://Scripts/Player/SmoothMouseLook.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Player/Cockpit.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/General/DamageReceiver.gd" type="Script" id=10]
+[ext_resource path="res://Audio/SoundEffects/Impact01.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/SoundEffects/Impact02.wav" type="AudioStream" id=12]
+[ext_resource path="res://SubScenes/Player/DebugInfo.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scripts/Player/Weapons/Armory.gd" type="Script" id=14]
+[ext_resource path="res://Audio/SoundEffects/SwitchWeapon01.wav" type="AudioStream" id=15]
+[ext_resource path="res://Scripts/Player/Weapons/MultipleGunpoints.gd" type="Script" id=16]
+[ext_resource path="res://SubScenes/VisualEffects/HUD.tscn" type="PackedScene" id=17]
+[ext_resource path="res://SubScenes/Player/ShaderCache.tscn" type="PackedScene" id=18]
+[ext_resource path="res://SubScenes/Other/Crosshair.tscn" type="PackedScene" id=19]
+[ext_resource path="res://SubScenes/Player/GyroSphere.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scripts/Player/CameraShakeSimplex.gd" type="Script" id=21]
+[ext_resource path="res://SubScenes/VisualEffects/MuzzleFlash.tscn" type="PackedScene" id=22]
+[ext_resource path="res://SubScenes/Projectiles/HomingMissilePlayer.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Audio/SoundEffects/SciFiGunFire06.wav" type="AudioStream" id=24]
+[ext_resource path="res://SubScenes/Projectiles/ProjectilePlayerCockpit.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Audio/SoundEffects/Rocket02.wav" type="AudioStream" id=26]
+[ext_resource path="res://Materials/Display.material" type="Material" id=27]
+[ext_resource path="res://SubScenes/VisualEffects/DustParticles.tscn" type="PackedScene" id=28]
+[ext_resource path="res://SubScenes/VisualEffects/SmokeParticles.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Audio/SoundEffects/OutOfAmmo.wav" type="AudioStream" id=31]
+[ext_resource path="res://Materials/Emission.material" type="Material" id=32]
+
+[sub_resource type="SphereShape" id=2]
+radius = 2.783
+
+[node name="Player" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 39
+collision/safe_margin = 0.01
+script = ExtResource( 9 )
+max_fly_speed = 60.0
+max_fly_sprinting_speed = 160.0
+fly_accel = 0.5
+audio_player_path = NodePath("AudioStreamPlayer")
+
+[node name="DamageReceiver" type="Node" parent="."]
+script = ExtResource( 10 )
+movement_node_path = NodePath("..")
+hit_meshes_paths = [ NodePath("../Model") ]
+blink_material = ExtResource( 32 )
+hit_points = 300.0
+audio_player_path = NodePath("../Grunts")
+grunts = [ ExtResource( 11 ), ExtResource( 12 ) ]
+time_to_hit = 1.0
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.546572, 0.619049 )
+script = ExtResource( 21 )
+max_offset = Vector2( 0.1, 0.1 )
+max_roll = 0.05
+
+[node name="Camera" type="Camera" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.274325 )
+current = true
+near = 0.2
+far = 40.0
+script = ExtResource( 8 )
+yaw_limit = 60
+pitch_limit = 45
+
+[node name="FirePoints" type="Spatial" parent="Head/Camera"]
+transform = Transform( 0.999995, 1.90768e-05, 0.00301936, 0, 0.99998, -0.00631805, -0.00301942, 0.00631802, 0.999976, 0, -0.619, -1.377 )
+
+[node name="GunPoint" type="Position3D" parent="Head/Camera/FirePoints"]
+transform = Transform( 0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 1.5, 0, 0 )
+
+[node name="MuzzleFlash" parent="Head/Camera/FirePoints/GunPoint" instance=ExtResource( 22 )]
+
+[node name="GunPoint2" type="Position3D" parent="Head/Camera/FirePoints"]
+transform = Transform( 0.999848, 0, -0.0174524, 0, 1, 0, 0.0174524, 0, 0.999848, -1.5, 0, 0 )
+
+[node name="MuzzleFlash" parent="Head/Camera/FirePoints/GunPoint2" instance=ExtResource( 22 )]
+
+[node name="HUD" parent="Head/Camera" instance=ExtResource( 17 )]
+transform = Transform( 0.0248646, 0.0293468, -1.09369e-09, 0, -2.10971e-09, -0.0411496, -0.0190434, 0.0383175, -1.428e-09, -0.22, -0.108, -0.219 )
+
+[node name="Armory" type="Spatial" parent="Head/Camera"]
+script = ExtResource( 14 )
+guns_path = [ NodePath("Gatling") ]
+audio_player_path = NodePath("../../../AudioStreamPlayer")
+switch_weapon_sound = ExtResource( 15 )
+out_of_ammo_sound = ExtResource( 31 )
+can_add_gun = false
+
+[node name="Gatling" type="Spatial" parent="Head/Camera/Armory"]
+script = ExtResource( 16 )
+audio_player_path = NodePath("../../../../AudioStreamPlayer")
+player_camera_path = NodePath("../..")
+armory_path = NodePath("..")
+gun_fire_sound_effect = ExtResource( 24 )
+gun_fire_sound_effect_secondary = ExtResource( 26 )
+projectile = ExtResource( 25 )
+projectile_secondary = ExtResource( 23 )
+fire_rate = 6.0
+fire_rate_secondary = 2.0
+spread_angle = 4.0
+cost = 0.1
+fire_points = NodePath("../../FirePoints")
+
+[node name="Crosshair" parent="Head/Camera" instance=ExtResource( 19 )]
+
+[node name="GyroSphere" parent="Head/Camera" instance=ExtResource( 20 )]
+transform = Transform( 0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.015, 0.18, -0.097, -0.219 )
+
+[node name="ShaderCache" parent="Head/Camera" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+
+[node name="SmokeParticles" parent="Head/Camera" instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -20.7003 )
+
+[node name="DustParticles" parent="Head/Camera" instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -14.7003 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="Model" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 1 )
+material/1 = ExtResource( 4 )
+material/2 = ExtResource( 3 )
+material/3 = ExtResource( 2 )
+material/4 = ExtResource( 6 )
+material/5 = ExtResource( 7 )
+material/6 = ExtResource( 27 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+bus = "SoundFX"
+
+[node name="Grunts" type="AudioStreamPlayer3D" parent="."]
+bus = "SoundFX"
+
+[node name="DebugInfo" parent="." instance=ExtResource( 13 )]
+visible = false

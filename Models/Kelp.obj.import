@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Kelp.obj-fadcb8dcb526d5da2760495d5fd9fdde.mesh"
+
+[deps]
+
+files=[ "res://.import/Kelp.obj-fadcb8dcb526d5da2760495d5fd9fdde.mesh" ]
+
+source_file="res://Models/Kelp.obj"
+dest_files=[ "res://.import/Kelp.obj-fadcb8dcb526d5da2760495d5fd9fdde.mesh", "res://.import/Kelp.obj-fadcb8dcb526d5da2760495d5fd9fdde.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

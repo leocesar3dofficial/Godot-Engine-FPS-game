@@ -1,0 +1,669 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UserInterface/Fonts/conthrax-sb.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Scripts/UI/HideUI.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/UI/SettingsMenu.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0.47451, 0.207843, 1 )
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -677.0
+margin_top = -382.0
+margin_right = 677.0
+margin_bottom = 382.0
+script = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="BG/VBoxContainer"]
+margin_right = 1354.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 1 )
+text = "SETTINGS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/VBoxContainer"]
+margin_top = 93.0
+margin_right = 1354.0
+margin_bottom = 660.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/VBoxContainer/HBoxContainer"]
+margin_right = 629.0
+margin_bottom = 567.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 629.0
+margin_bottom = 29.0
+custom_colors/font_color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Video"
+align = 1
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 39.0
+margin_right = 629.0
+margin_bottom = 84.0
+alignment = 1
+
+[node name="Button_low" type="Button" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer11"]
+margin_right = 204.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Low"
+
+[node name="Button_medium" type="Button" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer11"]
+margin_left = 212.0
+margin_right = 416.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Medium"
+
+[node name="Button_high" type="Button" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer11"]
+margin_left = 424.0
+margin_right = 629.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "High"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 629.0
+margin_bottom = 144.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 194.0
+margin_bottom = 44.0
+text = "Windowed"
+align = 1
+
+[node name="CheckButton_fullscreen" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 202.0
+margin_right = 318.0
+margin_bottom = 50.0
+flat = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 629.0
+margin_bottom = 204.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 5.0
+margin_right = 199.0
+margin_bottom = 44.0
+text = "Debug Info"
+align = 1
+
+[node name="CheckButton_debug" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 207.0
+margin_right = 323.0
+margin_bottom = 50.0
+flat = true
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 214.0
+margin_right = 629.0
+margin_bottom = 264.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer8"]
+margin_top = 5.0
+margin_right = 177.0
+margin_bottom = 44.0
+text = "Shadows"
+align = 1
+
+[node name="CheckButton_shadows" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer8"]
+margin_left = 185.0
+margin_right = 301.0
+margin_bottom = 50.0
+flat = true
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 274.0
+margin_right = 629.0
+margin_bottom = 316.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer10"]
+margin_top = 1.0
+margin_right = 214.0
+margin_bottom = 40.0
+text = "Anti-aliasing"
+align = 1
+
+[node name="OptionButton" type="OptionButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer10"]
+margin_left = 222.0
+margin_right = 440.0
+margin_bottom = 42.0
+text = "MSAA 4X"
+items = [ "Disabled", null, false, 0, null, "MSAA 2X", null, false, 1, null, "MSAA 4X", null, false, 2, null, "MSAA 8X", null, false, 3, null, "MSAA 16X", null, false, 4, null ]
+selected = 2
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 326.0
+margin_right = 629.0
+margin_bottom = 326.0
+
+[node name="Label4" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 336.0
+margin_right = 629.0
+margin_bottom = 365.0
+custom_colors/font_color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Difficulty"
+align = 1
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 375.0
+margin_right = 629.0
+margin_bottom = 420.0
+alignment = 1
+
+[node name="Button_easy" type="Button" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer12"]
+margin_right = 204.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Easy"
+
+[node name="Button_normal" type="Button" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer12"]
+margin_left = 212.0
+margin_right = 416.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Normal"
+
+[node name="Button_hard" type="Button" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer12"]
+margin_left = 424.0
+margin_right = 629.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Hard"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 430.0
+margin_right = 629.0
+margin_bottom = 469.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 223.0
+margin_bottom = 39.0
+text = "Max enemies"
+align = 1
+
+[node name="HSlider_enemies" type="HSlider" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 231.0
+margin_right = 535.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 9.0
+step = 3.0
+value = 3.0
+rounded = true
+tick_count = 9
+ticks_on_borders = true
+
+[node name="Value_enemies" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 543.0
+margin_right = 629.0
+margin_bottom = 39.0
+text = "00"
+align = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 479.0
+margin_right = 629.0
+margin_bottom = 518.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+margin_right = 204.0
+margin_bottom = 39.0
+text = "Spawn time"
+align = 1
+
+[node name="HSlider_spawn" type="HSlider" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 212.0
+margin_right = 535.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+min_value = 5.0
+max_value = 15.0
+step = 5.0
+value = 5.0
+rounded = true
+tick_count = 3
+ticks_on_borders = true
+
+[node name="Value_spawn" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 543.0
+margin_right = 629.0
+margin_bottom = 39.0
+text = "00"
+align = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 528.0
+margin_right = 629.0
+margin_bottom = 567.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
+margin_right = 284.0
+margin_bottom = 39.0
+text = "Damage multiplier"
+align = 1
+
+[node name="HSlider_damage" type="HSlider" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
+margin_left = 292.0
+margin_right = 535.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 3.0
+value = 1.0
+rounded = true
+tick_count = 3
+ticks_on_borders = true
+
+[node name="Value_damage" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
+margin_left = 543.0
+margin_right = 629.0
+margin_bottom = 39.0
+text = "00"
+align = 1
+
+[node name="VSeparator" type="VSeparator" parent="BG/VBoxContainer/HBoxContainer"]
+margin_left = 637.0
+margin_right = 645.0
+margin_bottom = 567.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="BG/VBoxContainer/HBoxContainer"]
+margin_left = 653.0
+margin_right = 1354.0
+margin_bottom = 567.0
+rect_min_size = Vector2( 670, 0 )
+
+[node name="Label5" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 701.0
+margin_bottom = 29.0
+custom_colors/font_color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+custom_styles/normal = SubResource( 2 )
+text = "FPS Camera"
+align = 1
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 39.0
+margin_right = 701.0
+margin_bottom = 78.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer13"]
+margin_right = 263.0
+margin_bottom = 39.0
+text = "Look Sensitivity"
+align = 1
+
+[node name="HSlider_sensitivity" type="HSlider" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer13"]
+margin_left = 271.0
+margin_right = 584.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+min_value = 0.01
+max_value = 1.0
+step = 0.1
+value = 0.8
+tick_count = 11
+ticks_on_borders = true
+
+[node name="Value_sensitivity" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer13"]
+margin_left = 592.0
+margin_right = 701.0
+margin_bottom = 39.0
+text = "80%"
+align = 1
+
+[node name="HBoxContainer16" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 88.0
+margin_right = 701.0
+margin_bottom = 127.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer16"]
+margin_right = 221.0
+margin_bottom = 39.0
+text = "Field of View"
+align = 1
+
+[node name="HSlider_FOV" type="HSlider" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer16"]
+margin_left = 229.0
+margin_right = 608.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+min_value = 70.0
+step = 10.0
+value = 70.0
+tick_count = 4
+ticks_on_borders = true
+
+[node name="Value_FOV" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer16"]
+margin_left = 616.0
+margin_right = 701.0
+margin_bottom = 39.0
+text = "70"
+align = 1
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 137.0
+margin_right = 701.0
+margin_bottom = 187.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer14"]
+margin_top = 5.0
+margin_right = 326.0
+margin_bottom = 44.0
+text = "Invert Camera Y Axis"
+align = 1
+
+[node name="CheckButton_invertY" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer14"]
+margin_left = 334.0
+margin_right = 450.0
+margin_bottom = 50.0
+flat = true
+
+[node name="HBoxContainer18" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 197.0
+margin_right = 701.0
+margin_bottom = 247.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer18"]
+margin_top = 5.0
+margin_right = 239.0
+margin_bottom = 44.0
+text = "Head bobbing"
+align = 1
+
+[node name="CheckButton_headbobbing" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer18"]
+margin_left = 247.0
+margin_right = 363.0
+margin_bottom = 50.0
+flat = true
+
+[node name="Label2" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer18"]
+margin_left = 371.0
+margin_top = 5.0
+margin_right = 515.0
+margin_bottom = 44.0
+text = "V-Sync"
+align = 1
+
+[node name="CheckButton_vsync" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer18"]
+margin_left = 523.0
+margin_right = 639.0
+margin_bottom = 50.0
+flat = true
+
+[node name="HBoxContainer19" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 257.0
+margin_right = 701.0
+margin_bottom = 307.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer19"]
+margin_top = 5.0
+margin_right = 238.0
+margin_bottom = 44.0
+text = "Camera shake"
+align = 1
+
+[node name="CheckButton_camerashake" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer19"]
+margin_left = 246.0
+margin_right = 362.0
+margin_bottom = 50.0
+flat = true
+
+[node name="Label2" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer19"]
+margin_left = 370.0
+margin_top = 5.0
+margin_right = 577.0
+margin_bottom = 44.0
+text = "Knock back"
+align = 1
+
+[node name="CheckButton_knockback" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer19"]
+margin_left = 585.0
+margin_right = 701.0
+margin_bottom = 50.0
+flat = true
+
+[node name="HBoxContainer20" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 317.0
+margin_right = 701.0
+margin_bottom = 367.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer20"]
+margin_top = 5.0
+margin_right = 186.0
+margin_bottom = 44.0
+text = "Bullet time"
+align = 1
+
+[node name="CheckButton_bullettime" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer20"]
+margin_left = 194.0
+margin_right = 310.0
+margin_bottom = 50.0
+flat = true
+
+[node name="Label2" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer20"]
+margin_left = 318.0
+margin_top = 5.0
+margin_right = 490.0
+margin_bottom = 44.0
+text = "Hide HUD"
+align = 1
+
+[node name="CheckButton_hideHUD" type="CheckButton" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer20"]
+margin_left = 498.0
+margin_right = 614.0
+margin_bottom = 50.0
+flat = true
+
+[node name="Label3" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 377.0
+margin_right = 701.0
+margin_bottom = 406.0
+custom_colors/font_color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Audio"
+align = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 416.0
+margin_right = 701.0
+margin_bottom = 455.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
+margin_right = 189.0
+margin_bottom = 39.0
+text = "FX volume"
+align = 1
+
+[node name="HSlider_fx" type="HSlider" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
+margin_left = 197.0
+margin_right = 577.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 11
+ticks_on_borders = true
+
+[node name="Value_fx" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6"]
+margin_left = 585.0
+margin_right = 701.0
+margin_bottom = 39.0
+text = "100%"
+align = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 465.0
+margin_right = 701.0
+margin_bottom = 504.0
+
+[node name="Label" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
+margin_right = 189.0
+margin_bottom = 39.0
+text = "ST volume"
+align = 1
+
+[node name="HSlider_st" type="HSlider" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
+margin_left = 197.0
+margin_right = 577.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 11
+ticks_on_borders = true
+
+[node name="Value_st" type="Label" parent="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7"]
+margin_left = 585.0
+margin_right = 701.0
+margin_bottom = 39.0
+text = "100%"
+align = 1
+
+[node name="Label2" type="Label" parent="BG/VBoxContainer"]
+margin_top = 670.0
+margin_right = 1354.0
+margin_bottom = 709.0
+custom_colors/font_color = Color( 1, 0.47451, 0.207843, 1 )
+text = "Caution: some values may affect performance"
+align = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BG/VBoxContainer"]
+margin_top = 719.0
+margin_right = 1354.0
+margin_bottom = 764.0
+alignment = 1
+
+[node name="Button_save" type="Button" parent="BG/VBoxContainer/HBoxContainer2"]
+margin_right = 446.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+text = "Save all settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonCustomize" type="Button" parent="BG/VBoxContainer/HBoxContainer2"]
+margin_left = 454.0
+margin_right = 900.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+text = "Customize Controls"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+unpause_game = false
+node_to_hide_path = NodePath("../../../..")
+
+[node name="Button" type="Button" parent="BG/VBoxContainer/HBoxContainer2"]
+margin_left = 908.0
+margin_right = 1354.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+text = "Back"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+node_to_hide_path = NodePath("../../../..")
+
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer11/Button_low" to="BG/VBoxContainer" method="_on_Button_low_mouse_entered"]
+[connection signal="pressed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer11/Button_low" to="BG/VBoxContainer" method="_on_Button_low_pressed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer11/Button_medium" to="BG/VBoxContainer" method="_on_Button_medium_mouse_entered"]
+[connection signal="pressed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer11/Button_medium" to="BG/VBoxContainer" method="_on_Button_medium_pressed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer11/Button_high" to="BG/VBoxContainer" method="_on_Button_high_mouse_entered"]
+[connection signal="pressed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer11/Button_high" to="BG/VBoxContainer" method="_on_Button_high_pressed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/CheckButton_fullscreen" to="BG/VBoxContainer" method="_on_CheckButton_fullscreen_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/CheckButton_fullscreen" to="BG/VBoxContainer" method="_on_CheckButton_fullscreen_toggled"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/CheckButton_debug" to="BG/VBoxContainer" method="_on_CheckButton_debug_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/CheckButton_debug" to="BG/VBoxContainer" method="_on_CheckButton_debug_toggled"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer8/CheckButton_shadows" to="BG/VBoxContainer" method="_on_CheckButton_shadows_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer8/CheckButton_shadows" to="BG/VBoxContainer" method="_on_CheckButton_shadows_toggled"]
+[connection signal="item_selected" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer10/OptionButton" to="BG/VBoxContainer" method="_on_OptionButton_item_selected"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer10/OptionButton" to="BG/VBoxContainer" method="_on_OptionButton_mouse_entered"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer12/Button_easy" to="BG/VBoxContainer" method="_on_Button_easy_mouse_entered"]
+[connection signal="pressed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer12/Button_easy" to="BG/VBoxContainer" method="_on_Button_easy_pressed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer12/Button_normal" to="BG/VBoxContainer" method="_on_Button_normal_mouse_entered"]
+[connection signal="pressed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer12/Button_normal" to="BG/VBoxContainer" method="_on_Button_normal_pressed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer12/Button_hard" to="BG/VBoxContainer" method="_on_Button_hard_mouse_entered"]
+[connection signal="pressed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer12/Button_hard" to="BG/VBoxContainer" method="_on_Button_hard_pressed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/HSlider_enemies" to="BG/VBoxContainer" method="_on_HSlider_enemies_mouse_entered"]
+[connection signal="value_changed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer3/HSlider_enemies" to="BG/VBoxContainer" method="_on_HSlider_enemies_value_changed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4/HSlider_spawn" to="BG/VBoxContainer" method="_on_HSlider_spawn_mouse_entered"]
+[connection signal="value_changed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer4/HSlider_spawn" to="BG/VBoxContainer" method="_on_HSlider_spawn_value_changed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer5/HSlider_damage" to="BG/VBoxContainer" method="_on_HSlider_damage_mouse_entered"]
+[connection signal="value_changed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer5/HSlider_damage" to="BG/VBoxContainer" method="_on_HSlider_damage_value_changed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer13/HSlider_sensitivity" to="BG/VBoxContainer" method="_on_HSlider_sensitivity_mouse_entered"]
+[connection signal="value_changed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer13/HSlider_sensitivity" to="BG/VBoxContainer" method="_on_HSlider_sensitivity_value_changed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer16/HSlider_FOV" to="BG/VBoxContainer" method="_on_HSlider_FOV_mouse_entered"]
+[connection signal="value_changed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer16/HSlider_FOV" to="BG/VBoxContainer" method="_on_HSlider_FOV_value_changed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer14/CheckButton_invertY" to="BG/VBoxContainer" method="_on_CheckButton_invertY_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer14/CheckButton_invertY" to="BG/VBoxContainer" method="_on_CheckButton_invertY_toggled"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer18/CheckButton_headbobbing" to="BG/VBoxContainer" method="_on_CheckButton_headbobbing_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer18/CheckButton_headbobbing" to="BG/VBoxContainer" method="_on_CheckButton_headbobbing_toggled"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer18/CheckButton_vsync" to="BG/VBoxContainer" method="_on_CheckButton_vsync_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer18/CheckButton_vsync" to="BG/VBoxContainer" method="_on_CheckButton_vsync_toggled"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer19/CheckButton_camerashake" to="BG/VBoxContainer" method="_on_CheckButton_camerashake_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer19/CheckButton_camerashake" to="BG/VBoxContainer" method="_on_CheckButton_camerashake_toggled"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer19/CheckButton_knockback" to="BG/VBoxContainer" method="_on_CheckButton_knockback_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer19/CheckButton_knockback" to="BG/VBoxContainer" method="_on_CheckButton_knockback_toggled"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer20/CheckButton_bullettime" to="BG/VBoxContainer" method="_on_CheckButton_bullettime_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer20/CheckButton_bullettime" to="BG/VBoxContainer" method="_on_CheckButton_bullettime_toggled"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer20/CheckButton_hideHUD" to="BG/VBoxContainer" method="_on_CheckButton_hideHUD_mouse_entered"]
+[connection signal="toggled" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer20/CheckButton_hideHUD" to="BG/VBoxContainer" method="_on_CheckButton_hideHUD_toggled"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6/HSlider_fx" to="BG/VBoxContainer" method="_on_HSlider_fx_mouse_entered"]
+[connection signal="value_changed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer6/HSlider_fx" to="BG/VBoxContainer" method="_on_HSlider_fx_value_changed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7/HSlider_st" to="BG/VBoxContainer" method="_on_HSlider_st_mouse_entered"]
+[connection signal="value_changed" from="BG/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer7/HSlider_st" to="BG/VBoxContainer" method="_on_HSlider_st_value_changed"]
+[connection signal="mouse_entered" from="BG/VBoxContainer/HBoxContainer2/Button_save" to="BG/VBoxContainer" method="_on_Button_save_mouse_entered"]
+[connection signal="pressed" from="BG/VBoxContainer/HBoxContainer2/Button_save" to="BG/VBoxContainer" method="_on_Button_save_pressed"]

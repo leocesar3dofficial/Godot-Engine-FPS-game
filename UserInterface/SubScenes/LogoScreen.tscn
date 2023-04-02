@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/UI/GoToMenu.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Other/LogoLeocesar3DProductions.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Other/AppLogos.png" type="Texture" id=3]
+[ext_resource path="res://UserInterface/Fonts/Conthrax Heavy.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeIn:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="LogoScreen" type="Spatial"]
+
+[node name="Logo" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+scene_path = "res://UserInterface/SubScenes/MainMenu.tscn"
+
+[node name="Background" type="ColorRect" parent="Logo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="MyLogo" type="TextureRect" parent="Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -451.5
+margin_top = -465.0
+margin_right = 451.5
+margin_bottom = 350.0
+texture = ExtResource( 2 )
+
+[node name="Line" type="ColorRect" parent="Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = 326.0
+margin_right = 300.0
+margin_bottom = 331.0
+color = Color( 0.207843, 0.396078, 0.67451, 1 )
+
+[node name="Label" type="Label" parent="Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.0
+margin_top = 272.0
+margin_right = 102.0
+margin_bottom = 317.0
+custom_colors/font_color = Color( 0.207843, 0.396078, 0.67451, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Software:"
+
+[node name="Line2" type="ColorRect" parent="Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -397.0
+margin_right = 300.0
+margin_bottom = -392.0
+color = Color( 0.207843, 0.396078, 0.67451, 1 )
+
+[node name="Label2" type="Label" parent="Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -182.0
+margin_top = -454.0
+margin_right = 182.0
+margin_bottom = -409.0
+custom_colors/font_color = Color( 0.207843, 0.396078, 0.67451, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Game created by:"
+
+[node name="Logos" type="TextureRect" parent="Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -237.0
+margin_top = 338.0
+margin_right = 237.0
+margin_bottom = 463.0
+texture = ExtResource( 3 )
+
+[node name="FadeIn" type="ColorRect" parent="Logo"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Logo"]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 1 )

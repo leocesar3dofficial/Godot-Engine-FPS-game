@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/HowlingWind.ogg-438709ef9a7bdd3365d372d3d578d330.oggstr"
+
+[deps]
+
+source_file="res://Audio/AmbientSFX/HowlingWind.ogg"
+dest_files=[ "res://.import/HowlingWind.ogg-438709ef9a7bdd3365d372d3d578d330.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

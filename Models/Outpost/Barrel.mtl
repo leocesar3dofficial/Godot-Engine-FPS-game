@@ -1,0 +1,55 @@
+# Blender MTL File: 'Barrel.blend'
+# Material Count: 5
+
+newmtl Decals01
+Ns 1000.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.741166 0.696279
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Emission
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.000000 0.005877
+Ks 0.500000 0.500000 0.500000
+Ke 1.000000 0.000000 0.001832
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Primary
+Ns 562.500000
+Ka 0.841667 0.841667 0.841667
+Kd 0.029100 0.029100 0.029100
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Ns D:\\Leonardo\\DemoReel\\Ephemeral\\Game\\Human Diaspora\\Textures\\Other\\roughness.jpg
+
+newmtl Secondary
+Ns 525.624991
+Ka 0.925000 0.925000 0.925000
+Kd 0.438545 0.438545 0.438545
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Ns D:\\Leonardo\\DemoReel\\Ephemeral\\Game\\Human Diaspora\\Textures\\Other\\roughness.jpg
+
+newmtl TrimSheet01
+Ns 639.999995
+Ka 0.800000 0.800000 0.800000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump D:\\Leonardo\\DemoReel\\Ephemeral\\Game\\Models\\2.8\\Textures\\TrimSheet01\\TrimSheet01_NR.png

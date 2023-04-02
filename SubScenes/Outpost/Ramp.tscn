@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Models/Outpost/Ramp.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/Decals01.material" type="Material" id=2]
+[ext_resource path="res://Materials/Primary.material" type="Material" id=3]
+[ext_resource path="res://Materials/Secondary.material" type="Material" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 9.21505, 1, 3.84684 )
+
+[node name="Ramp" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 4 )
+material/2 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 0.984177, -0.177188, 0, 0.177188, 0.984177, 0, -0.389655, 0.402362 )
+shape = SubResource( 1 )

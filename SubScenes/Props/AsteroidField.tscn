@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Models/AsteroidField.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Scripts/Generators/SpawnAtVertex.gd" type="Script" id=2]
+[ext_resource path="res://SubScenes/Props/Asteroids/Asteroid01.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SubScenes/Props/Asteroids/Asteroid02.tscn" type="PackedScene" id=4]
+
+[node name="AsteroidField" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+layers = 0
+mesh = ExtResource( 1 )
+material/0 = null
+__meta__ = {
+"_editor_description_": "Disable render layer for this mesh"
+}
+
+[node name="SpawnAtVertex" type="Node" parent="MeshInstance"]
+script = ExtResource( 2 )
+entities = [ ExtResource( 3 ), ExtResource( 4 ) ]
+min_spawn = 50
+max_spawn = 100
+max_scale = 0.3
+align_with_normal = false

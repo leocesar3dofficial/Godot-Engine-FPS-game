@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Impact05.wav-4e5d5b488864b6f3fc2771f588a71c23.sample"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/Impact05.wav"
+dest_files=[ "res://.import/Impact05.wav-4e5d5b488864b6f3fc2771f588a71c23.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

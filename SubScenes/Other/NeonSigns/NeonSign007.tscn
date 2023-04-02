@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Shaders/NeonScanlineAlphaVisual.tres" type="Material" id=1]
+[ext_resource path="res://Materials/NeonSignsLeo.material" type="Material" id=3]
+
+[sub_resource type="ArrayMesh" id=1]
+surfaces/0 = {
+"aabb": AABB( -0.191935, 0, 0.127144, 0.440996, 1e-05, 0.110324 ),
+"array_data": PoolByteArray( 164, 138, 68, 190, 0, 0, 0, 0, 93, 40, 115, 62, 0, 127, 0, 0, 127, 0, 0, 129, 237, 52, 230, 57, 235, 9, 127, 62, 0, 0, 0, 0, 97, 40, 115, 62, 0, 127, 0, 0, 127, 0, 0, 129, 254, 57, 230, 57, 207, 9, 127, 62, 0, 0, 0, 0, 28, 50, 2, 62, 0, 127, 0, 0, 127, 0, 0, 129, 254, 57, 4, 57, 166, 138, 68, 190, 0, 0, 0, 0, 28, 50, 2, 62, 0, 127, 0, 0, 127, 0, 0, 129, 237, 52, 4, 57 ),
+"array_index_data": PoolByteArray( 3, 0, 2, 0, 1, 0, 3, 0, 1, 0, 0, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 6,
+"material": ExtResource( 3 ),
+"name": "NeonSignsLeo.006",
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 4
+}
+
+[node name="NeonSignsLeo015" type="MeshInstance"]
+transform = Transform( 1.56388, 0, 0, 0, -2.54788e-07, -1.56388, 0, 1.56388, -2.54788e-07, -0.0314586, 0.269146, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )

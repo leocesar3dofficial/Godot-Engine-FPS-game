@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/CreepySciFiGrowls.wav-b0e1587c1c1d3d1d70d22521747c2bfe.sample"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/CreepySciFiGrowls.wav"
+dest_files=[ "res://.import/CreepySciFiGrowls.wav-b0e1587c1c1d3d1d70d22521747c2bfe.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

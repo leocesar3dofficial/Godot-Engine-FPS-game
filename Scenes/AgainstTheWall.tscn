@@ -1,0 +1,100 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Environments/MyEnvironmentDefault.tres" type="Environment" id=1]
+[ext_resource path="res://Scripts/Generators/EndlessTerrainVertical.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Generators/RandomWorldEnvironment.gd" type="Script" id=3]
+[ext_resource path="res://SubScenes/Tiles/WallTile01.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/Platforms/SquarePlatform01.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/Props/StructuralBeam.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/Props/Pickups/PickupGun.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/General/ShadowSettings.gd" type="Script" id=8]
+[ext_resource path="res://SubScenes/Props/Pole.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemyHexPool.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SubScenes/Other/UnitsManager.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SubScenes/Player/PlayerFactory.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileNormalHitPool.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionPool.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scripts/ObjectPooling/ObjectPooling.gd" type="Script" id=15]
+[ext_resource path="res://SubScenes/Outpost/PlatformPortal.tscn" type="PackedScene" id=16]
+[ext_resource path="res://SubScenes/VisualEffects/Rain.tscn" type="PackedScene" id=17]
+[ext_resource path="res://SubScenes/Props/Railing.tscn" type="PackedScene" id=18]
+
+[node name="Level" type="Spatial"]
+
+[node name="UnitsManager" parent="." instance=ExtResource( 11 )]
+badge_text = "reach the spaceport"
+
+[node name="EndlessTerrain" type="Spatial" parent="."]
+script = ExtResource( 2 )
+tile_size = 53.5
+tiles_array = [ ExtResource( 4 ) ]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+script = ExtResource( 3 )
+randomize_colors = false
+level_distance_culling = 60.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.2766, -19.8952 )
+extents = Vector3( 10000, 10000, 10000 )
+origin_offset = Vector3( 0, 20, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.965926, -1.5099e-14, -0.258819, 0.183013, 0.707107, 0.683013, 0.183013, -0.707107, 0.683013, 0, 0, 0 )
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 20.0
+script = ExtResource( 8 )
+
+[node name="SquarePlatform01" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
+
+[node name="StructuralBeam" parent="SquarePlatform01" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99603, 1.30098, -26.1542 )
+
+[node name="StructuralBeam2" parent="SquarePlatform01" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.997215, 1.30098, -26.1542 )
+
+[node name="PickupGun" parent="SquarePlatform01" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.54223, -3.84334 )
+gun_id = 3
+
+[node name="Pole" parent="SquarePlatform01" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6808, 2.70145, 4.48378 )
+
+[node name="Pole2" parent="SquarePlatform01" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6808, 2.70145, -4.46349 )
+
+[node name="Pole3" parent="SquarePlatform01" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70468, 2.70145, 4.48378 )
+
+[node name="Pole4" parent="SquarePlatform01" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70468, 2.70145, -4.46349 )
+
+[node name="Railing" parent="SquarePlatform01" instance=ExtResource( 18 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.33017, 2.92396, 0 )
+
+[node name="Railing2" parent="SquarePlatform01" instance=ExtResource( 18 )]
+transform = Transform( 7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -5.38774, 2.92396, 0 )
+
+[node name="PoolingProjectileEnemy" type="Spatial" parent="."]
+script = ExtResource( 15 )
+object_scene = ExtResource( 10 )
+pool_size = 100
+
+[node name="PoolingNormalHit" type="Spatial" parent="."]
+script = ExtResource( 15 )
+object_scene = ExtResource( 13 )
+
+[node name="PoolingDamageHit" type="Spatial" parent="."]
+script = ExtResource( 15 )
+object_scene = ExtResource( 14 )
+
+[node name="PlayerFactory" parent="." instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 4.8235, -17.9289 )
+effects_scene = ExtResource( 17 )
+
+[node name="PlatformPortal" parent="." instance=ExtResource( 16 )]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 1000, 4 )

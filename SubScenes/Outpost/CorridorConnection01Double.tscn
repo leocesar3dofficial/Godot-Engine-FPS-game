@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SubScenes/Outpost/DoorFrame01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SubScenes/Outpost/CorridorConnection01.tscn" type="PackedScene" id=2]
+
+[node name="CorridorConnection01Double" type="Spatial"]
+
+[node name="Corridor" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81616, -24.0239 )
+
+[node name="DoorFrame01" parent="Corridor" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.613957, -9.42829 )
+
+[node name="Corridor2" parent="Corridor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16 )

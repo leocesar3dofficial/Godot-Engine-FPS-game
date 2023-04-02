@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Materials/Lightning.material" type="Material" id=1]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[node name="Lightning" type="Spatial"]
+
+[node name="Root" type="Spatial" parent="."]
+transform = Transform( 0.907228, -0.42064, 0, 0.42064, 0.907228, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="Spatial" type="Spatial" parent="Root"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Root/Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 5.14137, 0, 0, 5.14885 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../../..")
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Root/Spatial"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 5.14137, 0, 0, 5.14885 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../../..")
+material/0 = ExtResource( 1 )
+
+[node name="ExplosionLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.07199 )
+light_color = Color( 0.364706, 0.976471, 1, 1 )
+light_energy = 2.0
+omni_range = 20.0

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Materials/Secondary.material" type="Material" id=1]
+[ext_resource path="res://Materials/EmissionOrange.material" type="Material" id=2]
+[ext_resource path="res://Materials/Primary.material" type="Material" id=3]
+[ext_resource path="res://Models/CubeEngine.obj" type="ArrayMesh" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.24964, 1.81444, 4.56002 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1.50753, 0.468867, 1.67221 )
+
+[node name="CubeEngine" type="Spatial"]
+
+[node name="Mesh" type="MeshInstance" parent="."]
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 1 )
+material/2 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Mesh"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.453848, -0.705985 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.453848, 0.255238 )
+shape = SubResource( 2 )

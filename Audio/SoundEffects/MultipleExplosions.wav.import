@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MultipleExplosions.wav-1a057095a3a408947340209e80d36814.sample"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/MultipleExplosions.wav"
+dest_files=[ "res://.import/MultipleExplosions.wav-1a057095a3a408947340209e80d36814.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

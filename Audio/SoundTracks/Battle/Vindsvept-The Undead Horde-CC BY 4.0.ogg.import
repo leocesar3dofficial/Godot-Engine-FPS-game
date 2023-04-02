@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Vindsvept-The Undead Horde-CC BY 4.0.ogg-0a54c308621025b8b7035f9a65e6be5d.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Battle/Vindsvept-The Undead Horde-CC BY 4.0.ogg"
+dest_files=[ "res://.import/Vindsvept-The Undead Horde-CC BY 4.0.ogg-0a54c308621025b8b7035f9a65e6be5d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

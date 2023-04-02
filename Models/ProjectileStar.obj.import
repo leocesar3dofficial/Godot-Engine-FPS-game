@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ProjectileStar.obj-bf101eafd6480c7abcffe47e664921ad.mesh"
+
+[deps]
+
+files=[ "res://.import/ProjectileStar.obj-bf101eafd6480c7abcffe47e664921ad.mesh" ]
+
+source_file="res://Models/ProjectileStar.obj"
+dest_files=[ "res://.import/ProjectileStar.obj-bf101eafd6480c7abcffe47e664921ad.mesh", "res://.import/ProjectileStar.obj-bf101eafd6480c7abcffe47e664921ad.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

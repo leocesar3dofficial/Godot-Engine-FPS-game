@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SubScenes/Tiles/Wasteland01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SubScenes/Tiles/Wasteland02.tscn" type="PackedScene" id=2]
+
+[node name="WastelandMeta01" type="Spatial"]
+
+[node name="Wasteland01" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 90 )
+
+[node name="Wasteland03" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -90, 0, -90 )
+
+[node name="Wasteland02" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, -90 )
+
+[node name="Wasteland04" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -90, 0, 90 )

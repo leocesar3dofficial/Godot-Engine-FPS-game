@@ -1,0 +1,12 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/General/RoomCollection.gd" type="Script" id=1]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionCave/Cave01.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionCave/Cave02Up.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionCave/Cave02Down.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionCave/Cave02Left.tscn" type="PackedScene" id=14]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionCave/Cave02Right.tscn" type="PackedScene" id=15]
+
+[node name="RoomCollectionCave" type="Spatial"]
+script = ExtResource( 1 )
+rooms = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ]

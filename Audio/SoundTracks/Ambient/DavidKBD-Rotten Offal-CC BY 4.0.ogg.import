@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DavidKBD-Rotten Offal-CC BY 4.0.ogg-ba6c0284c9b00380ae572cfb521eef35.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Ambient/DavidKBD-Rotten Offal-CC BY 4.0.ogg"
+dest_files=[ "res://.import/DavidKBD-Rotten Offal-CC BY 4.0.ogg-ba6c0284c9b00380ae572cfb521eef35.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bark04.wav-29cb8a0c0adb30f86f9e47bfaea66a29.sample"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/Bark04.wav"
+dest_files=[ "res://.import/Bark04.wav-29cb8a0c0adb30f86f9e47bfaea66a29.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/CockpitPlayer.obj-d1093281f2b24025b288bd371d0d84f9.mesh"
+
+[deps]
+
+files=[ "res://.import/CockpitPlayer.obj-d1093281f2b24025b288bd371d0d84f9.mesh" ]
+
+source_file="res://Models/CockpitPlayer.obj"
+dest_files=[ "res://.import/CockpitPlayer.obj-d1093281f2b24025b288bd371d0d84f9.mesh", "res://.import/CockpitPlayer.obj-d1093281f2b24025b288bd371d0d84f9.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

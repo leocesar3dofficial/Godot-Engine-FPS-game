@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/UI/MessagePopup.gd" type="Script" id=2]
+
+[node name="MessagePopup" type="CanvasLayer"]
+pause_mode = 2
+layer = 2
+script = ExtResource( 2 )
+
+[node name="Popup" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -322.0
+margin_top = -54.0
+margin_right = 322.0
+margin_bottom = 54.0
+theme = ExtResource( 1 )
+window_title = "Message"
+dialog_text = "Error message"
+dialog_autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="confirmed" from="Popup" to="." method="_on_MessagePopup_confirmed"]

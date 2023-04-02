@@ -1,0 +1,343 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Scripts/UI/BackgroundLoader.gd" type="Script" id=1]
+[ext_resource path="res://UserInterface/Loading.png" type="Texture" id=2]
+[ext_resource path="res://UserInterface/Fonts/conthrax-sb.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=4]
+[ext_resource path="res://UserInterface/Battle.png" type="Texture" id=5]
+[ext_resource path="res://Shaders/Glitch.shader" type="Shader" id=7]
+[ext_resource path="res://Shaders/Vignette.shader" type="Shader" id=8]
+[ext_resource path="res://UserInterface/Win.png" type="Texture" id=12]
+[ext_resource path="res://UserInterface/Lost.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/UI/Badges.gd" type="Script" id=14]
+
+[sub_resource type="Animation" id=1]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 100
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="Animation" id=5]
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Badges/Win:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -1920, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1920, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 1.5, 3.3, 4 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Badges/Win:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 1.5, 3.3, 4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Badges/Lost:rect_position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -1920, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1920, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 1.5, 3.3, 4 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Badges/Lost:rect_position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 1.5, 3.3, 4 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Badges/Battle:rect_position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -1920, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1920, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 1.5, 3.3, 4 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Badges/Battle:rect_position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 1.5, 3.3, 4 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Badges:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4, 1.5, 3.3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 78, 78 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 78, 0, 78, 78 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 78, 78, 78 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 78, 78, 78, 78 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 156, 0, 78, 78 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 156, 78, 78, 78 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "New Anim",
+"speed": 5.0
+} ]
+
+[sub_resource type="ShaderMaterial" id=15]
+render_priority = 100
+shader = ExtResource( 8 )
+shader_param/light = 0.378
+shader_param/extend = 0.2
+shader_param/offset = 3.0
+
+[sub_resource type="ShaderMaterial" id=14]
+render_priority = 101
+shader = ExtResource( 7 )
+shader_param/shake_power = 0.02
+shader_param/shake_rate = 0.1
+shader_param/shake_speed = 0.001
+shader_param/shake_block_size = 10.0
+shader_param/shake_color_rate = 0.01
+
+[node name="BackgroundLoader" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+levels = [ "res://Scenes/Cutscenes/WakingUp.tscn", "res://Scenes/InsideFacility.tscn", "res://Scenes/Cutscenes/Caves.tscn", "res://Scenes/Caves.tscn", "res://Scenes/Cutscenes/IntoTheBellyOfTheBeast.tscn", "res://Scenes/CaveEndless.tscn", "res://Scenes/ArenaRoom.tscn", "res://Scenes/Cutscenes/EnemiesNeverForget.tscn", "res://Scenes/BossSpiderRobot.tscn", "res://Scenes/Cutscenes/HelpEmerges.tscn", "res://Scenes/RoadTrip.tscn", "res://Scenes/Cutscenes/AIHenchman.tscn", "res://Scenes/BossSnow.tscn", "res://Scenes/Cutscenes/AlmostGone.tscn", "res://Scenes/Snow.tscn", "res://Scenes/Cutscenes/PowerPlants.tscn", "res://Scenes/RainForest.tscn", "res://Scenes/Cutscenes/SneakIntoTheFactory.tscn", "res://Scenes/Factory.tscn", "res://Scenes/BossFactory.tscn", "res://Scenes/Cutscenes/RIPMyFriend.tscn", "res://Scenes/Wasteland.tscn", "res://Scenes/BrokenIce.tscn", "res://Scenes/BossBigRobotIce.tscn", "res://Scenes/Cutscenes/TheLastMusketeer.tscn", "res://Scenes/RoadTrip.tscn", "res://Scenes/Desert.tscn", "res://Scenes/BossDesertFortress.tscn", "res://Scenes/RoadTrip.tscn", "res://Scenes/CityEndless.tscn", "res://Scenes/Cutscenes/ReachTheSpaceport.tscn", "res://Scenes/AgainstTheWall.tscn", "res://Scenes/Cutscenes/DontLookAtMe.tscn", "res://Scenes/ArenaCity.tscn", "res://Scenes/ArenaFloating.tscn", "res://Scenes/Cutscenes/SpaceSiege.tscn", "res://Scenes/MinefieldEndless.tscn", "res://Scenes/AlienSpaceEndless.tscn", "res://Scenes/SpaceFleet.tscn", "res://Scenes/Cutscenes/TeenBaan.tscn", "res://UserInterface/SubScenes/Credits.tscn" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+playback_process_mode = 0
+anims/Fadein = SubResource( 1 )
+anims/Fadeout = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Badges" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+mouse_filter = 2
+script = ExtResource( 14 )
+
+[node name="Win" type="TextureRect" parent="Badges"]
+visible = false
+modulate = Color( 0.482353, 0.74902, 1, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1920.0
+margin_right = -1920.0
+mouse_filter = 2
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lost" type="TextureRect" parent="Badges"]
+visible = false
+modulate = Color( 1, 0.47451, 0.47451, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1920.0
+margin_right = -1920.0
+mouse_filter = 2
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Battle" type="TextureRect" parent="Badges"]
+visible = false
+modulate = Color( 0.756863, 1, 0.733333, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1920.0
+margin_right = -1920.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CustomText" type="Label" parent="Badges"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 200.0
+margin_top = 200.0
+margin_right = -200.0
+margin_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 3 )
+text = "custom text badge"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="BadgeAnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+playback_process_mode = 0
+playback_speed = 1.4
+anims/InOut = SubResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -920.0
+margin_top = -500.0
+margin_right = -478.0
+margin_bottom = -422.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 442.0
+margin_bottom = 39.0
+text = "Loading"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer"]
+margin_top = 49.0
+margin_right = 442.0
+margin_bottom = 78.0
+size_flags_vertical = 4
+
+[node name="LoadingSprite" type="AnimatedSprite" parent="VBoxContainer"]
+modulate = Color( 1, 0.47451, 0.207843, 1 )
+position = Vector2( 495, 38 )
+frames = SubResource( 12 )
+animation = "New Anim"
+frame = 1
+playing = true
+
+[node name="Vignette" type="ColorRect" parent="."]
+material = SubResource( 15 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Glitch" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 14 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GlitchTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_finished" from="BadgeAnimationPlayer" to="Badges" method="_on_BadgeAnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="BadgeAnimationPlayer" to="Badges" method="_on_BadgeAnimationPlayer_animation_started"]
+[connection signal="visibility_changed" from="VBoxContainer/LoadingSprite" to="." method="_on_LoadingSprite_visibility_changed"]
+[connection signal="timeout" from="GlitchTimer" to="." method="_on_GlitchTimer_timeout"]

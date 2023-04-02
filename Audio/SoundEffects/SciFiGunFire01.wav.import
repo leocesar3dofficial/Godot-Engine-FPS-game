@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SciFiGunFire01.wav-83c98a0ec99e31de686d903cd1c6ca43.sample"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/SciFiGunFire01.wav"
+dest_files=[ "res://.import/SciFiGunFire01.wav-83c98a0ec99e31de686d903cd1c6ca43.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=1

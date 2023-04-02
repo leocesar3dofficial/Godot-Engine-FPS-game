@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Environments/MyEnvironmentDefault.tres" type="Environment" id=1]
+[ext_resource path="res://Scripts/Generators/EndlessTerrainAllAxis.gd" type="Script" id=2]
+[ext_resource path="res://SubScenes/Tiles/AlienStructureTile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Generators/RandomWorldEnvironment.gd" type="Script" id=4]
+[ext_resource path="res://SubScenes/Player/PlayerFactory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionPool.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileNormalHitPool.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/ObjectPooling/ObjectPooling.gd" type="Script" id=8]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemy2BigPool.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/General/ShadowSettings.gd" type="Script" id=10]
+[ext_resource path="res://SubScenes/Other/UnitsManager.tscn" type="PackedScene" id=11]
+
+[node name="Level" type="Spatial"]
+
+[node name="UnitsManager" parent="." instance=ExtResource( 11 )]
+badge_text = "breach through Soulhollower's defenses"
+max_player = 2
+enemies_to_destroy = 20
+gravity_type = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+script = ExtResource( 4 )
+level_distance_culling = 170.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+extents = Vector3( 10000, 10000, 10000 )
+origin_offset = Vector3( 0, 20, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.965926, -1.5099e-14, -0.258819, 0.183013, 0.707107, 0.683013, 0.183013, -0.707107, 0.683013, 0, 0, 0 )
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 20.0
+script = ExtResource( 10 )
+
+[node name="EndlessAllAxis" type="Spatial" parent="."]
+script = ExtResource( 2 )
+tile_size = 200.0
+tiles_array = [ ExtResource( 3 ) ]
+
+[node name="PoolingProjectileEnemy" type="Spatial" parent="."]
+script = ExtResource( 8 )
+object_scene = ExtResource( 9 )
+pool_size = 100
+
+[node name="PoolingNormalHit" type="Spatial" parent="."]
+script = ExtResource( 8 )
+object_scene = ExtResource( 7 )
+
+[node name="PoolingDamageHit" type="Spatial" parent="."]
+script = ExtResource( 8 )
+object_scene = ExtResource( 6 )
+
+[node name="PlayerFactory" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 60, 60 )
+player_type = 1
+in_space_or_water = true

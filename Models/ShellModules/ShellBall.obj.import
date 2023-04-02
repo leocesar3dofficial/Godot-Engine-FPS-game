@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ShellBall.obj-6c704420854bc3f75d09e8e313c46630.mesh"
+
+[deps]
+
+files=[ "res://.import/ShellBall.obj-6c704420854bc3f75d09e8e313c46630.mesh" ]
+
+source_file="res://Models/ShellModules/ShellBall.obj"
+dest_files=[ "res://.import/ShellBall.obj-6c704420854bc3f75d09e8e313c46630.mesh", "res://.import/ShellBall.obj-6c704420854bc3f75d09e8e313c46630.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

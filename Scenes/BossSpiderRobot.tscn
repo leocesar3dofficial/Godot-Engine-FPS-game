@@ -1,0 +1,121 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://SubScenes/Friendly/FurlongsWrath.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SubScenes/Other/SpawnerGun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Environments/MyEnvironmentDefault.tres" type="Environment" id=3]
+[ext_resource path="res://SubScenes/BuildingModules/BossLevelCrab.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/Platforms/Ramp01.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/Other/AreaDamage.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/Platforms/HexagonalPad.tscn" type="PackedScene" id=7]
+[ext_resource path="res://SubScenes/Enemies/SpiderRobot.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SubScenes/Player/PlayerFactory.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SubScenes/Other/UnitsManager.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SubScenes/Other/Spawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionPool.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scripts/Generators/RandomWorldEnvironment.gd" type="Script" id=13]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileNormalHitPool.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scripts/ObjectPooling/ObjectPooling.gd" type="Script" id=15]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemyHexPool.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scripts/General/ShadowSettings.gd" type="Script" id=17]
+[ext_resource path="res://SubScenes/Friendly/Dog.tscn" type="PackedScene" id=18]
+
+[node name="Level" type="Spatial"]
+
+[node name="UnitsManager" parent="." instance=ExtResource( 10 )]
+badge_text = "bring the spider down"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 3 )
+script = ExtResource( 13 )
+randomize_colors = false
+level_distance_culling = 100.0
+
+[node name="BossLevelCrab" parent="." instance=ExtResource( 4 )]
+
+[node name="PoolingProjectileEnemy" type="Spatial" parent="."]
+script = ExtResource( 15 )
+object_scene = ExtResource( 16 )
+pool_size = 100
+
+[node name="PoolingNormalHit" type="Spatial" parent="."]
+script = ExtResource( 15 )
+object_scene = ExtResource( 14 )
+
+[node name="PoolingDamageHit" type="Spatial" parent="."]
+script = ExtResource( 15 )
+object_scene = ExtResource( 12 )
+
+[node name="Ramp01" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1.1762, 0, -3.83255e-07, 0, 1.1762, 0, 3.83255e-07, 0, -1.1762, 0.862691, -1.71546, -32.076 )
+
+[node name="HexagonalPad" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 34.8375, -1.54559, -0.0824177 )
+force = 45.0
+
+[node name="SpawnerGun" parent="HexagonalPad" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.26297, 0 )
+
+[node name="HexagonalPad4" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.731957, -1.61273, 35.1016 )
+force = 45.0
+
+[node name="SpawnerGun" parent="HexagonalPad4" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.93901, 0 )
+
+[node name="HexagonalPad3" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -35.5813, -1.59855, -0.0968065 )
+force = 45.0
+
+[node name="SpawnerGun" parent="HexagonalPad3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.69924, 0 )
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+extents = Vector3( 50, 50, 50 )
+
+[node name="SpiderRobot" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="FurlongsWrath" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 53.7976, 16.4906, 0 )
+
+[node name="InstantDeath" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -26.7493, 0 )
+
+[node name="Spawner" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1602, 23.6114, -62.4058 )
+
+[node name="Spawner2" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1602, 23.6114, 62.7973 )
+
+[node name="Spawner3" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6538, 23.6114, 0.561752 )
+
+[node name="Spawner4" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.7193, 23.6114, 0.561752 )
+
+[node name="Spawner5" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2003, 7.45227, 25.9942 )
+
+[node name="Spawner6" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2003, 7.45227, -26.4756 )
+
+[node name="Spawner7" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0472, 7.45227, 25.9942 )
+
+[node name="Spawner8" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0472, 7.45227, -26.4756 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.965926, -1.5099e-14, -0.258819, 0.183013, 0.707107, 0.683013, 0.183013, -0.707107, 0.683013, 0, 5.38671, 0 )
+light_color = Color( 1, 0.47451, 0.207843, 1 )
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 20.0
+script = ExtResource( 17 )
+
+[node name="PlayerFactory" parent="." instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 63.7237, 19.8191, 0.0667381 )
+
+[node name="Dog" parent="." instance=ExtResource( 18 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54.1434, 15.8412, -1.9865 )

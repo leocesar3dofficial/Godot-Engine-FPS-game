@@ -1,0 +1,103 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Materials/Emission.material" type="Material" id=1]
+[ext_resource path="res://Models/Barrels.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://Materials/Primary.material" type="Material" id=3]
+[ext_resource path="res://Scripts/AI/Turret/GatlingGun.gd" type="Script" id=4]
+[ext_resource path="res://Audio/SoundEffects/SciFiGunFire01.wav" type="AudioStream" id=5]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemy2Big.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Models/TurretBase.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://Scripts/General/DamageReceiver.gd" type="Script" id=8]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionWithDebris.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Audio/SoundEffects/EnemyHit03.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/SoundEffects/EnemyHit04.wav" type="AudioStream" id=11]
+[ext_resource path="res://Scripts/Player/Weapons/RecoilMoveOnly.gd" type="Script" id=12]
+[ext_resource path="res://Materials/PrimaryRed.material" type="Material" id=13]
+[ext_resource path="res://Materials/EmissionRed.material" type="Material" id=14]
+[ext_resource path="res://SubScenes/VisualEffects/ForceField.tscn" type="PackedScene" id=15]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.43, 1.22003, 1.5345 )
+
+[sub_resource type="SphereShape" id=2]
+radius = 30.0
+
+[node name="TurretDoubleBarrel" type="StaticBody"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 4 )
+base_path = NodePath("Base_Spacial")
+barrel_path = NodePath("Base_Spacial/Barrel_Spacial")
+min_barrel_x = -0.1
+max_barrel_x = 1.2
+top_node_path = NodePath(".")
+area_node_path = NodePath("Area")
+attack_range = 200
+gunshot_spread = 45
+origin_offset = Vector3( 0, 0.4, 0 )
+target_offset = Vector3( 0, 0.2, 0 )
+layer_mask = 35
+fire_rate = 6.0
+fire_points_paths = [ NodePath("Base_Spacial/Barrel_Spacial/Firepoint"), NodePath("Base_Spacial/Barrel_Spacial/Firepoint2") ]
+gun_fire_sound_effect = ExtResource( 5 )
+projectile = ExtResource( 6 )
+use_object_pooling = true
+
+[node name="DamageReceiver" type="Node" parent="."]
+script = ExtResource( 8 )
+hit_meshes_paths = [ NodePath("../Base_Spacial/HardpointDevCruise"), NodePath("../Base_Spacial/Barrel_Spacial/HardpointGunBarb") ]
+blink_material = ExtResource( 1 )
+die_effect = ExtResource( 9 )
+hit_points = 100.0
+slam_back_force = 0.0
+die_effect_offset = 0.75
+audio_player_path = NodePath("../AudioStreamPlayer3D")
+grunts = [ ExtResource( 11 ), ExtResource( 10 ) ]
+die_effect_scale = 6.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.764005, -0.0429218 )
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22014, 0 )
+unit_db = 20.0
+bus = "SoundFX"
+
+[node name="Base_Spacial" type="Spatial" parent="."]
+
+[node name="HardpointDevCruise" type="MeshInstance" parent="Base_Spacial"]
+cast_shadow = 0
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 13 )
+material/2 = ExtResource( 14 )
+
+[node name="Barrel_Spacial" type="Spatial" parent="Base_Spacial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.654525, -0.630037 )
+script = ExtResource( 12 )
+max_recoil_z = 0.5
+
+[node name="HardpointGunBarb" type="MeshInstance" parent="Base_Spacial/Barrel_Spacial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0139391, -0.111107 )
+cast_shadow = 0
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 3 )
+
+[node name="Firepoint" type="Spatial" parent="Base_Spacial/Barrel_Spacial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.386818, 0.538227, -2.31476 )
+
+[node name="Firepoint2" type="Spatial" parent="Base_Spacial/Barrel_Spacial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.373003, 0.538227, -2.31476 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 2
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )
+
+[node name="ForceField" parent="." instance=ExtResource( 15 )]
+transform = Transform( 3.11309, 0, 0, 0, 3.11309, 0, 0, 0, 3.11309, 0, 0.741684, 0 )

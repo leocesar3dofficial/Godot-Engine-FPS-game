@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ShellTray.obj-24dd08d5d982b3850f5ab8e21a2aae4d.mesh"
+
+[deps]
+
+files=[ "res://.import/ShellTray.obj-24dd08d5d982b3850f5ab8e21a2aae4d.mesh" ]
+
+source_file="res://Models/ShellModules/ShellTray.obj"
+dest_files=[ "res://.import/ShellTray.obj-24dd08d5d982b3850f5ab8e21a2aae4d.mesh", "res://.import/ShellTray.obj-24dd08d5d982b3850f5ab8e21a2aae4d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

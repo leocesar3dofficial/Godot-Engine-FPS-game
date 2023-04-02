@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/UI/FloatingToolTip.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/UI/DialogTextCycler.gd" type="Script" id=3]
+[ext_resource path="res://Audio/SoundEffects/RobotBark02.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/SoundEffects/RobotBark03.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/SoundEffects/RobotBark04.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/SoundEffects/RobotBark01.wav" type="AudioStream" id=7]
+[ext_resource path="res://UserInterface/Fonts/NotoSansSC-Bold.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://UserInterface/Fonts/Conthrax Heavy.otf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 9 )
+fallback/0 = ExtResource( 8 )
+
+[sub_resource type="SphereShape" id=1]
+resource_local_to_scene = true
+radius = 2.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Typewriter"
+tracks/0/type = "value"
+tracks/0/path = NodePath("FloatingToolTip/Control/Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="DialogTextCycler" type="Spatial"]
+script = ExtResource( 3 )
+random_text_range = Vector2( 0, 25 )
+text_keys = [ "OBSERVER01", "OBSERVER02", "OBSERVER03" ]
+speed_factor = 60.0
+sound_fx = [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+
+[node name="FloatingToolTip" type="Spatial" parent="."]
+script = ExtResource( 2 )
+use_current_camera = false
+
+[node name="Control" type="Control" parent="FloatingToolTip"]
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="FloatingToolTip/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -17.5
+margin_right = 350.0
+margin_bottom = 17.5
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "placeholder text"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 2
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.66322 )
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+aabb = AABB( -0.25, -0.25, -0.25, 0.5, 0.5, 0.5 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerNoText" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+unit_db = 20.0
+bus = "SoundFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Typewriter = SubResource( 2 )
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimerNoText" to="." method="_on_TimerNoText_timeout"]

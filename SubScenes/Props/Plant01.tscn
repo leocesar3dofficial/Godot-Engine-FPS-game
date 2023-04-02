@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Models/Plant01.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/Skin.material" type="Material" id=2]
+[ext_resource path="res://Materials/EmissionBlue.material" type="Material" id=3]
+[ext_resource path="res://Materials/Secondary.material" type="Material" id=4]
+[ext_resource path="res://SubScenes/Other/FreeMeIfTouch.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 1.56351
+height = 6.95011
+
+[node name="Plant01" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 4 )
+material/2 = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.302545, 4.00869, 6.53099e-07 )
+shape = SubResource( 1 )
+
+[node name="FreeMeIfTouch" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67898, 7.3918, 0.0202883 )
+radius = 2.0

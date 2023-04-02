@@ -1,0 +1,656 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/UI/KeyBindUI.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/UI/Keybindings.gd" type="Script" id=3]
+[ext_resource path="res://UserInterface/Fonts/conthrax-sb.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scripts/UI/HideUI.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0.47451, 0.207843, 1 )
+
+[node name="KeyBindings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -733.5
+margin_top = -509.5
+margin_right = 733.5
+margin_bottom = 509.5
+color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -691.0
+margin_top = -465.5
+margin_right = 691.0
+margin_bottom = 465.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="ColorRect/VBoxContainer"]
+margin_right = 1382.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 1 )
+text = "KEY BINDINGS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+margin_top = 93.0
+margin_right = 1382.0
+margin_bottom = 122.0
+custom_colors/font_color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+custom_styles/normal = SubResource( 2 )
+text = " Customize Controls"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 132.0
+margin_right = 1382.0
+margin_bottom = 161.0
+
+[node name="Label2" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+margin_right = 455.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Name"
+align = 1
+
+[node name="Label3" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Keyboard/Mouse"
+align = 1
+
+[node name="Label4" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Gamepad"
+align = 1
+
+[node name="MoveForward" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 171.0
+margin_right = 1382.0
+margin_bottom = 216.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "move_forward"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/MoveForward"]
+margin_top = 3.0
+margin_right = 455.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+text = "Move Forward"
+
+[node name="MoveForwardPrimary" type="Button" parent="ColorRect/VBoxContainer/MoveForward"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveForwardSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/MoveForward"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="MoveBackward" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 226.0
+margin_right = 1382.0
+margin_bottom = 271.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "move_backward"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/MoveBackward"]
+margin_top = 3.0
+margin_right = 455.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+text = "Move Backward"
+
+[node name="MoveBackwardPrimary" type="Button" parent="ColorRect/VBoxContainer/MoveBackward"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveBackwardSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/MoveBackward"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="MoveRight" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 281.0
+margin_right = 1382.0
+margin_bottom = 326.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "move_right"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/MoveRight"]
+margin_top = 3.0
+margin_right = 455.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+text = "Move Right"
+
+[node name="MoveRightPrimary" type="Button" parent="ColorRect/VBoxContainer/MoveRight"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveRightSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/MoveRight"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="MoveLeft" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 336.0
+margin_right = 1382.0
+margin_bottom = 381.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "move_left"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/MoveLeft"]
+margin_top = 3.0
+margin_right = 455.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+text = "Move Left"
+
+[node name="MoveLeftPrimary" type="Button" parent="ColorRect/VBoxContainer/MoveLeft"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveLeftSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/MoveLeft"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="MoveUp" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 391.0
+margin_right = 1382.0
+margin_bottom = 436.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "move_up"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/MoveUp"]
+margin_right = 455.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Move Up"
+
+[node name="MoveUpPrimary" type="Button" parent="ColorRect/VBoxContainer/MoveUp"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveUpSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/MoveUp"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="MoveDown" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 446.0
+margin_right = 1382.0
+margin_bottom = 491.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "move_down"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/MoveDown"]
+margin_right = 455.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Move Down"
+
+[node name="MoveDownPrimary" type="Button" parent="ColorRect/VBoxContainer/MoveDown"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveDownSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/MoveDown"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="Sprint" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 501.0
+margin_right = 1382.0
+margin_bottom = 546.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "sprint"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Sprint"]
+margin_right = 455.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Sprint"
+
+[node name="SprintPrimary" type="Button" parent="ColorRect/VBoxContainer/Sprint"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SprintSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/Sprint"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="Jump" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 556.0
+margin_right = 1382.0
+margin_bottom = 601.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "jump"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Jump"]
+margin_right = 455.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Jump"
+
+[node name="JumpPrimary" type="Button" parent="ColorRect/VBoxContainer/Jump"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JumpSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/Jump"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="Crouch" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 611.0
+margin_right = 1382.0
+margin_bottom = 656.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "crouch"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Crouch"]
+margin_right = 455.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Crouch"
+
+[node name="CrouchPrimary" type="Button" parent="ColorRect/VBoxContainer/Crouch"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrouchSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/Crouch"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="Fire" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 666.0
+margin_right = 1382.0
+margin_bottom = 711.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "fire"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Fire"]
+margin_right = 455.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Fire Primary"
+
+[node name="FirePrimary" type="Button" parent="ColorRect/VBoxContainer/Fire"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/Fire"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="Fire2" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 721.0
+margin_right = 1382.0
+margin_bottom = 766.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "fire2"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Fire2"]
+margin_right = 455.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Fire Secondary"
+
+[node name="Fire2Primary" type="Button" parent="ColorRect/VBoxContainer/Fire2"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fire2Secondary" type="OptionButton" parent="ColorRect/VBoxContainer/Fire2"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="WeaponSwitch" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 776.0
+margin_right = 1382.0
+margin_bottom = 821.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "switch_weapon"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/WeaponSwitch"]
+margin_right = 455.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Weapon Switch"
+
+[node name="WeaponSwitchPrimary" type="Button" parent="ColorRect/VBoxContainer/WeaponSwitch"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponSwitchSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/WeaponSwitch"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="WeaponPrevious" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 831.0
+margin_right = 1382.0
+margin_bottom = 876.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+action = "previous_weapon"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/WeaponPrevious"]
+margin_right = 455.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Weapon Previous"
+
+[node name="WeaponPreviousPrimary" type="Button" parent="ColorRect/VBoxContainer/WeaponPrevious"]
+margin_left = 463.0
+margin_right = 918.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponPreviousSecondary" type="OptionButton" parent="ColorRect/VBoxContainer/WeaponPrevious"]
+margin_left = 926.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+align = 1
+
+[node name="Buttons" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 886.0
+margin_right = 1382.0
+margin_bottom = 931.0
+
+[node name="ButtonApply" type="Button" parent="ColorRect/VBoxContainer/Buttons"]
+margin_right = 339.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+text = "Apply"
+
+[node name="ButtonReset" type="Button" parent="ColorRect/VBoxContainer/Buttons"]
+margin_left = 347.0
+margin_right = 687.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+text = "Reset to Default"
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Buttons"]
+margin_left = 695.0
+margin_right = 1034.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+text = "Settings"
+script = ExtResource( 6 )
+unpause_game = false
+node_to_hide_path = NodePath("../../../..")
+
+[node name="Button2" type="Button" parent="ColorRect/VBoxContainer/Buttons"]
+margin_left = 1042.0
+margin_right = 1382.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+text = "Back"
+script = ExtResource( 6 )
+node_to_hide_path = NodePath("../../../..")
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -228.0
+margin_top = -59.0
+margin_right = 228.0
+margin_bottom = 59.0
+popup_exclusive = true
+window_title = "Press any key"
+dialog_text = "None"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptDialog" type="AcceptDialog" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -137.5
+margin_top = -59.0
+margin_right = 137.5
+margin_bottom = 59.0
+window_title = "Alert"
+dialog_text = "Key already used"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptDialogReset" type="AcceptDialog" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -216.5
+margin_top = -59.0
+margin_right = 216.5
+margin_bottom = 59.0
+window_title = "Alert"
+dialog_text = "Using default control scheme"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/MoveForward/MoveForwardPrimary" to="." method="_on_MoveForwardPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/MoveForward/MoveForwardSecondary" to="." method="_on_MoveForwardSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/MoveBackward/MoveBackwardPrimary" to="." method="_on_MoveBackwardPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/MoveBackward/MoveBackwardSecondary" to="." method="_on_MoveBackwardSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/MoveRight/MoveRightPrimary" to="." method="_on_MoveRightPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/MoveRight/MoveRightSecondary" to="." method="_on_MoveRightSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/MoveLeft/MoveLeftPrimary" to="." method="_on_MoveLeftPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/MoveLeft/MoveLeftSecondary" to="." method="_on_MoveLeftSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/MoveUp/MoveUpPrimary" to="." method="_on_MoveUpPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/MoveUp/MoveUpSecondary" to="." method="_on_MoveUpSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/MoveDown/MoveDownPrimary" to="." method="_on_MoveDownPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/MoveDown/MoveDownSecondary" to="." method="_on_MoveDownSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Sprint/SprintPrimary" to="." method="_on_SprintPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/Sprint/SprintSecondary" to="." method="_on_SprintSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Jump/JumpPrimary" to="." method="_on_JumpPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/Jump/JumpSecondary" to="." method="_on_JumpSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Crouch/CrouchPrimary" to="." method="_on_CrouchPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/Crouch/CrouchSecondary" to="." method="_on_CrouchSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Fire/FirePrimary" to="." method="_on_FirePrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/Fire/FireSecondary" to="." method="_on_FireSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Fire2/Fire2Primary" to="." method="_on_Fire2Primary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/Fire2/Fire2Secondary" to="." method="_on_Fire2Secondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/WeaponSwitch/WeaponSwitchPrimary" to="." method="_on_WeaponSwitchPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/WeaponSwitch/WeaponSwitchSecondary" to="." method="_on_WeaponSwitchSecondary_item_selected"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/WeaponPrevious/WeaponPreviousPrimary" to="." method="_on_WeaponPreviousPrimary_pressed"]
+[connection signal="item_selected" from="ColorRect/VBoxContainer/WeaponPrevious/WeaponPreviousSecondary" to="." method="_on_WeaponPreviousSecondary_item_selected"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/Buttons/ButtonApply" to="." method="_on_ButtonApply_mouse_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Buttons/ButtonApply" to="." method="_on_ButtonApply_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/Buttons/ButtonReset" to="." method="_on_ButtonReset_mouse_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Buttons/ButtonReset" to="." method="_on_ButtonReset_pressed"]
+[connection signal="confirmed" from="ColorRect/ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]
+[connection signal="popup_hide" from="ColorRect/ConfirmationDialog" to="." method="_on_ConfirmationDialog_popup_hide"]

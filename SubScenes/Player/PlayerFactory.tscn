@@ -1,0 +1,20 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Player/PlayerFactory.gd" type="Script" id=1]
+[ext_resource path="res://SubScenes/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SubScenes/Player/Cockpit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SubScenes/Player/EnterFighter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/Player/EnterTank.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/Player/Tank.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/Player/Car.tscn" type="PackedScene" id=7]
+[ext_resource path="res://SubScenes/Player/EnterCar.tscn" type="PackedScene" id=8]
+
+[node name="PlayerFactory" type="Position3D"]
+script = ExtResource( 1 )
+player = ExtResource( 2 )
+fighter = ExtResource( 3 )
+tank = ExtResource( 6 )
+car = ExtResource( 7 )
+enter_fighter = ExtResource( 4 )
+enter_tank = ExtResource( 5 )
+enter_car = ExtResource( 8 )

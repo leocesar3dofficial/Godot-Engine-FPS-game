@@ -1,0 +1,220 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://UserInterface/Fonts/conthrax-sb.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Scripts/UI/ButtonGoToScene.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/UI/CursorEnable.gd" type="Script" id=4]
+[ext_resource path="res://UserInterface/SubScenes/MouseMovementJoypad.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id=3]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0156863, 0.0823529, 0.215686, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -813.0
+margin_top = -504.0
+margin_right = 813.0
+margin_bottom = 504.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+margin_right = 1626.0
+margin_bottom = 83.0
+custom_fonts/font = SubResource( 1 )
+text = "CREDITS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+margin_top = 93.0
+margin_right = 1626.0
+margin_bottom = 1008.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer/HBoxContainer"]
+margin_right = 801.0
+margin_bottom = 915.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[color=#ff7935]Computer Graphics software:[/color]
+Blender 3D
+Gimp
+Godot Engine
+Inkscape
+
+[color=#ff7935]Other software:[/color]
+Audacity
+
+[color=#ff7935]3D models:[/color]
+Andrew Averkin
+Archive3d.net
+Laura Wizar
+Rizza / Markom3D
+SolCommand / Spacebones
+
+[color=#ff7935]Resources:[/color]
+CC0 Textures
+Free PBR Materials
+Julio Sillet 3D Art
+Kenney.nl
+Plexus Design Game / CGI
+Texturebox.com
+The Noun Project
+
+[color=#ff7935]Sound effects:[/color]
+Freesound.org"
+text = "Computer Graphics software:
+Blender 3D
+Gimp
+Godot Engine
+Inkscape
+
+Other software:
+Audacity
+
+3D models:
+Andrew Averkin
+Archive3d.net
+Laura Wizar
+Rizza / Markom3D
+SolCommand / Spacebones
+
+Resources:
+CC0 Textures
+Free PBR Materials
+Julio Sillet 3D Art
+Kenney.nl
+Plexus Design Game / CGI
+Texturebox.com
+The Noun Project
+
+Sound effects:
+Freesound.org"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="ColorRect/VBoxContainer/HBoxContainer"]
+margin_left = 809.0
+margin_right = 817.0
+margin_bottom = 915.0
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ColorRect/VBoxContainer/HBoxContainer"]
+margin_left = 825.0
+margin_right = 1626.0
+margin_bottom = 915.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/normal = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[color=#ff7935]Soundtrack:[/color]
+Alexander Nakarada-Apocalypse-CC BY 4.0
+Alexander Nakarada-Hellfire-CC BY 4.0
+Alexander Nakarada-Sovereign-CC BY 4.0
+Bausic Productions-Not alone-CC BY 4.0
+DavidKBD-Evil soul inside-CC BY 4.0
+DavidKBD-God of darkness-CC BY 4.0
+DavidKBD-Rotten Offal-CC BY 4.0
+DavidKBD-Soul evisceration-CC BY 4.0
+DavidKBD-Suffocation-CC BY 4.0
+DavidKBD-The desolation of a civilization-CC BY 4.0
+DEgITx-Between Death And Stars-CC BY 4.0
+DEgITx-Digital Tale (Intro)-CC BY 4.0
+DEgITx-Disillusion-CC BY 4.0
+DEgITx-Grim Reaper (feat. Matty M.)-CC BY 4.0
+Devtrap-Clouds-CC BY 4.0
+Devtrap-Electricity-CC BY 4.0
+Devtrap-Lullaby-CC BY 4.0
+Eirik Daleng-Time-CC BY 3.0
+TeknoAXE-Waypoint H-CC BY 4.0
+Vindsvept-As the Smoke Clears-CC BY 4.0
+Vindsvept-Collision-CC BY 4.0
+Vindsvept-The Undead Horde-CC BY 4.0
+[color=#ff7935]Game created, designed and programmed by Leocesar3D
+© 2022, Leocesar3D Productions. All rights reserved.[/color]"
+text = "Soundtrack:
+Alexander Nakarada-Apocalypse-CC BY 4.0
+Alexander Nakarada-Hellfire-CC BY 4.0
+Alexander Nakarada-Sovereign-CC BY 4.0
+Bausic Productions-Not alone-CC BY 4.0
+DavidKBD-Evil soul inside-CC BY 4.0
+DavidKBD-God of darkness-CC BY 4.0
+DavidKBD-Rotten Offal-CC BY 4.0
+DavidKBD-Soul evisceration-CC BY 4.0
+DavidKBD-Suffocation-CC BY 4.0
+DavidKBD-The desolation of a civilization-CC BY 4.0
+DEgITx-Between Death And Stars-CC BY 4.0
+DEgITx-Digital Tale (Intro)-CC BY 4.0
+DEgITx-Disillusion-CC BY 4.0
+DEgITx-Grim Reaper (feat. Matty M.)-CC BY 4.0
+Devtrap-Clouds-CC BY 4.0
+Devtrap-Electricity-CC BY 4.0
+Devtrap-Lullaby-CC BY 4.0
+Eirik Daleng-Time-CC BY 3.0
+TeknoAXE-Waypoint H-CC BY 4.0
+Vindsvept-As the Smoke Clears-CC BY 4.0
+Vindsvept-Collision-CC BY 4.0
+Vindsvept-The Undead Horde-CC BY 4.0
+Game created, designed and programmed by Leocesar3D
+© 2022, Leocesar3D Productions. All rights reserved."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="ColorRect/VBoxContainer/HBoxContainer/RichTextLabel2"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -224.0
+margin_top = -58.9999
+margin_right = -20.0
+margin_bottom = -19.9999
+theme = ExtResource( 2 )
+text = "Back"
+script = ExtResource( 3 )
+scene_path = "res://UserInterface/SubScenes/MainMenu.tscn"
+
+[node name="CursorEnable" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="MouseMovementJoypad" parent="." instance=ExtResource( 5 )]

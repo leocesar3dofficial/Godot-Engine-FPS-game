@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Weapons/ProjectileRaycast.gd" type="Script" id=1]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileNormalHit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SubScenes/VisualEffects/Explosion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Materials/EmissionOrange.material" type="Material" id=5]
+[ext_resource path="res://Audio/SoundEffects/SciFiGunFire01.wav" type="AudioStream" id=6]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 7, 7, 100 )
+
+[node name="Projectile" type="RayCast"]
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 35
+script = ExtResource( 1 )
+projectile_hit = ExtResource( 2 )
+projectile_damage = ExtResource( 3 )
+speed = 90.0
+collide_with_layer_value = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.0319791, 0, 0, 0, 0.0319791, 0, 0, 0, 0.0319791, 0, 0, -0.241721 )
+material_override = ExtResource( 5 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+light_color = Color( 1, 0.537255, 0, 1 )
+light_energy = 2.0
+light_specular = 1.0
+light_bake_mode = 0
+omni_range = 7.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "SoundFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

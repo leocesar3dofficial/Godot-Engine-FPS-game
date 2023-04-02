@@ -1,0 +1,59 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/AI/Turret/GatlingGunStatic.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/General/DamageReceiver.gd" type="Script" id=2]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionWithDebris.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Materials/EmissionRed.material" type="Material" id=4]
+[ext_resource path="res://Materials/Primary.material" type="Material" id=5]
+[ext_resource path="res://Materials/PrimaryWhite.material" type="Material" id=6]
+[ext_resource path="res://Materials/Emission.material" type="Material" id=7]
+[ext_resource path="res://Audio/SoundEffects/EnemyHit01.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/SoundEffects/SciFiGunFire05.wav" type="AudioStream" id=9]
+[ext_resource path="res://Models/MissileLauncher.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://SubScenes/Projectiles/HomingMissilePlayer.tscn" type="PackedScene" id=11]
+
+[sub_resource type="SphereShape" id=1]
+radius = 80.0
+
+[node name="MissileLauncherAttachedPlayer" type="Spatial"]
+script = ExtResource( 1 )
+top_node_path = NodePath(".")
+area_node_path = NodePath("Area")
+fire_rate = 1.0
+fire_point_path = NodePath("FirePoint")
+gun_fire_sound_effect = ExtResource( 9 )
+projectile = ExtResource( 11 )
+layer_mask = 5
+audio_player_path = NodePath("AudioStreamPlayer3D")
+attack_range = 30
+field_of_view = 160
+
+[node name="DamageReceiver" type="Node" parent="."]
+script = ExtResource( 2 )
+hit_meshes_paths = [ NodePath("../MeshInstance") ]
+blink_material = ExtResource( 7 )
+die_effect = ExtResource( 3 )
+hit_points = 20.0
+audio_player_path = NodePath("../AudioStreamPlayer3D")
+grunts = [ ExtResource( 8 ) ]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+mesh = ExtResource( 10 )
+material/0 = ExtResource( 5 )
+material/1 = ExtResource( 6 )
+material/2 = ExtResource( 4 )
+
+[node name="FirePoint" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525604, -0.370412 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+unit_db = 10.0
+bus = "SoundFX"

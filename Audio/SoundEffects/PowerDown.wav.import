@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PowerDown.wav-5331688f16109f1c875baf01352ec364.sample"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/PowerDown.wav"
+dest_files=[ "res://.import/PowerDown.wav-5331688f16109f1c875baf01352ec364.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

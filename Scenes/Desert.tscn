@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Environments/MyEnvironmentDefault.tres" type="Environment" id=1]
+[ext_resource path="res://Scripts/Generators/EndlessTerrain.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Generators/RandomWorldEnvironment.gd" type="Script" id=3]
+[ext_resource path="res://SubScenes/Tiles/DesertTile01.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/Player/PlayerFactory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionPool.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileNormalHitPool.tscn" type="PackedScene" id=7]
+[ext_resource path="res://SubScenes/Other/AreaDamage.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/ObjectPooling/ObjectPooling.gd" type="Script" id=9]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemyHexPool.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SubScenes/Other/UnitsManager.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/General/ShadowSettings.gd" type="Script" id=12]
+[ext_resource path="res://SubScenes/Player/ThirdPersonCamera.tscn" type="PackedScene" id=13]
+
+[node name="Level" type="Spatial"]
+
+[node name="UnitsManager" parent="." instance=ExtResource( 11 )]
+badge_text = "eliminate enemy threat"
+enemies_to_destroy = 20
+
+[node name="EndlessTerrain" type="Spatial" parent="."]
+script = ExtResource( 2 )
+tile_size = 160.0
+tiles_array = [ ExtResource( 4 ) ]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+script = ExtResource( 3 )
+level_distance_culling = 170.0
+
+[node name="InstantDeath" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0 )
+
+[node name="PoolingProjectileEnemy" type="Spatial" parent="."]
+script = ExtResource( 9 )
+object_scene = ExtResource( 10 )
+pool_size = 100
+
+[node name="PoolingNormalHit" type="Spatial" parent="."]
+script = ExtResource( 9 )
+object_scene = ExtResource( 7 )
+
+[node name="PoolingDamageHit" type="Spatial" parent="."]
+script = ExtResource( 9 )
+object_scene = ExtResource( 6 )
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+extents = Vector3( 10000, 10000, 10000 )
+origin_offset = Vector3( 0, 4, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.965926, -1.5099e-14, -0.258819, 0.183013, 0.707107, 0.683013, 0.183013, -0.707107, 0.683013, 0, 0, 0 )
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 20.0
+script = ExtResource( 12 )
+
+[node name="PlayerFactory" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31196e-08, 1.27227, -6.31445 )
+player_type = 2
+
+[node name="ThirdPersonCamera" parent="." instance=ExtResource( 13 )]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DEgITx-Grim Reaper (feat. Matty M.)-CC BY 4.0.ogg-dc367e1b1a274788256d1acf2f6e81d3.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Battle/DEgITx-Grim Reaper (feat. Matty M.)-CC BY 4.0.ogg"
+dest_files=[ "res://.import/DEgITx-Grim Reaper (feat. Matty M.)-CC BY 4.0.ogg-dc367e1b1a274788256d1acf2f6e81d3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

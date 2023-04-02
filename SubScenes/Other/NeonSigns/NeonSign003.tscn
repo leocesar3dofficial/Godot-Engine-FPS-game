@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Shaders/NeonScanlineAddVisual.tres" type="Material" id=1]
+[ext_resource path="res://Materials/NeonSignsFreepick.material" type="Material" id=4]
+
+[sub_resource type="ArrayMesh" id=1]
+surfaces/0 = {
+"aabb": AABB( -0.5, 0, 0.096685, 0.430387, 1e-05, 0.403325 ),
+"array_data": PoolByteArray( 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 63, 0, 127, 0, 0, 127, 0, 0, 129, 0, 0, 0, 60, 96, 145, 142, 189, 0, 0, 0, 0, 0, 0, 0, 63, 0, 127, 0, 0, 127, 0, 0, 129, 226, 54, 0, 60, 96, 145, 142, 189, 0, 0, 0, 0, 205, 2, 198, 61, 0, 127, 0, 0, 127, 0, 0, 129, 226, 54, 198, 56, 0, 0, 0, 191, 0, 0, 0, 0, 196, 2, 198, 61, 0, 127, 0, 0, 127, 0, 0, 129, 0, 0, 198, 56 ),
+"array_index_data": PoolByteArray( 3, 0, 2, 0, 1, 0, 3, 0, 1, 0, 0, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 6,
+"material": ExtResource( 4 ),
+"name": "NeonSignsFreepick.003",
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 4
+}
+
+[node name="NeonSignsFreepick006" type="MeshInstance"]
+transform = Transform( 0.811122, 0, 0, 0, -3.54553e-08, -0.811122, 0, 0.811122, -3.54553e-08, 0.229019, 0.224207, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )

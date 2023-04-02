@@ -1,0 +1,557 @@
+[gd_scene load_steps=84 format=2]
+
+[ext_resource path="res://Materials/Sun.material" type="Material" id=2]
+[ext_resource path="res://Materials/Shockwave.material" type="Material" id=3]
+[ext_resource path="res://Materials/SelectionFX.material" type="Material" id=4]
+[ext_resource path="res://Materials/Explosion.material" type="Material" id=5]
+[ext_resource path="res://Materials/Spark.material" type="Material" id=6]
+[ext_resource path="res://Textures/Other/Energy01.png" type="Texture" id=7]
+[ext_resource path="res://Textures/Other/Lightning.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Other/Energy03.png" type="Texture" id=9]
+[ext_resource path="res://Models/TrailPlane.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://Materials/Debris.material" type="Material" id=11]
+[ext_resource path="res://Materials/Dust.material" type="Material" id=12]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.108303, 0.870036, 1 )
+colors = PoolColorArray( 0, 0, 0, 0, 0.108303, 0.108303, 0.108303, 1, 0.870036, 0.870036, 0.870036, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 2.0
+angular_velocity_random = 1.0
+radial_accel = 0.2
+radial_accel_random = 1.0
+tangential_accel = 0.01
+tangential_accel_random = 1.0
+scale = 0.01
+scale_random = 0.05
+color_ramp = SubResource( 2 )
+hue_variation = 0.03
+hue_variation_random = 1.0
+anim_speed = 1.0
+
+[sub_resource type="QuadMesh" id=4]
+material = ExtResource( 12 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 180.0
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 1.0
+scale_curve = SubResource( 6 )
+hue_variation = 0.02
+hue_variation_random = 1.0
+anim_speed = 1.0
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+albedo_color = Color( 1, 1, 1, 0.396078 )
+albedo_texture = ExtResource( 8 )
+proximity_fade_enable = true
+proximity_fade_distance = 1.0
+
+[sub_resource type="QuadMesh" id=9]
+material = SubResource( 8 )
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.628378, 1 )
+colors = PoolColorArray( 0, 0.146226, 0.752441, 1, 0, 0.0867987, 1, 1, 0, 0.405273, 1, 0 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale = 2.0
+scale_random = 1.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 11 )
+hue_variation = 0.05
+hue_variation_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=13]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 1, 1, 1, 0.486275 )
+albedo_texture = ExtResource( 7 )
+proximity_fade_enable = true
+proximity_fade_distance = 1.0
+
+[sub_resource type="QuadMesh" id=14]
+material = SubResource( 13 )
+
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0, 0.628378, 1 )
+colors = PoolColorArray( 0, 0.146226, 0.752441, 1, 0, 0.0867987, 1, 1, 0, 0.405273, 1, 0 )
+
+[sub_resource type="GradientTexture" id=16]
+gradient = SubResource( 15 )
+
+[sub_resource type="Curve" id=17]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=18]
+curve = SubResource( 17 )
+
+[sub_resource type="ParticlesMaterial" id=19]
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 90.0
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale = 4.0
+scale_random = 1.0
+scale_curve = SubResource( 18 )
+color_ramp = SubResource( 16 )
+
+[sub_resource type="SpatialMaterial" id=20]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 9 )
+proximity_fade_enable = true
+proximity_fade_distance = 1.0
+
+[sub_resource type="QuadMesh" id=21]
+material = SubResource( 20 )
+
+[sub_resource type="Curve" id=22]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=23]
+curve = SubResource( 22 )
+
+[sub_resource type="ParticlesMaterial" id=24]
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, -8, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 1.0
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+linear_accel = 10.0
+linear_accel_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_random = 0.8
+scale_curve = SubResource( 23 )
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="QuadMesh" id=25]
+material = ExtResource( 11 )
+
+[sub_resource type="Gradient" id=26]
+offsets = PoolRealArray( 0, 0.99639 )
+colors = PoolColorArray( 1, 0.533203, 0, 1, 1, 0.181641, 0, 1 )
+
+[sub_resource type="GradientTexture" id=27]
+gradient = SubResource( 26 )
+
+[sub_resource type="ParticlesMaterial" id=28]
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = -1.0
+initial_velocity_random = 1.0
+angular_velocity = 180.0
+angular_velocity_random = 1.0
+scale = 3.0
+scale_random = 0.5
+color_ramp = SubResource( 27 )
+anim_speed = 1.0
+
+[sub_resource type="QuadMesh" id=29]
+material = ExtResource( 5 )
+size = Vector2( 3, 3 )
+
+[sub_resource type="Curve" id=30]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 1.4, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=31]
+curve = SubResource( 30 )
+
+[sub_resource type="ParticlesMaterial" id=32]
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 4.18767
+scale = 6.0
+scale_random = 0.5
+scale_curve = SubResource( 31 )
+hue_variation = 0.1
+
+[sub_resource type="QuadMesh" id=33]
+material = ExtResource( 3 )
+
+[sub_resource type="Curve" id=34]
+_data = [ Vector2( 0, 0.00829995 ), 0.0, 4.97779, 0, 0, Vector2( 1, 0 ), -2.85837, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=35]
+curve = SubResource( 34 )
+
+[sub_resource type="ParticlesMaterial" id=36]
+emission_shape = 1
+emission_sphere_radius = 0.2
+flag_align_y = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+initial_velocity_random = 1.0
+linear_accel = 2.0
+tangential_accel = 2.0
+tangential_accel_random = 1.0
+scale = 0.01
+scale_random = 0.05
+scale_curve = SubResource( 35 )
+
+[sub_resource type="Gradient" id=37]
+colors = PoolColorArray( 1, 0.235085, 0.164063, 1, 1, 0.659271, 0.09375, 1 )
+
+[sub_resource type="GradientTexture" id=38]
+gradient = SubResource( 37 )
+
+[sub_resource type="Curve" id=39]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.24916, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.993148, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=40]
+curve = SubResource( 39 )
+
+[sub_resource type="ParticlesMaterial" id=41]
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 200.0
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale = 8.0
+scale_curve = SubResource( 40 )
+color_ramp = SubResource( 38 )
+hue_variation = 0.05
+hue_variation_random = 1.0
+
+[sub_resource type="QuadMesh" id=42]
+material = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=43]
+colors = PoolColorArray( 0.411621, 0.235155, 0, 1, 1, 0.346352, 0.101563, 1 )
+
+[sub_resource type="GradientTexture" id=44]
+gradient = SubResource( 43 )
+
+[sub_resource type="Curve" id=45]
+_data = [ Vector2( 0.00564972, 0.971591 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=46]
+curve = SubResource( 45 )
+
+[sub_resource type="ParticlesMaterial" id=47]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector3( 0, 30, 0 )
+scale_random = 1.0
+scale_curve = SubResource( 46 )
+color_ramp = SubResource( 44 )
+hue_variation = 0.05
+hue_variation_random = 0.1
+
+[sub_resource type="QuadMesh" id=48]
+material = ExtResource( 4 )
+
+[sub_resource type="Gradient" id=49]
+colors = PoolColorArray( 0.724121, 0.294174, 0.294174, 1, 1, 0.183594, 0.183594, 1 )
+
+[sub_resource type="GradientTexture" id=50]
+gradient = SubResource( 49 )
+
+[sub_resource type="Curve" id=51]
+_data = [ Vector2( 0.00564972, 0.971591 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=52]
+curve = SubResource( 51 )
+
+[sub_resource type="ParticlesMaterial" id=53]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector3( 0, 30, 0 )
+scale_random = 1.0
+scale_curve = SubResource( 52 )
+color_ramp = SubResource( 50 )
+hue_variation = 0.05
+hue_variation_random = 0.1
+
+[sub_resource type="QuadMesh" id=54]
+material = ExtResource( 4 )
+
+[sub_resource type="Gradient" id=55]
+colors = PoolColorArray( 0.26946, 0.660156, 0.229507, 1, 0.0640064, 0.550781, 0, 1 )
+
+[sub_resource type="GradientTexture" id=56]
+gradient = SubResource( 55 )
+
+[sub_resource type="Curve" id=57]
+_data = [ Vector2( 0.00564972, 0.971591 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=58]
+curve = SubResource( 57 )
+
+[sub_resource type="ParticlesMaterial" id=59]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector3( 0, 30, 0 )
+scale_random = 1.0
+scale_curve = SubResource( 58 )
+color_ramp = SubResource( 56 )
+hue_variation = 0.05
+hue_variation_random = 0.1
+
+[sub_resource type="QuadMesh" id=60]
+material = ExtResource( 4 )
+
+[sub_resource type="Gradient" id=61]
+colors = PoolColorArray( 1, 0, 0, 0.741176, 1, 0.905882, 0.345098, 0.54902 )
+
+[sub_resource type="GradientTexture" id=62]
+gradient = SubResource( 61 )
+
+[sub_resource type="Curve" id=63]
+_data = [ Vector2( 0.00564972, 0.971591 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=64]
+curve = SubResource( 63 )
+
+[sub_resource type="ParticlesMaterial" id=65]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector3( 0, 30, 0 )
+scale_random = 1.0
+scale_curve = SubResource( 64 )
+color_ramp = SubResource( 62 )
+hue_variation = 0.05
+hue_variation_random = 0.1
+
+[sub_resource type="QuadMesh" id=66]
+material = ExtResource( 4 )
+
+[sub_resource type="Gradient" id=67]
+colors = PoolColorArray( 0, 0.401077, 0.546875, 1, 0, 0.859375, 1, 1 )
+
+[sub_resource type="GradientTexture" id=68]
+gradient = SubResource( 67 )
+
+[sub_resource type="Curve" id=69]
+_data = [ Vector2( 0.00564972, 0.971591 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=70]
+curve = SubResource( 69 )
+
+[sub_resource type="ParticlesMaterial" id=71]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector3( 0, 30, 0 )
+scale_random = 1.0
+scale_curve = SubResource( 70 )
+color_ramp = SubResource( 68 )
+hue_variation = 0.05
+hue_variation_random = 0.1
+
+[sub_resource type="QuadMesh" id=72]
+material = ExtResource( 4 )
+
+[node name="ParticleShaders" type="Spatial"]
+
+[node name="DustParticles" type="Spatial" parent="."]
+
+[node name="Particles" type="Particles" parent="DustParticles"]
+cast_shadow = 0
+amount = 300
+lifetime = 30.0
+preprocess = 15.0
+speed_scale = 0.5
+randomness = 1.0
+visibility_aabb = AABB( -12, -12, -12, 24, 24, 24 )
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="EnergyExplosion" type="Spatial" parent="."]
+
+[node name="Lightning" type="Particles" parent="EnergyExplosion"]
+emitting = false
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 7 )
+draw_pass_1 = SubResource( 9 )
+
+[node name="Vortex" type="Particles" parent="EnergyExplosion"]
+emitting = false
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 12 )
+draw_pass_1 = SubResource( 14 )
+
+[node name="Vortex2" type="Particles" parent="EnergyExplosion"]
+emitting = false
+amount = 16
+lifetime = 3.0
+one_shot = true
+process_material = SubResource( 19 )
+draw_pass_1 = SubResource( 21 )
+
+[node name="ExplosionWithDebris" type="Spatial" parent="."]
+
+[node name="DebrisParticles" type="Particles" parent="ExplosionWithDebris"]
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 24 )
+draw_pass_1 = SubResource( 25 )
+
+[node name="Particles" type="Particles" parent="ExplosionWithDebris"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 2
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 28 )
+draw_pass_1 = SubResource( 29 )
+
+[node name="Particles2" type="Particles" parent="ExplosionWithDebris"]
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+process_material = SubResource( 32 )
+draw_pass_1 = SubResource( 33 )
+
+[node name="Particles3" type="Particles" parent="ExplosionWithDebris"]
+material_override = ExtResource( 6 )
+cast_shadow = 0
+emitting = false
+amount = 100
+one_shot = true
+process_material = SubResource( 36 )
+draw_pass_1 = ExtResource( 10 )
+
+[node name="Particles4" type="Particles" parent="ExplosionWithDebris"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 1
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 41 )
+draw_pass_1 = SubResource( 42 )
+
+[node name="SelectionFX" type="Spatial" parent="."]
+
+[node name="Particles" type="Particles" parent="SelectionFX"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 600
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB( -4, -3.1362, -4, 8, 6.2724, 8 )
+process_material = SubResource( 47 )
+draw_pass_1 = SubResource( 48 )
+
+[node name="SelectionFX2" type="Spatial" parent="."]
+
+[node name="Particles" type="Particles" parent="SelectionFX2"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 600
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB( -4, -3.1362, -4, 8, 6.2724, 8 )
+process_material = SubResource( 53 )
+draw_pass_1 = SubResource( 54 )
+
+[node name="SelectionFX3" type="Spatial" parent="."]
+
+[node name="Particles" type="Particles" parent="SelectionFX3"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 600
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB( -4, -3.1362, -4, 8, 6.2724, 8 )
+process_material = SubResource( 59 )
+draw_pass_1 = SubResource( 60 )
+
+[node name="SelectionFX4" type="Spatial" parent="."]
+
+[node name="Particles" type="Particles" parent="SelectionFX4"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 600
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB( -4, -3.1362, -4, 8, 6.2724, 8 )
+process_material = SubResource( 65 )
+draw_pass_1 = SubResource( 66 )
+
+[node name="SelectionFX5" type="Spatial" parent="."]
+
+[node name="Particles" type="Particles" parent="SelectionFX5"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 600
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB( -4, -3.1362, -4, 8, 6.2724, 8 )
+process_material = SubResource( 71 )
+draw_pass_1 = SubResource( 72 )

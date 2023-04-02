@@ -1,0 +1,121 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://SubScenes/Platforms/CubeEngine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SubScenes/Platforms/PlatformBasic.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SubScenes/Platforms/Scafold.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SubScenes/Platforms/SquarePlatform01.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/Platforms/HexagonalPad.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/Other/Spawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/Props/Chest.tscn" type="PackedScene" id=7]
+[ext_resource path="res://SubScenes/Props/Fan.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SubScenes/Props/PropCylinder.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SubScenes/Platforms/Base.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SubScenes/Props/Pole.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SubScenes/Platforms/5StarBlock.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SubScenes/Platforms/CargoBox.tscn" type="PackedScene" id=14]
+[ext_resource path="res://SubScenes/Other/SpawnerGun.tscn" type="PackedScene" id=16]
+[ext_resource path="res://SubScenes/Enemies/Drone01.tscn" type="PackedScene" id=17]
+[ext_resource path="res://SubScenes/Enemies/FlyingEnemy.tscn" type="PackedScene" id=18]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 30, 28, 30 )
+
+[node name="TileFloating01" type="Spatial"]
+
+[node name="MeshHeightDontShow" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.198, 0 )
+visible = false
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CubeEngine2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 6.91052, 7.4058 )
+
+[node name="PlatformBasic" parent="CubeEngine2" instance=ExtResource( 2 )]
+transform = Transform( 0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 3.14749, -0.459615, 0.113566 )
+
+[node name="PlatformBasic2" parent="CubeEngine2" instance=ExtResource( 2 )]
+transform = Transform( 0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, -3.14733, -0.459615, 0.113566 )
+
+[node name="PlatformBasic4" parent="CubeEngine2" instance=ExtResource( 2 )]
+transform = Transform( 0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, 3.14749, -0.459615, -4.91882 )
+
+[node name="PlatformBasic3" parent="CubeEngine2" instance=ExtResource( 2 )]
+transform = Transform( 0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 0.333333, -3.14733, -0.459615, -4.91882 )
+
+[node name="HexagonalPad" parent="CubeEngine2" instance=ExtResource( 5 )]
+transform = Transform( -1.45705e-08, 0, -0.333333, 0, 0.333333, 0, 0.333333, 0, -1.45705e-08, -3.17618, -0.391398, -5.90766 )
+
+[node name="SquarePlatform01" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25.5219, 0 )
+
+[node name="Scafold" parent="SquarePlatform01" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -14.6448, -1.23427, 7.59628 )
+
+[node name="Scafold2" parent="SquarePlatform01" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -14.6448, -1.23427, -7.43748 )
+
+[node name="Scafold4" parent="SquarePlatform01" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 14.4632, -1.23427, 7.59628 )
+
+[node name="Scafold3" parent="SquarePlatform01" instance=ExtResource( 3 )]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 14.4632, -1.23427, -7.43748 )
+
+[node name="Scafold5" parent="SquarePlatform01" instance=ExtResource( 3 )]
+transform = Transform( 0.458836, 0, 0.888521, 0, 1, 0, -0.888521, 0, 0.458836, -17.578, 0.0774479, -8.71838 )
+
+[node name="Scafold6" parent="SquarePlatform01" instance=ExtResource( 3 )]
+transform = Transform( 0.458836, 0, 0.888521, 0, 1, 0, -0.888521, 0, 0.458836, 1.97894, 0.0774479, 1.38087 )
+
+[node name="Scafold8" parent="SquarePlatform01" instance=ExtResource( 3 )]
+transform = Transform( 0.461098, 0, -0.887349, 0, 1, 0, 0.887349, 0, 0.461098, 18.8104, -0.202307, -9.26157 )
+
+[node name="Scafold7" parent="SquarePlatform01" instance=ExtResource( 3 )]
+transform = Transform( 0.461098, 0, -0.887349, 0, 1, 0, 0.887349, 0, 0.461098, -0.720702, -0.202307, 0.887486 )
+
+[node name="Pole" parent="SquarePlatform01" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67606, 2.69556, -4.44085 )
+
+[node name="Pole2" parent="SquarePlatform01" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58783, 2.69556, -4.44085 )
+
+[node name="Pole4" parent="SquarePlatform01" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67606, 2.69556, 4.47026 )
+
+[node name="Pole3" parent="SquarePlatform01" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58783, 2.69556, 4.47026 )
+
+[node name="5StarBlock" parent="SquarePlatform01" instance=ExtResource( 13 )]
+transform = Transform( 1.61771, 0, 0, 0, 1.61771, 0, 0, 0, 1.61771, -9.96509, -20.3879, 0 )
+
+[node name="5StarBlock2" parent="SquarePlatform01" instance=ExtResource( 13 )]
+transform = Transform( 1.61771, 0, 0, 0, 1.61771, 0, 0, 0, 1.61771, -9.34686, -20.3879, 0 )
+
+[node name="5StarBlock3" parent="SquarePlatform01" instance=ExtResource( 13 )]
+transform = Transform( 1.61771, 0, 0, 0, 1.61771, 0, 0, 0, 1.61771, -8.73572, -20.3879, 0 )
+
+[node name="SpawnerEnemies" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0824251, 17.3966, 1.25234 )
+entities = [ ExtResource( 17 ), ExtResource( 18 ) ]
+
+[node name="SpawnerEnemies2" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0824251, 39.0882, 1.25234 )
+entities = [ ExtResource( 17 ), ExtResource( 18 ) ]
+
+[node name="Fan" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.9898, 0 )
+
+[node name="PropCylinder" parent="." instance=ExtResource( 10 )]
+transform = Transform( -2.79022e-07, -1.71262, 0, 1.71262, -2.79022e-07, 0, 0, 0, 1.71262, -3.47585, 7.23105, 0.222324 )
+
+[node name="Base" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4454, 5.50723, -7.11262 )
+
+[node name="CargoBox" parent="." instance=ExtResource( 14 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -9.57062, 5.57764, 8.05467 )
+
+[node name="SpawnerGun" parent="CargoBox" instance=ExtResource( 16 )]
+transform = Transform( 1.61771, 0, 0, 0, 1.61771, 0, 0, 0, 1.61771, 0, 4.88011, 0 )
+
+[node name="Chest" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28.2588, 0 )

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/AsteroidField.obj-8733b903630c2af64ba7be2ee5740b2e.mesh"
+
+[deps]
+
+files=[ "res://.import/AsteroidField.obj-8733b903630c2af64ba7be2ee5740b2e.mesh" ]
+
+source_file="res://Models/AsteroidField.obj"
+dest_files=[ "res://.import/AsteroidField.obj-8733b903630c2af64ba7be2ee5740b2e.mesh", "res://.import/AsteroidField.obj-8733b903630c2af64ba7be2ee5740b2e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -1,0 +1,210 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Materials/Smoke.material" type="Material" id=1]
+[ext_resource path="res://Scripts/General/SelfDestruct.gd" type="Script" id=2]
+[ext_resource path="res://Audio/SoundEffects/MultipleExplosions.wav" type="AudioStream" id=3]
+[ext_resource path="res://SubScenes/Other/AreaDamage.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/Other/SpawnDebris.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Materials/Explosion2.material" type="Material" id=6]
+[ext_resource path="res://Scripts/Player/CameraShakeStart.gd" type="Script" id=7]
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3( 0, 0.1, 0 )
+angular_velocity = 50.0
+angular_velocity_random = 1.0
+radial_accel = 40.0
+radial_accel_random = 0.5
+tangential_accel = 10.0
+tangential_accel_random = 0.5
+angle = 360.0
+angle_random = 1.0
+scale = 6.0
+scale_random = 0.2
+anim_speed = 12.0
+anim_speed_random = 0.2
+
+[sub_resource type="QuadMesh" id=2]
+material = ExtResource( 6 )
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 1 ), 0.0, -2.23822e-07, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 4.0
+gravity = Vector3( 0, 0.1, 0 )
+angular_velocity = 30.0
+angular_velocity_random = 1.0
+radial_accel = 0.5
+radial_accel_random = 0.5
+tangential_accel = 0.3
+tangential_accel_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale = 6.0
+scale_random = 0.8
+scale_curve = SubResource( 11 )
+color = Color( 6, 1, 0.3, 1 )
+anim_speed = 8.0
+anim_speed_random = 0.2
+
+[sub_resource type="QuadMesh" id=6]
+material = ExtResource( 1 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "LightAnim"
+length = 10.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:light_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 8, 10 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:light_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.807843, -0.25, 0, 0.25, 0, 0.611765, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 8, 10 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:light_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.215686, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 8, 10 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:light_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 8, 10 )
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:light_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:light_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:light_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:light_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="SphereShape" id=9]
+radius = 3.0
+
+[node name="MultipleExplosions" type="Spatial"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+script = ExtResource( 2 )
+time_to_destroy = 18
+
+[node name="Fire" type="Particles" parent="."]
+cast_shadow = 0
+emitting = false
+amount = 300
+lifetime = 6.0
+one_shot = true
+explosiveness = 0.2
+randomness = 0.5
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 2 )
+
+[node name="Smoke" type="Particles" parent="."]
+transform = Transform( 0.821839, 0, 0, 0, 0.821839, 0, 0, 0, 0.821839, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 300
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.2
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 6 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+stream = ExtResource( 3 )
+unit_db = 30.0
+autoplay = true
+max_distance = 300.0
+bus = "SoundFX"
+
+[node name="SpawnDebris" parent="." instance=ExtResource( 5 )]
+amount = 3
+spawn_scale = 4.0
+
+[node name="CameraShakeStart" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="ExplosionLight" type="OmniLight" parent="."]
+light_energy = 2.0
+omni_range = 20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ExplosionLight"]
+autoplay = "LightAnim"
+anims/LightAnim = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+
+[node name="AreaDamage" parent="." instance=ExtResource( 4 )]
+collision_mask = 2
+damage = 20.0
+once = true
+
+[node name="CollisionShape" parent="AreaDamage" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[editable path="AreaDamage"]

@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Chunk09.obj-d363c7773a0188bbd5f1e1b71c29373f.mesh"
+
+[deps]
+
+files=[ "res://.import/Chunk09.obj-d363c7773a0188bbd5f1e1b71c29373f.mesh" ]
+
+source_file="res://Models/TerrainChunks/Chunk09.obj"
+dest_files=[ "res://.import/Chunk09.obj-d363c7773a0188bbd5f1e1b71c29373f.mesh", "res://.import/Chunk09.obj-d363c7773a0188bbd5f1e1b71c29373f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

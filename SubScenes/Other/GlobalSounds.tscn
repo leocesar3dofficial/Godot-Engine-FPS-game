@@ -1,0 +1,21 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Audio/SoundEffects/LevelWin.wav" type="AudioStream" id=1]
+[ext_resource path="res://Audio/SoundEffects/Click.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/SoundEffects/LevelLose.wav" type="AudioStream" id=3]
+[ext_resource path="res://Audio/SoundEffects/Cancel.wav" type="AudioStream" id=4]
+[ext_resource path="res://Scripts/UI/GlobalSounds.gd" type="Script" id=5]
+[ext_resource path="res://Audio/SoundEffects/BattleDrums.wav" type="AudioStream" id=6]
+[ext_resource path="res://SubScenes/Player/BulletTime.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Audio/SoundEffects/DoorClose02.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/SoundEffects/DoorOpen02.wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/SoundEffects/Achievement.wav" type="AudioStream" id=10]
+
+[node name="GlobalSounds" type="AudioStreamPlayer"]
+pause_mode = 2
+bus = "SoundFX"
+script = ExtResource( 5 )
+sounds = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ]
+
+[node name="BulletTime" parent="." instance=ExtResource( 7 )]
+pause_mode = 1

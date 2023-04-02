@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Datacenter.ogg-6e31de99738c73c8e280a3b4c9008fc3.oggstr"
+
+[deps]
+
+source_file="res://Audio/AmbientSFX/Datacenter.ogg"
+dest_files=[ "res://.import/Datacenter.ogg-6e31de99738c73c8e280a3b4c9008fc3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

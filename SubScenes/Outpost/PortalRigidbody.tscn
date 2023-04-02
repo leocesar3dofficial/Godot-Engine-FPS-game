@@ -1,0 +1,179 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Materials/EmissionRed.material" type="Material" id=1]
+[ext_resource path="res://Materials/Primary.material" type="Material" id=2]
+[ext_resource path="res://Materials/PrimaryWhite.material" type="Material" id=3]
+[ext_resource path="res://Models/Outpost/Portal.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://SubScenes/Props/Greeble/Tiles/ScifiTile015.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/Props/Greeble/Tiles/ScifiTile008.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/VisualEffects/EnergyPortal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/General/GoToSceneArea.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/General/ShadowSettings.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/General/SimpleRotate.gd" type="Script" id=10]
+[ext_resource path="res://SubScenes/Quest/PointOfInterest.tscn" type="PackedScene" id=11]
+
+[sub_resource type="SphereShape" id=3]
+radius = 5.08309
+
+[sub_resource type="SphereShape" id=2]
+radius = 8.51873
+
+[node name="PortalRigidbody" type="RigidBody"]
+gravity_scale = 0.0
+continuous_cd = true
+linear_damp = 2.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )
+
+[node name="EnergyPortal" parent="." instance=ExtResource( 7 )]
+transform = Transform( 18.2077, 0, 0, 0, 18.2077, 0, 0, 0, 18.2077, 0, 0, 0 )
+
+[node name="Portal" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 10 )
+angle = 10.0
+
+[node name="Model" type="MeshInstance" parent="Portal"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 1 )
+
+[node name="PanelsSide1" type="Spatial" parent="Portal/Model"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="ScifiTile008" parent="Portal/Model/PanelsSide1" instance=ExtResource( 6 )]
+transform = Transform( 0.200923, -2.28602e-09, 0.0946715, -0.0946715, -5.06184e-10, 0.200923, -1.85221e-09, -0.22211, -1.43229e-09, 1.80604, 3.86974, -0.6012 )
+
+[node name="ScifiTile015" parent="Portal/Model/PanelsSide1" instance=ExtResource( 5 )]
+transform = Transform( 0.124466, 1.10736e-09, 0.204453, -0.204453, 1.24333e-08, 0.124466, -1.00443e-08, -0.239359, 7.41113e-09, 3.66582, 2.21304, -0.594322 )
+
+[node name="ScifiTile009" parent="Portal/Model/PanelsSide1" instance=ExtResource( 6 )]
+transform = Transform( -0.0946715, 1.89113e-08, 0.200923, -0.200923, 2.17035e-08, -0.0946715, -2.76939e-08, -0.22211, 7.85653e-09, 3.86974, -1.80604, -0.6012 )
+
+[node name="ScifiTile016" parent="Portal/Model/PanelsSide1" instance=ExtResource( 5 )]
+transform = Transform( -0.204453, 3.33587e-08, 0.124466, -0.124466, 1.98181e-08, -0.204453, -3.87993e-08, -0.239359, 4.18429e-10, 2.21304, -3.66582, -0.594322 )
+
+[node name="ScifiTile010" parent="Portal/Model/PanelsSide1" instance=ExtResource( 6 )]
+transform = Transform( -0.200923, 4.1121e-08, -0.0946715, 0.0946715, 5.06183e-10, -0.200923, -3.69827e-08, -0.22211, -1.79852e-08, -1.80604, -3.86974, -0.601201 )
+
+[node name="ScifiTile017" parent="Portal/Model/PanelsSide1" instance=ExtResource( 5 )]
+transform = Transform( -0.124466, 4.07435e-08, -0.204453, 0.204453, -1.24333e-08, -0.124466, -3.18066e-08, -0.239359, -2.83366e-08, -3.66582, -2.21304, -0.594323 )
+
+[node name="ScifiTile011" parent="Portal/Model/PanelsSide1" instance=ExtResource( 6 )]
+transform = Transform( 0.0946716, 1.99237e-08, -0.200923, 0.200923, -2.17035e-08, 0.0946716, -1.1141e-08, -0.22211, -2.7274e-08, -3.86974, 1.80604, -0.601201 )
+
+[node name="ScifiTile018" parent="Portal/Model/PanelsSide1" instance=ExtResource( 5 )]
+transform = Transform( 0.204453, 8.49215e-09, -0.124466, 0.124466, -1.98181e-08, 0.204453, -3.05158e-09, -0.239359, -2.13439e-08, -2.21304, 3.66582, -0.594323 )
+
+[node name="PanelsSide2" type="Spatial" parent="Portal/Model"]
+transform = Transform( 0.116151, -0.993232, 1.75383e-08, -0.993232, -0.116151, -1.49974e-07, 1.50996e-07, 0, -1, 0, 0, 0 )
+
+[node name="ScifiTile008" parent="Portal/Model/PanelsSide2" instance=ExtResource( 6 )]
+transform = Transform( 0.200923, -2.28602e-09, 0.0946715, -0.0946715, -5.06184e-10, 0.200923, -1.85221e-09, -0.22211, -1.43229e-09, 1.80604, 3.86974, -0.6012 )
+
+[node name="ScifiTile015" parent="Portal/Model/PanelsSide2" instance=ExtResource( 5 )]
+transform = Transform( 0.124466, 1.10736e-09, 0.204453, -0.204453, 1.24333e-08, 0.124466, -1.00443e-08, -0.239359, 7.41113e-09, 3.66582, 2.21304, -0.594322 )
+
+[node name="ScifiTile009" parent="Portal/Model/PanelsSide2" instance=ExtResource( 6 )]
+transform = Transform( -0.0946715, 1.89113e-08, 0.200923, -0.200923, 2.17035e-08, -0.0946715, -2.76939e-08, -0.22211, 7.85653e-09, 3.86974, -1.80604, -0.6012 )
+
+[node name="ScifiTile016" parent="Portal/Model/PanelsSide2" instance=ExtResource( 5 )]
+transform = Transform( -0.204453, 3.33587e-08, 0.124466, -0.124466, 1.98181e-08, -0.204453, -3.87993e-08, -0.239359, 4.18429e-10, 2.21304, -3.66582, -0.594322 )
+
+[node name="ScifiTile010" parent="Portal/Model/PanelsSide2" instance=ExtResource( 6 )]
+transform = Transform( -0.200923, 4.1121e-08, -0.0946715, 0.0946715, 5.06183e-10, -0.200923, -3.69827e-08, -0.22211, -1.79852e-08, -1.80604, -3.86974, -0.601201 )
+
+[node name="ScifiTile017" parent="Portal/Model/PanelsSide2" instance=ExtResource( 5 )]
+transform = Transform( -0.124466, 4.07435e-08, -0.204453, 0.204453, -1.24333e-08, -0.124466, -3.18066e-08, -0.239359, -2.83366e-08, -3.66582, -2.21304, -0.594323 )
+
+[node name="ScifiTile011" parent="Portal/Model/PanelsSide2" instance=ExtResource( 6 )]
+transform = Transform( 0.0946716, 1.99237e-08, -0.200923, 0.200923, -2.17035e-08, 0.0946716, -1.1141e-08, -0.22211, -2.7274e-08, -3.86974, 1.80604, -0.601201 )
+
+[node name="ScifiTile018" parent="Portal/Model/PanelsSide2" instance=ExtResource( 5 )]
+transform = Transform( 0.204453, 8.49215e-09, -0.124466, 0.124466, -1.98181e-08, 0.204453, -3.05158e-09, -0.239359, -2.13439e-08, -2.21304, 3.66582, -0.594323 )
+
+[node name="Portal2" type="Spatial" parent="."]
+transform = Transform( -2.54977e-08, 0.58332, 0, -0.58332, -2.54977e-08, 0, 0, 0, 0.58332, 0, 0, 0 )
+script = ExtResource( 10 )
+axis = Vector3( 1, 0, 0 )
+
+[node name="Model" type="MeshInstance" parent="Portal2"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 1 )
+
+[node name="PanelsSide1" type="Spatial" parent="Portal2/Model"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="ScifiTile008" parent="Portal2/Model/PanelsSide1" instance=ExtResource( 6 )]
+transform = Transform( 0.200923, -2.28602e-09, 0.0946715, -0.0946715, -5.06184e-10, 0.200923, -1.85221e-09, -0.22211, -1.43229e-09, 1.80604, 3.86974, -0.6012 )
+
+[node name="ScifiTile015" parent="Portal2/Model/PanelsSide1" instance=ExtResource( 5 )]
+transform = Transform( 0.124466, 1.10736e-09, 0.204453, -0.204453, 1.24333e-08, 0.124466, -1.00443e-08, -0.239359, 7.41113e-09, 3.66582, 2.21304, -0.594322 )
+
+[node name="ScifiTile009" parent="Portal2/Model/PanelsSide1" instance=ExtResource( 6 )]
+transform = Transform( -0.0946715, 1.89113e-08, 0.200923, -0.200923, 2.17035e-08, -0.0946715, -2.76939e-08, -0.22211, 7.85653e-09, 3.86974, -1.80604, -0.6012 )
+
+[node name="ScifiTile016" parent="Portal2/Model/PanelsSide1" instance=ExtResource( 5 )]
+transform = Transform( -0.204453, 3.33587e-08, 0.124466, -0.124466, 1.98181e-08, -0.204453, -3.87993e-08, -0.239359, 4.18429e-10, 2.21304, -3.66582, -0.594322 )
+
+[node name="ScifiTile010" parent="Portal2/Model/PanelsSide1" instance=ExtResource( 6 )]
+transform = Transform( -0.200923, 4.1121e-08, -0.0946715, 0.0946715, 5.06183e-10, -0.200923, -3.69827e-08, -0.22211, -1.79852e-08, -1.80604, -3.86974, -0.601201 )
+
+[node name="ScifiTile017" parent="Portal2/Model/PanelsSide1" instance=ExtResource( 5 )]
+transform = Transform( -0.124466, 4.07435e-08, -0.204453, 0.204453, -1.24333e-08, -0.124466, -3.18066e-08, -0.239359, -2.83366e-08, -3.66582, -2.21304, -0.594323 )
+
+[node name="ScifiTile011" parent="Portal2/Model/PanelsSide1" instance=ExtResource( 6 )]
+transform = Transform( 0.0946716, 1.99237e-08, -0.200923, 0.200923, -2.17035e-08, 0.0946716, -1.1141e-08, -0.22211, -2.7274e-08, -3.86974, 1.80604, -0.601201 )
+
+[node name="ScifiTile018" parent="Portal2/Model/PanelsSide1" instance=ExtResource( 5 )]
+transform = Transform( 0.204453, 8.49215e-09, -0.124466, 0.124466, -1.98181e-08, 0.204453, -3.05158e-09, -0.239359, -2.13439e-08, -2.21304, 3.66582, -0.594323 )
+
+[node name="PanelsSide2" type="Spatial" parent="Portal2/Model"]
+transform = Transform( 0.116151, -0.993232, 1.75383e-08, -0.993232, -0.116151, -1.49974e-07, 1.50996e-07, 0, -1, 0, 0, 0 )
+
+[node name="ScifiTile008" parent="Portal2/Model/PanelsSide2" instance=ExtResource( 6 )]
+transform = Transform( 0.200923, -2.28602e-09, 0.0946715, -0.0946715, -5.06184e-10, 0.200923, -1.85221e-09, -0.22211, -1.43229e-09, 1.80604, 3.86974, -0.6012 )
+
+[node name="ScifiTile015" parent="Portal2/Model/PanelsSide2" instance=ExtResource( 5 )]
+transform = Transform( 0.124466, 1.10736e-09, 0.204453, -0.204453, 1.24333e-08, 0.124466, -1.00443e-08, -0.239359, 7.41113e-09, 3.66582, 2.21304, -0.594322 )
+
+[node name="ScifiTile009" parent="Portal2/Model/PanelsSide2" instance=ExtResource( 6 )]
+transform = Transform( -0.0946715, 1.89113e-08, 0.200923, -0.200923, 2.17035e-08, -0.0946715, -2.76939e-08, -0.22211, 7.85653e-09, 3.86974, -1.80604, -0.6012 )
+
+[node name="ScifiTile016" parent="Portal2/Model/PanelsSide2" instance=ExtResource( 5 )]
+transform = Transform( -0.204453, 3.33587e-08, 0.124466, -0.124466, 1.98181e-08, -0.204453, -3.87993e-08, -0.239359, 4.18429e-10, 2.21304, -3.66582, -0.594322 )
+
+[node name="ScifiTile010" parent="Portal2/Model/PanelsSide2" instance=ExtResource( 6 )]
+transform = Transform( -0.200923, 4.1121e-08, -0.0946715, 0.0946715, 5.06183e-10, -0.200923, -3.69827e-08, -0.22211, -1.79852e-08, -1.80604, -3.86974, -0.601201 )
+
+[node name="ScifiTile017" parent="Portal2/Model/PanelsSide2" instance=ExtResource( 5 )]
+transform = Transform( -0.124466, 4.07435e-08, -0.204453, 0.204453, -1.24333e-08, -0.124466, -3.18066e-08, -0.239359, -2.83366e-08, -3.66582, -2.21304, -0.594323 )
+
+[node name="ScifiTile011" parent="Portal2/Model/PanelsSide2" instance=ExtResource( 6 )]
+transform = Transform( 0.0946716, 1.99237e-08, -0.200923, 0.200923, -2.17035e-08, 0.0946716, -1.1141e-08, -0.22211, -2.7274e-08, -3.86974, 1.80604, -0.601201 )
+
+[node name="ScifiTile018" parent="Portal2/Model/PanelsSide2" instance=ExtResource( 5 )]
+transform = Transform( 0.204453, 8.49215e-09, -0.124466, 0.124466, -1.98181e-08, 0.204453, -3.05158e-09, -0.239359, -2.13439e-08, -2.21304, 3.66582, -0.594323 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+light_color = Color( 0.180392, 0.635294, 1, 1 )
+shadow_enabled = true
+omni_range = 8.26292
+script = ExtResource( 9 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )
+
+[node name="PointOfInterest" parent="." instance=ExtResource( 11 )]
+on_ready = true

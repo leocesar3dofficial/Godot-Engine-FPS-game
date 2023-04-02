@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Models/RockBoulders/Boulder04.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/Sand.material" type="Material" id=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.429704
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.191316
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.23519
+
+[sub_resource type="SphereShape" id=4]
+radius = 0.277539
+
+[sub_resource type="SphereShape" id=5]
+radius = 0.171264
+
+[node name="Boulder04" type="Spatial"]
+
+[node name="Mesh" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Mesh"]
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Mesh/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0881965, 0.062199, 0.380977 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31032, 0, -0.0228657 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.251523, 0, -0.192725 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.361743, 0.143727, -0.245692 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248256, 0, 0.0881962 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0130663, 0.244989, 0.0881962 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0620642, -0.195991, 0.0881962 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.323386, -0.166593, -0.0454344 )
+shape = SubResource( 3 )

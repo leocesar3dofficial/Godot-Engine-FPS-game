@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Materials/Secondary.material" type="Material" id=1]
+[ext_resource path="res://Materials/Primary.material" type="Material" id=2]
+[ext_resource path="res://Materials/EmissionRed.material" type="Material" id=3]
+[ext_resource path="res://Models/BombObjective.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://Materials/EmissionBlue.material" type="Material" id=5]
+[ext_resource path="res://Scripts/General/MineBomb.gd" type="Script" id=6]
+[ext_resource path="res://SubScenes/VisualEffects/MultipleExplosions.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Audio/SoundEffects/SevereWarningAlarm.wav" type="AudioStream" id=8]
+
+[sub_resource type="SphereShape" id=1]
+radius = 6.32
+
+[sub_resource type="SphereShape" id=2]
+radius = 30.0
+
+[node name="MineBomb" type="RigidBody"]
+script = ExtResource( 6 )
+activate_material = ExtResource( 3 )
+die_fx = ExtResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 1 )
+material/2 = ExtResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 8 )
+unit_db = 16.0
+bus = "SoundFX"
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )

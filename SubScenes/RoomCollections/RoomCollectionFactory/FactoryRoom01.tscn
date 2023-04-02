@@ -1,0 +1,162 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://SubScenes/Outpost/Ramp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/General/AreaLOD.gd" type="Script" id=2]
+[ext_resource path="res://Materials/Alloy.material" type="Material" id=3]
+[ext_resource path="res://SubScenes/Tiles/TileFloating01.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SubScenes/Outpost/AssemblyLine.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SubScenes/Platforms/InstrumentMast.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Materials/StylizedLavaTriplanar.material" type="Material" id=13]
+[ext_resource path="res://Scripts/General/AreaDamage.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/General/AnimateMaterialUV1.gd" type="Script" id=15]
+[ext_resource path="res://SubScenes/Props/Ceiling4x4_01.tscn" type="PackedScene" id=16]
+[ext_resource path="res://SubScenes/ShellModules/ShellTriangle.tscn" type="PackedScene" id=17]
+
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "Room80x80_Cube001"
+surfaces/0 = {
+"aabb": AABB( -40, -40, -85, 80, 80, 85 ),
+"array_data": PoolByteArray( 0, 0, 32, 194, 0, 0, 32, 194, 0, 0, 32, 192, 127, 127, 127, 193, 164, 208, 157, 80, 0, 0, 32, 194, 0, 0, 32, 194, 0, 0, 32, 192, 0, 127, 127, 63, 164, 208, 196, 80, 0, 0, 32, 194, 0, 0, 32, 194, 0, 0, 32, 192, 127, 0, 127, 127, 164, 208, 157, 80, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 0, 128, 0, 127, 127, 63, 135, 189, 16, 81, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 0, 128, 127, 0, 127, 127, 240, 208, 150, 60, 0, 0, 32, 194, 0, 0, 32, 66, 0, 0, 32, 192, 0, 129, 127, 193, 164, 208, 196, 80, 0, 0, 32, 194, 0, 0, 32, 66, 0, 0, 32, 192, 127, 127, 127, 193, 164, 208, 204, 208, 0, 0, 32, 194, 0, 0, 32, 66, 0, 0, 32, 192, 127, 0, 127, 127, 164, 208, 204, 208, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 0, 128, 0, 129, 127, 193, 135, 189, 16, 81, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 0, 128, 127, 0, 127, 127, 240, 208, 60, 193, 0, 0, 32, 194, 0, 0, 32, 194, 0, 0, 165, 194, 0, 0, 127, 63, 164, 208, 157, 80, 0, 0, 32, 194, 0, 0, 32, 194, 0, 0, 165, 194, 0, 127, 127, 63, 164, 208, 164, 208, 0, 0, 32, 194, 0, 0, 32, 194, 0, 0, 165, 194, 127, 0, 127, 127, 196, 80, 157, 80, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 170, 194, 0, 127, 127, 63, 135, 189, 240, 208, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 170, 194, 127, 0, 127, 127, 16, 81, 150, 60, 0, 0, 32, 194, 0, 0, 32, 66, 0, 0, 165, 194, 0, 129, 127, 193, 164, 208, 164, 208, 0, 0, 32, 194, 0, 0, 32, 66, 0, 0, 165, 194, 0, 0, 127, 63, 164, 208, 204, 208, 0, 0, 32, 194, 0, 0, 32, 66, 0, 0, 165, 194, 127, 0, 127, 127, 196, 80, 204, 208, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 170, 194, 0, 129, 127, 193, 135, 189, 240, 208, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 170, 194, 127, 0, 127, 127, 16, 81, 60, 193, 0, 0, 32, 66, 0, 0, 32, 194, 0, 0, 32, 192, 129, 0, 127, 129, 164, 208, 157, 80, 0, 0, 32, 66, 0, 0, 32, 194, 0, 0, 32, 192, 127, 127, 126, 193, 196, 80, 157, 80, 0, 0, 32, 66, 0, 0, 32, 194, 0, 0, 32, 192, 0, 127, 127, 63, 196, 80, 196, 80, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 0, 128, 129, 0, 127, 129, 240, 208, 150, 60, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 0, 128, 0, 127, 127, 63, 195, 64, 16, 81, 0, 0, 32, 66, 0, 0, 32, 66, 0, 0, 32, 192, 129, 0, 127, 129, 164, 208, 204, 208, 0, 0, 32, 66, 0, 0, 32, 66, 0, 0, 32, 192, 0, 129, 127, 193, 196, 80, 196, 80, 0, 0, 32, 66, 0, 0, 32, 66, 0, 0, 32, 192, 127, 127, 127, 193, 196, 80, 204, 208, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 0, 128, 129, 0, 127, 129, 240, 208, 60, 193, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 0, 128, 0, 129, 127, 193, 195, 64, 16, 81, 0, 0, 32, 66, 0, 0, 32, 194, 0, 0, 165, 194, 129, 0, 127, 129, 196, 80, 157, 80, 0, 0, 32, 66, 0, 0, 32, 194, 0, 0, 165, 194, 0, 0, 127, 63, 196, 80, 157, 80, 0, 0, 32, 66, 0, 0, 32, 194, 0, 0, 165, 194, 0, 127, 127, 63, 196, 80, 164, 208, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 170, 194, 129, 0, 127, 129, 16, 81, 150, 60, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 170, 194, 0, 127, 127, 63, 195, 64, 240, 208, 0, 0, 32, 66, 0, 0, 32, 66, 0, 0, 165, 194, 129, 0, 127, 129, 196, 80, 204, 208, 0, 0, 32, 66, 0, 0, 32, 66, 0, 0, 165, 194, 0, 129, 127, 193, 196, 80, 164, 208, 0, 0, 32, 66, 0, 0, 32, 66, 0, 0, 165, 194, 0, 0, 127, 63, 196, 80, 204, 208, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 170, 194, 129, 0, 127, 129, 16, 81, 60, 193, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 170, 194, 0, 129, 127, 193, 195, 64, 240, 208, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 165, 194, 0, 0, 127, 63, 135, 189, 150, 60, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 165, 194, 0, 127, 127, 63, 135, 189, 164, 208, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 165, 194, 127, 0, 127, 127, 196, 80, 150, 60, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 165, 194, 129, 0, 127, 129, 196, 80, 60, 193, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 165, 194, 0, 129, 127, 193, 195, 64, 164, 208, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 165, 194, 0, 0, 127, 63, 195, 64, 60, 193, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 165, 194, 0, 129, 127, 193, 135, 189, 164, 208, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 165, 194, 0, 0, 127, 63, 135, 189, 60, 193, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 165, 194, 127, 0, 127, 127, 196, 80, 60, 193, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 165, 194, 129, 0, 127, 129, 196, 80, 150, 60, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 165, 194, 0, 0, 127, 63, 195, 64, 150, 60, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 165, 194, 0, 127, 127, 63, 195, 64, 164, 208, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 32, 192, 129, 0, 127, 129, 164, 208, 150, 60, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 32, 192, 127, 127, 126, 193, 195, 64, 150, 60, 0, 0, 0, 64, 0, 0, 0, 192, 0, 0, 32, 192, 0, 127, 127, 63, 195, 64, 196, 80, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 32, 192, 0, 129, 127, 193, 135, 189, 196, 80, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 32, 192, 127, 127, 127, 193, 135, 189, 60, 193, 0, 0, 0, 192, 0, 0, 0, 64, 0, 0, 32, 192, 127, 0, 127, 127, 164, 208, 60, 193, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 32, 192, 129, 0, 127, 129, 164, 208, 60, 193, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 32, 192, 0, 129, 127, 193, 195, 64, 196, 80, 0, 0, 0, 64, 0, 0, 0, 64, 0, 0, 32, 192, 127, 127, 126, 193, 195, 64, 60, 193, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 32, 192, 127, 127, 127, 193, 135, 189, 150, 60, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 32, 192, 0, 127, 127, 63, 135, 189, 196, 80, 0, 0, 0, 192, 0, 0, 0, 192, 0, 0, 32, 192, 127, 0, 127, 127, 164, 208, 150, 60 ),
+"array_index_data": PoolByteArray( 2, 0, 17, 0, 12, 0, 2, 0, 7, 0, 17, 0, 16, 0, 45, 0, 47, 0, 45, 0, 31, 0, 50, 0, 37, 0, 45, 0, 16, 0, 45, 0, 37, 0, 31, 0, 31, 0, 40, 0, 50, 0, 40, 0, 16, 0, 47, 0, 10, 0, 40, 0, 31, 0, 40, 0, 10, 0, 16, 0, 30, 0, 25, 0, 20, 0, 30, 0, 35, 0, 25, 0, 27, 0, 53, 0, 21, 0, 27, 0, 60, 0, 53, 0, 61, 0, 6, 0, 0, 0, 27, 0, 56, 0, 60, 0, 56, 0, 6, 0, 61, 0, 56, 0, 27, 0, 6, 0, 61, 0, 21, 0, 53, 0, 61, 0, 0, 0, 21, 0, 11, 0, 22, 0, 1, 0, 11, 0, 32, 0, 22, 0, 36, 0, 5, 0, 26, 0, 36, 0, 15, 0, 5, 0, 19, 0, 42, 0, 48, 0, 19, 0, 14, 0, 42, 0, 4, 0, 57, 0, 63, 0, 4, 0, 9, 0, 57, 0, 28, 0, 52, 0, 58, 0, 28, 0, 23, 0, 52, 0, 33, 0, 43, 0, 49, 0, 33, 0, 38, 0, 43, 0, 24, 0, 62, 0, 54, 0, 24, 0, 3, 0, 62, 0, 41, 0, 34, 0, 51, 0, 41, 0, 13, 0, 34, 0, 55, 0, 29, 0, 59, 0, 55, 0, 8, 0, 29, 0, 44, 0, 18, 0, 46, 0, 44, 0, 39, 0, 18, 0 ),
+"blend_shape_data": [  ],
+"format": 2194711,
+"index_count": 120,
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 64
+}
+
+[sub_resource type="ConcavePolygonShape" id=2]
+data = PoolVector3Array( -40, -40, -2.5, -40, 40, -82.5, -40, -40, -82.5, -40, -40, -2.5, -40, 40, -2.5, -40, 40, -82.5, -40, 40, -82.5, 2, 2, -82.5, -2, 2, -82.5, 2, 2, -82.5, 40, -40, -82.5, 2, -2, -82.5, 40, 40, -82.5, 2, 2, -82.5, -40, 40, -82.5, 2, 2, -82.5, 40, 40, -82.5, 40, -40, -82.5, 40, -40, -82.5, -2, -2, -82.5, 2, -2, -82.5, -2, -2, -82.5, -40, 40, -82.5, -2, 2, -82.5, -40, -40, -82.5, -2, -2, -82.5, 40, -40, -82.5, -2, -2, -82.5, -40, -40, -82.5, -40, 40, -82.5, 40, -40, -82.5, 40, 40, -2.5, 40, -40, -2.5, 40, -40, -82.5, 40, 40, -82.5, 40, 40, -2.5, 40, 40, -2.5, 2, -2, -2.5, 40, -40, -2.5, 40, 40, -2.5, 2, 2, -2.5, 2, -2, -2.5, -2, -2, -2.5, -40, 40, -2.5, -40, -40, -2.5, 40, 40, -2.5, -2, 2, -2.5, 2, 2, -2.5, -2, 2, -2.5, -40, 40, -2.5, -2, -2, -2.5, -2, 2, -2.5, 40, 40, -2.5, -40, 40, -2.5, -2, -2, -2.5, 40, -40, -2.5, 2, -2, -2.5, -2, -2, -2.5, -40, -40, -2.5, 40, -40, -2.5, -40, -40, -82.5, 40, -40, -2.5, -40, -40, -2.5, -40, -40, -82.5, 40, -40, -82.5, 40, -40, -2.5, 40, 40, -82.5, -40, 40, -2.5, 40, 40, -2.5, 40, 40, -82.5, -40, 40, -82.5, -40, 40, -2.5, -2, 2, -85, -2, -2, -82.5, -2, 2, -82.5, -2, 2, -85, -2, -2, -85, -2, -2, -82.5, -2, -2, 0, -2, 2, -2.5, -2, -2, -2.5, -2, -2, 0, -2, 2, 0, -2, 2, -2.5, 2, 2, 0, 2, -2, -2.5, 2, 2, -2.5, 2, 2, 0, 2, -2, 0, 2, -2, -2.5, 2, -2, -85, 2, 2, -82.5, 2, -2, -82.5, 2, -2, -85, 2, 2, -85, 2, 2, -82.5, 2, -2, 0, -2, -2, -2.5, 2, -2, -2.5, 2, -2, 0, -2, -2, 0, -2, -2, -2.5, -2, -2, -82.5, 2, -2, -85, 2, -2, -82.5, -2, -2, -82.5, -2, -2, -85, 2, -2, -85, -2, 2, -2.5, 2, 2, 0, 2, 2, -2.5, -2, 2, -2.5, -2, 2, 0, 2, 2, 0, 2, 2, -82.5, -2, 2, -85, -2, 2, -82.5, 2, 2, -82.5, 2, 2, -85, -2, 2, -85 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 21.9975, 30.8985, 4.92944 )
+
+[sub_resource type="PlaneMesh" id=4]
+size = Vector2( 100, 100 )
+
+[sub_resource type="ConcavePolygonShape" id=5]
+data = PoolVector3Array( 50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50 )
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 52.0313, 10, 49.6381 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 43.1846, 44.024, 51.472 )
+
+[node name="RoomFactory01" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Out" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -85 )
+
+[node name="Room80x80" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 3 )
+
+[node name="StaticBody" type="StaticBody" parent="Room80x80"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Room80x80/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="AssemblyLine" parent="Room80x80" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18, 0, -42.977 )
+
+[node name="InstrumentMast" parent="Room80x80/AssemblyLine" instance=ExtResource( 12 )]
+transform = Transform( 4.30926, 1.88364e-07, -1.88364e-07, -1.88364e-07, -1.88364e-07, -4.30926, -1.88364e-07, 4.30926, -1.88364e-07, 36.9597, 2.27764, 1.30018 )
+
+[node name="InstrumentMast2" parent="Room80x80/AssemblyLine" instance=ExtResource( 12 )]
+transform = Transform( 4.30926, 1.88364e-07, -1.88364e-07, -1.88364e-07, -1.88364e-07, -4.30926, -1.88364e-07, 4.30926, -1.88364e-07, -33.7196, 2.27764, 1.30018 )
+
+[node name="StaticBody" type="StaticBody" parent="Room80x80/AssemblyLine"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Room80x80/AssemblyLine/StaticBody"]
+shape = SubResource( 7 )
+
+[node name="AssemblyLine2" parent="Room80x80" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18, 0, -42.977 )
+
+[node name="InstrumentMast" parent="Room80x80/AssemblyLine2" instance=ExtResource( 12 )]
+transform = Transform( 4.30926, 1.88364e-07, -1.88364e-07, -1.88364e-07, -1.88364e-07, -4.30926, -1.88364e-07, 4.30926, -1.88364e-07, 36.9597, 2.27764, 1.30018 )
+
+[node name="InstrumentMast2" parent="Room80x80/AssemblyLine2" instance=ExtResource( 12 )]
+transform = Transform( 4.30926, 1.88364e-07, -1.88364e-07, -1.88364e-07, -1.88364e-07, -4.30926, -1.88364e-07, 4.30926, -1.88364e-07, -33.7196, 2.27764, 1.30018 )
+
+[node name="StaticBody" type="StaticBody" parent="Room80x80/AssemblyLine2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Room80x80/AssemblyLine2/StaticBody"]
+shape = SubResource( 7 )
+
+[node name="LavaPlane" type="MeshInstance" parent="Room80x80"]
+transform = Transform( 0.834619, 0, 0, 0, 0.941634, 0, 0, 0, 0.811192, 0, -14.4186, -43.0012 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 13 )
+script = ExtResource( 15 )
+offset = Vector3( 0, 0, -0.01 )
+
+[node name="StaticBody" type="StaticBody" parent="Room80x80/LavaPlane"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Room80x80/LavaPlane/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="InstantDeath" type="Area" parent="Room80x80/LavaPlane"]
+collision_layer = 0
+collision_mask = 6
+input_ray_pickable = false
+monitorable = false
+script = ExtResource( 14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Room80x80/LavaPlane/InstantDeath"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.11159, 0 )
+shape = SubResource( 6 )
+
+[node name="TileFloating01" parent="Room80x80" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.4329, -21.2983 )
+
+[node name="TileFloating02" parent="Room80x80" instance=ExtResource( 9 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -13.4329, -63.2225 )
+
+[node name="ShellTriangle" parent="Room80x80" instance=ExtResource( 17 )]
+transform = Transform( 80.4012, 0, 0, 0, 80.4012, 0, 0, 0, 64.4288, 0, 0, -42.8751 )
+
+[node name="Ceiling4x4_01" parent="Room80x80" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7016, -10.7592 )
+
+[node name="Ceiling4x4_02" parent="Room80x80" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7016, -16.7592 )
+
+[node name="Ceiling4x4_03" parent="Room80x80" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7016, -22.7592 )
+
+[node name="Ceiling4x4_04" parent="Room80x80" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7016, -33.7592 )
+
+[node name="Ceiling4x4_05" parent="Room80x80" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7016, -39.7592 )
+
+[node name="Ceiling4x4_06" parent="Room80x80" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7016, -45.7592 )
+
+[node name="Ceiling4x4_07" parent="Room80x80" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7016, -56.7592 )
+
+[node name="Ceiling4x4_08" parent="Room80x80" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7016, -62.7592 )
+
+[node name="Ceiling4x4_09" parent="Room80x80" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.7016, -68.7592 )
+
+[node name="Ramp" parent="Room80x80" instance=ExtResource( 1 )]
+transform = Transform( 0.441408, 0, 0, 0, 0.441408, 0, 0, 0, 0.441408, 0, -2.5918, -80.9235 )
+
+[node name="Ramp2" parent="Room80x80" instance=ExtResource( 1 )]
+transform = Transform( -0.441408, 0, -3.85891e-08, 0, 0.441408, 0, 3.85891e-08, 0, -0.441408, 0, -2.5918, -4.07234 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.5 )
+shape = SubResource( 3 )

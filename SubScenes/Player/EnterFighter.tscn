@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Player/EnterVehicle.gd" type="Script" id=1]
+[ext_resource path="res://Models/SpaceFighter.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Materials/Secondary.material" type="Material" id=3]
+[ext_resource path="res://Materials/EmissionBlue.material" type="Material" id=4]
+[ext_resource path="res://Materials/Glass.material" type="Material" id=5]
+[ext_resource path="res://Materials/PrimaryBlue.material" type="Material" id=6]
+[ext_resource path="res://SubScenes/Platforms/EngineMulti.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 12.5233, 2.31023, 8.00374 )
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.706598
+height = 4.87538
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 7.19671, 9.34798, 8.46948 )
+
+[sub_resource type="Animation" id=4]
+length = 10.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("MeshInstance:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5, 10 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("MeshInstance:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -0.5, -0.23, 0.2, 0.23, 0.2, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5, 10 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("MeshInstance:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5, 10 )
+}
+
+[node name="EnterFighter" type="RigidBody"]
+collision_mask = 41
+gravity_scale = 0.2
+continuous_cd = true
+sleeping = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource( 1 )
+player_type = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -1.5, 0, -5.84122e-07, 0, 1.5, 0, 5.84122e-07, 0, -1.5, -1.61278e-06, -0.191695, -4.14156 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, -1.5, 0, 1.5, -6.55671e-08, -1.61278e-06, -5.79276, -0.655331 )
+shape = SubResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.64916, -0.422809 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -1.5, 0, -5.84122e-07, 0, 1.5, 0, 5.84122e-07, 0, -1.5, 0, -0.125975, 0 )
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 4 )
+material/3 = ExtResource( 5 )
+
+[node name="EngineMulti" parent="MeshInstance" instance=ExtResource( 7 )]
+transform = Transform( 1.24984, -1.24984, 0, 1.24984, 1.24984, 0, 0, 0, 1.76754, 3.82123, -1.68231, 0.300549 )
+
+[node name="EngineMulti2" parent="MeshInstance" instance=ExtResource( 7 )]
+transform = Transform( 1.24984, 1.24984, -5.75938e-07, -1.24984, 1.24984, -5.75938e-07, 0, 8.14499e-07, 1.76754, -3.81637, -1.68231, 0.300547 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

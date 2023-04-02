@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/EnergyField.ogg-0caa1a99b1ffc25b23dc8810a7730f7d.oggstr"
+
+[deps]
+
+source_file="res://Audio/AmbientSFX/EnergyField.ogg"
+dest_files=[ "res://.import/EnergyField.ogg-0caa1a99b1ffc25b23dc8810a7730f7d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

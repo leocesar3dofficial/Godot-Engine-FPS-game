@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Chunk04Grass.obj-ac9ed95a63b08cc91362c2762799c534.mesh"
+
+[deps]
+
+files=[ "res://.import/Chunk04Grass.obj-ac9ed95a63b08cc91362c2762799c534.mesh" ]
+
+source_file="res://Models/TerrainChunks/Chunk04Grass.obj"
+dest_files=[ "res://.import/Chunk04Grass.obj-ac9ed95a63b08cc91362c2762799c534.mesh", "res://.import/Chunk04Grass.obj-ac9ed95a63b08cc91362c2762799c534.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/EnergyElectricFuse08.wav-79c575812c8608415777ced79ab85785.sample"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/EnergyElectricFuse08.wav"
+dest_files=[ "res://.import/EnergyElectricFuse08.wav-79c575812c8608415777ced79ab85785.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

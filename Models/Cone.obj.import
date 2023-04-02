@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Cone.obj-8ac9a4b36f0da638b29f1af861f3abfd.mesh"
+
+[deps]
+
+files=[ "res://.import/Cone.obj-8ac9a4b36f0da638b29f1af861f3abfd.mesh" ]
+
+source_file="res://Models/Cone.obj"
+dest_files=[ "res://.import/Cone.obj-8ac9a4b36f0da638b29f1af861f3abfd.mesh", "res://.import/Cone.obj-8ac9a4b36f0da638b29f1af861f3abfd.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

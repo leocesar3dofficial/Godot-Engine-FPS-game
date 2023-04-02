@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Materials/SelectionFX.material" type="Material" id=1]
+[ext_resource path="res://Scripts/General/SelfDestruct.gd" type="Script" id=2]
+[ext_resource path="res://Audio/SoundEffects/PickupHealth.wav" type="AudioStream" id=3]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.724121, 0.294174, 0.294174, 1, 1, 0.183594, 0.183594, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0.00564972, 0.971591 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector3( 0, 30, 0 )
+scale_random = 1.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+hue_variation = 0.05
+hue_variation_random = 0.1
+
+[sub_resource type="QuadMesh" id=6]
+material = ExtResource( 1 )
+
+[node name="SelectionFX" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+cast_shadow = 0
+emitting = false
+amount = 600
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB( -4, -3.1362, -4, 8, 6.2724, 8 )
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 6 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5587, 0 )
+light_color = Color( 1, 0.301961, 0.301961, 1 )
+omni_range = 20.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 10.0
+autoplay = true
+bus = "SoundFX"

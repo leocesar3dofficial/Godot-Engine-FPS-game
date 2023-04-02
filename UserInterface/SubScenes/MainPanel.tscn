@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/UI/MainPanel.gd" type="Script" id=2]
+
+[node name="MainPanel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="Panel" parent="."]
+margin_right = 343.0
+margin_bottom = 396.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+continue_button_path = NodePath("VBoxContainer/Continue")
+credits_scene = "res://UserInterface/SubScenes/Credits.tscn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.5
+margin_top = -160.0
+margin_right = 136.5
+margin_bottom = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="Background/VBoxContainer"]
+margin_right = 273.0
+margin_bottom = 45.0
+focus_mode = 0
+disabled = true
+text = "CONTINUE"
+
+[node name="NewGame" type="Button" parent="Background/VBoxContainer"]
+margin_top = 55.0
+margin_right = 273.0
+margin_bottom = 100.0
+text = "NEW_GAME"
+
+[node name="Settings" type="Button" parent="Background/VBoxContainer"]
+margin_top = 110.0
+margin_right = 273.0
+margin_bottom = 155.0
+text = "SETTINGS"
+
+[node name="Bindings" type="Button" parent="Background/VBoxContainer"]
+margin_top = 165.0
+margin_right = 273.0
+margin_bottom = 210.0
+text = "KEY_BINDINGS"
+
+[node name="Credits" type="Button" parent="Background/VBoxContainer"]
+margin_top = 220.0
+margin_right = 273.0
+margin_bottom = 265.0
+text = "CREDITS"
+
+[node name="Exit" type="Button" parent="Background/VBoxContainer"]
+margin_top = 275.0
+margin_right = 273.0
+margin_bottom = 320.0
+text = "EXIT"
+
+[connection signal="mouse_entered" from="Background/VBoxContainer/Continue" to="Background" method="_on_Continue_mouse_entered"]
+[connection signal="pressed" from="Background/VBoxContainer/Continue" to="Background" method="_on_Continue_pressed"]
+[connection signal="mouse_entered" from="Background/VBoxContainer/NewGame" to="Background" method="_on_NewGame_mouse_entered"]
+[connection signal="pressed" from="Background/VBoxContainer/NewGame" to="Background" method="_on_NewGame_pressed"]
+[connection signal="mouse_entered" from="Background/VBoxContainer/Settings" to="Background" method="_on_ButtonSettings_mouse_entered"]
+[connection signal="pressed" from="Background/VBoxContainer/Settings" to="Background" method="_on_ButtonSettings_pressed"]
+[connection signal="mouse_entered" from="Background/VBoxContainer/Bindings" to="Background" method="_on_ButtonBindings_mouse_entered"]
+[connection signal="pressed" from="Background/VBoxContainer/Bindings" to="Background" method="_on_ButtonBindings_pressed"]
+[connection signal="mouse_entered" from="Background/VBoxContainer/Credits" to="Background" method="_on_ButtonCredits_mouse_entered"]
+[connection signal="pressed" from="Background/VBoxContainer/Credits" to="Background" method="_on_ButtonCredits_pressed"]
+[connection signal="mouse_entered" from="Background/VBoxContainer/Exit" to="Background" method="_on_ButtonExit_mouse_entered"]
+[connection signal="pressed" from="Background/VBoxContainer/Exit" to="Background" method="_on_ButtonExit_pressed"]

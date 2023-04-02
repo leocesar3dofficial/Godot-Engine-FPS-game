@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/General/SimpleRotate.gd" type="Script" id=1]
+[ext_resource path="res://SubScenes/Props/Railing.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SubScenes/Platforms/PlatformBasic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SubScenes/Platforms/Base.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/Outpost/PortalSimple.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/Props/Pole.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/BuildingModules/Bases/Base.003.tscn" type="PackedScene" id=7]
+[ext_resource path="res://SubScenes/Quest/PointOfInterest.tscn" type="PackedScene" id=8]
+
+[node name="PlatformPortal" type="Spatial"]
+
+[node name="Base003" parent="." instance=ExtResource( 7 )]
+transform = Transform( -8.96881e-08, -2.05182, 0, 1, -4.37114e-08, 0, 0, 0, 2.29619, 7.6847, 0, 9.10224 )
+
+[node name="PlatformBasic" parent="Base003" instance=ExtResource( 3 )]
+transform = Transform( -3.43933e-08, 1.61443, 0, -0.786827, -7.0569e-08, 0, 0, 0, 0.70309, 1.63712e-07, 3.7453, 7.44948 )
+
+[node name="Railing" parent="Base003/PlatformBasic" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0, 0 )
+skeleton = NodePath("../../..")
+
+[node name="Railing2" parent="Base003/PlatformBasic" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0 )
+skeleton = NodePath("../../..")
+
+[node name="Base" parent="Base003" instance=ExtResource( 4 )]
+transform = Transform( -2.87502e-08, 1.34954, 0, -0.657728, -5.89903e-08, 0, 0, 0, 0.58773, 0.242196, 3.7453, 7.44948 )
+script = ExtResource( 1 )
+angle = 0.5
+
+[node name="PortalSimple" parent="Base003/Base" instance=ExtResource( 5 )]
+transform = Transform( 0.740992, -2.53768e-15, 0, -9.75343e-16, 0.740992, 0, 0, 0, 0.740992, -2.84217e-14, 1.47831, 0 )
+
+[node name="Pole" parent="Base003" instance=ExtResource( 6 )]
+transform = Transform( -2.13037e-08, 1, 0, -0.487371, -4.37114e-08, 0, 0, 0, 0.435504, 2.96452e-07, 6.78202, 4.72602 )
+
+[node name="Pole2" parent="Base003" instance=ExtResource( 6 )]
+transform = Transform( -2.13037e-08, 1, 0, -0.487371, -4.37114e-08, 0, 0, 0, 0.435504, 2.96452e-07, 6.78202, 10.1048 )
+
+[node name="Pole3" parent="Base003" instance=ExtResource( 6 )]
+transform = Transform( -2.13037e-08, 1, 0, -0.487371, -4.37114e-08, 0, 0, 0, 0.435504, 4.08077e-08, 0.933572, 4.72602 )
+
+[node name="Pole4" parent="Base003" instance=ExtResource( 6 )]
+transform = Transform( -2.13037e-08, 1, 0, -0.487371, -4.37114e-08, 0, 0, 0, 0.435504, 4.08077e-08, 0.933572, 10.1048 )
+
+[node name="PointOfInterest" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18178, 26.145 )

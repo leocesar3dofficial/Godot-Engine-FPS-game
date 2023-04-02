@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/General/SelfDestruct.gd" type="Script" id=1]
+[ext_resource path="res://Materials/ProjectileNormalHit.material" type="Material" id=2]
+[ext_resource path="res://Audio/SoundEffects/SciFiExplosion01.wav" type="AudioStream" id=3]
+[ext_resource path="res://Materials/HeatDistortion.material" type="Material" id=4]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.0627918, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3( 0, -1, 0 )
+initial_velocity = -0.5
+initial_velocity_random = 1.0
+angular_velocity = 2160.0
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 2 )
+color = Color( 0.447059, 0.117647, 0.854902, 1 )
+hue_variation = 0.1
+hue_variation_random = 1.0
+
+[sub_resource type="QuadMesh" id=4]
+material = ExtResource( 2 )
+
+[sub_resource type="SphereMesh" id=5]
+radial_segments = 16
+rings = 8
+
+[sub_resource type="Animation" id=6]
+resource_name = "New Anim"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("HeatMesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.1, 0.1, 0.1 ), Vector3( 0.1, 0.1, 0.1 ), Vector3( 2, 2, 2 ) ]
+}
+
+[node name="ProjectileHit" type="Spatial"]
+script = ExtResource( 1 )
+use_object_pooling = true
+pool_name = "PoolingNormalHit"
+
+[node name="Particles" type="Particles" parent="."]
+cast_shadow = 0
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+max_distance = 80.0
+bus = "SoundFX"
+doppler_tracking = 1
+
+[node name="HeatMesh" type="MeshInstance" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+cast_shadow = 0
+mesh = SubResource( 5 )
+material/0 = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+"anims/New Anim" = SubResource( 6 )

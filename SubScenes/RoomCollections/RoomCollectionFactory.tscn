@@ -1,0 +1,14 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/General/RoomCollection.gd" type="Script" id=1]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionFacility/Corridor01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionFactory/FactoryRoom01.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionFacility/VerticalPassageUP.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionFacility/VerticalPassageDown.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionFacility/CorridorTurnUp.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SubScenes/RoomCollections/RoomCollectionFacility/CorridorTurnDown.tscn" type="PackedScene" id=9]
+
+[node name="RoomCollectionFactory" type="Spatial"]
+script = ExtResource( 1 )
+rooms = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 3 ) ]
+probabilities = [ 1.0, 0.5, 0.5, 0.5, 0.5, 1.0 ]

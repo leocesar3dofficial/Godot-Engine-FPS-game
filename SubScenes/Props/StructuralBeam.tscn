@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SubScenes/Platforms/Scafold.tscn" type="PackedScene" id=1]
+
+[node name="StructuralBeam" type="Spatial"]
+
+[node name="Scafold" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.951227, 0 )
+
+[node name="Scafold4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.805745, 0 )
+
+[node name="Scafold2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.00043, 4.373e-08, 0 )
+
+[node name="Scafold3" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.829368, -3.62528e-08, 0 )

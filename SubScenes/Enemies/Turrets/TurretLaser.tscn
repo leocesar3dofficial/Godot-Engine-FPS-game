@@ -1,0 +1,135 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://SubScenes/Projectiles/ProjectileNormalHit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Audio/SoundEffects/SciFiGunFire02.wav" type="AudioStream" id=2]
+[ext_resource path="res://Materials/Primary.material" type="Material" id=3]
+[ext_resource path="res://Models/Barrels.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://Materials/Emission.material" type="Material" id=5]
+[ext_resource path="res://Materials/EmissionYellow.material" type="Material" id=6]
+[ext_resource path="res://Scripts/AI/Turret/LaserMesh.gd" type="Script" id=7]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionWithDebris.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/General/DamageReceiver.gd" type="Script" id=9]
+[ext_resource path="res://Audio/SoundEffects/EnemyHit04.wav" type="AudioStream" id=10]
+[ext_resource path="res://Audio/SoundEffects/EnemyHit03.wav" type="AudioStream" id=11]
+[ext_resource path="res://Materials/PrimaryYellow.material" type="Material" id=12]
+[ext_resource path="res://SubScenes/VisualEffects/LaserFX.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Models/TurretBase.mesh" type="ArrayMesh" id=14]
+[ext_resource path="res://SubScenes/VisualEffects/ForceField.tscn" type="PackedScene" id=15]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.36787, 0.827999, 1.42091 )
+
+[sub_resource type="ArrayMesh" id=2]
+surfaces/0 = {
+"aabb": AABB( -0.948547, -0.813707, -1, 1.90205, 1.81367, 1 ),
+"array_data": PoolByteArray( 127, 206, 20, 63, 18, 79, 80, 191, 254, 255, 127, 191, 255, 130, 0, 0, 126, 255, 0, 127, 0, 60, 0, 56, 56, 33, 24, 191, 252, 228, 77, 191, 0, 0, 0, 128, 255, 130, 0, 0, 126, 255, 0, 127, 102, 58, 0, 0, 55, 33, 24, 191, 252, 228, 77, 191, 0, 0, 128, 191, 255, 130, 0, 0, 126, 255, 0, 127, 102, 58, 0, 56, 55, 33, 24, 191, 252, 228, 77, 191, 0, 0, 128, 191, 135, 218, 0, 0, 38, 135, 0, 127, 102, 58, 0, 56, 247, 211, 114, 191, 63, 30, 162, 62, 0, 0, 0, 128, 135, 218, 0, 0, 38, 135, 0, 127, 204, 56, 0, 0, 245, 211, 114, 191, 66, 30, 162, 62, 0, 0, 128, 191, 135, 218, 0, 0, 38, 135, 0, 127, 204, 56, 0, 56, 245, 211, 114, 191, 66, 30, 162, 62, 0, 0, 128, 191, 183, 103, 0, 0, 153, 183, 0, 127, 204, 56, 0, 56, 191, 113, 3, 60, 228, 253, 127, 63, 0, 0, 0, 128, 183, 103, 0, 0, 153, 183, 0, 127, 102, 54, 0, 0, 192, 114, 3, 60, 229, 253, 127, 63, 0, 0, 128, 191, 183, 103, 0, 0, 153, 183, 0, 127, 102, 54, 0, 56, 233, 24, 116, 63, 19, 78, 154, 62, 0, 0, 0, 128, 0, 0, 127, 0, 153, 183, 0, 127, 145, 37, 104, 57, 191, 113, 3, 60, 228, 253, 127, 63, 0, 0, 0, 128, 0, 0, 127, 0, 153, 183, 0, 127, 248, 46, 141, 59, 247, 211, 114, 191, 63, 30, 162, 62, 0, 0, 0, 128, 0, 0, 127, 0, 153, 183, 0, 127, 65, 54, 141, 59, 191, 113, 3, 60, 228, 253, 127, 63, 0, 0, 0, 128, 75, 102, 0, 0, 154, 75, 0, 127, 102, 54, 0, 0, 231, 24, 116, 63, 19, 78, 154, 62, 0, 0, 128, 191, 75, 102, 0, 0, 154, 75, 0, 127, 102, 50, 0, 56, 192, 114, 3, 60, 229, 253, 127, 63, 0, 0, 128, 191, 75, 102, 0, 0, 154, 75, 0, 127, 102, 54, 0, 56, 233, 24, 116, 63, 19, 78, 154, 62, 0, 0, 0, 128, 120, 216, 0, 0, 40, 120, 0, 127, 102, 50, 0, 0, 127, 206, 20, 63, 18, 79, 80, 191, 254, 255, 127, 191, 120, 216, 0, 0, 40, 120, 0, 127, 0, 0, 0, 56, 231, 24, 116, 63, 19, 78, 154, 62, 0, 0, 128, 191, 120, 216, 0, 0, 40, 120, 0, 127, 102, 50, 0, 56, 55, 33, 24, 191, 252, 228, 77, 191, 0, 0, 128, 191, 0, 0, 129, 0, 153, 183, 0, 129, 211, 59, 104, 57, 192, 114, 3, 60, 229, 253, 127, 63, 0, 0, 128, 191, 0, 0, 129, 0, 153, 183, 0, 129, 223, 56, 141, 59, 231, 24, 116, 63, 19, 78, 154, 62, 0, 0, 128, 191, 0, 0, 129, 0, 153, 183, 0, 129, 44, 56, 104, 57, 127, 206, 20, 63, 18, 79, 80, 191, 254, 255, 127, 191, 255, 130, 0, 0, 126, 255, 0, 127, 0, 60, 0, 56, 127, 206, 20, 63, 18, 79, 80, 191, 0, 0, 0, 128, 255, 130, 0, 0, 126, 255, 0, 127, 0, 60, 0, 0, 56, 33, 24, 191, 252, 228, 77, 191, 0, 0, 0, 128, 255, 130, 0, 0, 126, 255, 0, 127, 102, 58, 0, 0, 55, 33, 24, 191, 252, 228, 77, 191, 0, 0, 128, 191, 135, 218, 0, 0, 38, 135, 0, 127, 102, 58, 0, 56, 56, 33, 24, 191, 252, 228, 77, 191, 0, 0, 0, 128, 135, 218, 0, 0, 38, 135, 0, 127, 102, 58, 0, 0, 247, 211, 114, 191, 63, 30, 162, 62, 0, 0, 0, 128, 135, 218, 0, 0, 38, 135, 0, 127, 204, 56, 0, 0, 247, 211, 114, 191, 63, 30, 162, 62, 0, 0, 0, 128, 183, 103, 0, 0, 153, 183, 0, 127, 204, 56, 0, 0, 56, 33, 24, 191, 252, 228, 77, 191, 0, 0, 0, 128, 0, 0, 127, 0, 153, 183, 0, 127, 166, 55, 104, 57, 127, 206, 20, 63, 18, 79, 80, 191, 0, 0, 0, 128, 0, 0, 127, 0, 153, 183, 0, 127, 0, 52, 20, 56, 191, 113, 3, 60, 228, 253, 127, 63, 0, 0, 0, 128, 75, 102, 0, 0, 154, 75, 0, 127, 102, 54, 0, 0, 233, 24, 116, 63, 19, 78, 154, 62, 0, 0, 0, 128, 75, 102, 0, 0, 154, 75, 0, 127, 102, 50, 0, 0, 231, 24, 116, 63, 19, 78, 154, 62, 0, 0, 128, 191, 75, 102, 0, 0, 154, 75, 0, 127, 102, 50, 0, 56, 233, 24, 116, 63, 19, 78, 154, 62, 0, 0, 0, 128, 120, 216, 0, 0, 40, 120, 0, 127, 102, 50, 0, 0, 127, 206, 20, 63, 18, 79, 80, 191, 0, 0, 0, 128, 120, 216, 0, 0, 40, 120, 0, 127, 0, 0, 0, 0, 127, 206, 20, 63, 18, 79, 80, 191, 254, 255, 127, 191, 120, 216, 0, 0, 40, 120, 0, 127, 0, 0, 0, 56, 127, 206, 20, 63, 18, 79, 80, 191, 254, 255, 127, 191, 0, 0, 129, 0, 153, 183, 0, 129, 0, 58, 20, 56, 245, 211, 114, 191, 66, 30, 162, 62, 0, 0, 128, 191, 0, 0, 129, 0, 153, 183, 0, 129, 32, 59, 141, 59 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 14, 0, 13, 0, 15, 0, 17, 0, 16, 0, 18, 0, 20, 0, 19, 0, 21, 0, 23, 0, 22, 0, 24, 0, 26, 0, 25, 0, 6, 0, 7, 0, 27, 0, 11, 0, 29, 0, 28, 0, 29, 0, 11, 0, 9, 0, 30, 0, 32, 0, 31, 0, 33, 0, 35, 0, 34, 0, 20, 0, 18, 0, 36, 0, 18, 0, 19, 0, 37, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 48,
+"material": ExtResource( 5 ),
+"name": "Emission",
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 38
+}
+
+[sub_resource type="SphereShape" id=3]
+resource_local_to_scene = true
+radius = 100.0
+
+[node name="TurretLaser" type="StaticBody"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 7 )
+base_path = NodePath("Base_Spacial")
+barrel_path = NodePath("Base_Spacial/Barrel_Spacial")
+rotation_speed = 3.0
+min_barrel_x = -0.1
+max_barrel_x = 1.2
+top_node_path = NodePath(".")
+area_node_path = NodePath("Area")
+attack_range = 200
+gunshot_spread = 45
+origin_offset = Vector3( 0, 0.4, 0 )
+target_offset = Vector3( 0, 0.2, 0 )
+layer_mask = 35
+laser_mesh_spatial_path = NodePath("Base_Spacial/Barrel_Spacial/LaserMesh")
+audio_player_path = NodePath("AudioStreamPlayer3D")
+gun_fire_sound_effect = ExtResource( 2 )
+damage_amount = 20
+projectile_hit = ExtResource( 1 )
+
+[node name="DamageReceiver" type="Node" parent="."]
+script = ExtResource( 9 )
+hit_meshes_paths = [ NodePath("../Base_Spacial/HardpointDevCruise"), NodePath("../Base_Spacial/Barrel_Spacial/HardpointGunBarb") ]
+blink_material = ExtResource( 5 )
+die_effect = ExtResource( 8 )
+hit_points = 100.0
+slam_back_force = 0.0
+die_effect_offset = 0.75
+audio_player_path = NodePath("../AudioStreamPlayer3D")
+grunts = [ ExtResource( 10 ), ExtResource( 11 ) ]
+die_effect_scale = 6.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83331, 0 )
+shape = SubResource( 1 )
+
+[node name="Base_Spacial" type="Spatial" parent="."]
+
+[node name="HardpointDevCruise" type="MeshInstance" parent="Base_Spacial"]
+cast_shadow = 0
+mesh = ExtResource( 14 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 12 )
+material/2 = ExtResource( 6 )
+
+[node name="Barrel_Spacial" type="Spatial" parent="Base_Spacial"]
+transform = Transform( 0.999999, -2.64233e-14, -4.08562e-14, 1.66533e-14, 0.999998, 1.78814e-07, 6.75016e-14, -1.78814e-07, 0.999998, -4.89876e-07, 0.521299, -0.612865 )
+
+[node name="HardpointGunBarb" type="MeshInstance" parent="Base_Spacial/Barrel_Spacial"]
+transform = Transform( 1, -2.22349e-21, 3.38813e-21, -2.1182e-22, 1, 1.42109e-14, -6.77626e-21, -1.42109e-14, 1, 0, 0, 0 )
+cast_shadow = 0
+mesh = ExtResource( 4 )
+material/0 = ExtResource( 3 )
+
+[node name="LaserMesh" type="Spatial" parent="Base_Spacial/Barrel_Spacial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41061e-13, 0.0141206, -2.3241 )
+
+[node name="Cylinder" type="MeshInstance" parent="Base_Spacial/Barrel_Spacial/LaserMesh"]
+transform = Transform( 0.13, 2.61522e-21, 1.45413e-18, -2.61522e-21, 0.13, -1.4013e-43, -1.89037e-21, -3.80284e-41, 100, 0.377, 0, 0 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+skeleton = NodePath("")
+material/0 = ExtResource( 6 )
+
+[node name="Cylinder2" type="MeshInstance" parent="Base_Spacial/Barrel_Spacial/LaserMesh"]
+transform = Transform( 0.13, 1.2389e-16, -1.90592e-13, -1.2389e-16, 0.13, -9.80125e-35, 2.47769e-16, 2.36124e-31, 100, -0.381, 0, 0 )
+cast_shadow = 0
+mesh = SubResource( 2 )
+skeleton = NodePath("")
+material/0 = ExtResource( 6 )
+
+[node name="LaserFX" parent="Base_Spacial/Barrel_Spacial/LaserMesh" instance=ExtResource( 13 )]
+transform = Transform( 1, -7.30569e-21, 1.35525e-20, -2.11816e-22, 1, 5.68434e-14, -2.71051e-20, -5.68434e-14, 1, 0.377853, 0, 0 )
+
+[node name="LaserFX2" parent="Base_Spacial/Barrel_Spacial/LaserMesh" instance=ExtResource( 13 )]
+transform = Transform( 1, -1.06938e-20, 2.03288e-20, -2.11813e-22, 1, 8.52651e-14, -4.06576e-20, -8.52651e-14, 1, -0.382974, 0, 0 )
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 2
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38227, 0 )
+unit_db = 20.0
+bus = "SoundFX"
+
+[node name="ForceField" parent="." instance=ExtResource( 15 )]
+transform = Transform( 3.11309, 0, 0, 0, 3.11309, 0, 0, 0, 3.11309, 0, 0.741684, 0 )

@@ -1,0 +1,51 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Scripts/UI/Jukebox.gd" type="Script" id=1]
+[ext_resource path="res://Audio/SoundTracks/Battle/DEgITx-Disillusion-CC BY 4.0.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Audio/SoundTracks/Battle/DEgITx-Digital Tale (Intro)-CC BY 4.0.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Audio/SoundTracks/Battle/DEgITx-Between Death And Stars-CC BY 4.0.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Audio/SoundTracks/Battle/DEgITx-Grim Reaper (feat. Matty M.)-CC BY 4.0.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Audio/SoundTracks/Ambient/Bausic Productions-Not alone-CC BY 4.0.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Audio/SoundTracks/Ambient/Devtrap-Electricity-CC BY 4.0.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Audio/SoundTracks/Ambient/Devtrap-Clouds-CC BY 4.0.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Audio/SoundTracks/Ambient/Devtrap-Lullaby-CC BY 4.0.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Audio/SoundTracks/Battle/Alexander Nakarada-Sovereign-CC BY 4.0.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Audio/SoundTracks/Battle/Alexander Nakarada-Apocalypse-CC BY 4.0.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Audio/SoundTracks/Battle/Vindsvept-The Undead Horde-CC BY 4.0.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Audio/SoundTracks/Battle/Vindsvept-As the Smoke Clears-CC BY 4.0.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Audio/SoundTracks/Battle/TeknoAXE-Waypoint H-CC BY 4.0.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Audio/SoundTracks/Ambient/Eirik Daleng-Time-CC BY 3.0.ogg" type="AudioStream" id=15]
+[ext_resource path="res://Audio/SoundTracks/Battle/Vindsvept-Collision-CC BY 4.0.ogg" type="AudioStream" id=16]
+[ext_resource path="res://Audio/SoundTracks/Battle/Alexander Nakarada-Hellfire-CC BY 4.0.ogg" type="AudioStream" id=17]
+[ext_resource path="res://Audio/SoundTracks/Battle/DavidKBD-Suffocation-CC BY 4.0.ogg" type="AudioStream" id=18]
+[ext_resource path="res://Audio/SoundTracks/Ambient/DavidKBD-Soul evisceration-CC BY 4.0.ogg" type="AudioStream" id=19]
+[ext_resource path="res://Audio/SoundTracks/Ambient/DavidKBD-Rotten Offal-CC BY 4.0.ogg" type="AudioStream" id=20]
+[ext_resource path="res://Audio/SoundTracks/Battle/DavidKBD-The desolation of a civilization-CC BY 4.0.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Audio/SoundTracks/Battle/DavidKBD-Evil soul inside-CC BY 4.0.ogg" type="AudioStream" id=22]
+[ext_resource path="res://Audio/SoundTracks/Battle/DavidKBD-God of darkness-CC BY 4.0.ogg" type="AudioStream" id=23]
+
+[node name="Jukebox" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+ambient_music = [ ExtResource( 6 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 15 ) ]
+battle_music = [ ExtResource( 11 ), ExtResource( 17 ), ExtResource( 10 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 16 ), ExtResource( 12 ) ]
+
+[node name="MusicPlayerA" type="AudioStreamPlayer" parent="."]
+bus = "SoundTrack"
+
+[node name="MusicPlayerB" type="AudioStreamPlayer" parent="."]
+bus = "SoundTrack"
+
+[node name="TimerSilence" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="TimerStopA" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerStopB" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TimerSilence" to="." method="_on_TimerSilence_timeout"]
+[connection signal="timeout" from="TimerStopA" to="." method="_on_TimerStopA_timeout"]
+[connection signal="timeout" from="TimerStopB" to="." method="_on_TimerStopB_timeout"]

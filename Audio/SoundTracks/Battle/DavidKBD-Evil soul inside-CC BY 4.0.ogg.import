@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DavidKBD-Evil soul inside-CC BY 4.0.ogg-ff7b362b2e739261e5c2f0472759eb94.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Battle/DavidKBD-Evil soul inside-CC BY 4.0.ogg"
+dest_files=[ "res://.import/DavidKBD-Evil soul inside-CC BY 4.0.ogg-ff7b362b2e739261e5c2f0472759eb94.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

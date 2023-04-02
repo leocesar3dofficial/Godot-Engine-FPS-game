@@ -1,0 +1,70 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Environments/MyEnvironmentDefault.tres" type="Environment" id=1]
+[ext_resource path="res://SubScenes/Props/AsteroidField.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Generators/RandomWorldEnvironment.gd" type="Script" id=4]
+[ext_resource path="res://SubScenes/Player/PlayerFactory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/Friendly/FighterFriend.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SubScenes/Other/Spawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SubScenes/Other/UnitsManager.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/ObjectPooling/ObjectPooling.gd" type="Script" id=12]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionPool.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileNormalHitPool.tscn" type="PackedScene" id=14]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemy2BigPool.tscn" type="PackedScene" id=15]
+[ext_resource path="res://SubScenes/Enemies/PlanetaryShip01.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scripts/General/ShadowSettings.gd" type="Script" id=17]
+
+[node name="Level" type="Spatial"]
+
+[node name="UnitsManager" parent="." instance=ExtResource( 11 )]
+badge_text = "destroy Soulhollower fleet"
+enemies_to_destroy = 2
+gravity_type = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+script = ExtResource( 4 )
+level_distance_culling = 400.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+extents = Vector3( 10000, 100, 10000 )
+origin_offset = Vector3( 0, 20, 0 )
+
+[node name="Spawner" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0 )
+entities = [ ExtResource( 9 ) ]
+enum_unit_type = 1
+
+[node name="AsteroidField" parent="." instance=ExtResource( 2 )]
+transform = Transform( 150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.965926, -1.5099e-14, -0.258819, 0.183013, 0.707107, 0.683013, 0.183013, -0.707107, 0.683013, 0, 0, 0 )
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 20.0
+script = ExtResource( 17 )
+
+[node name="PoolingProjectileEnemy" type="Spatial" parent="."]
+script = ExtResource( 12 )
+object_scene = ExtResource( 15 )
+pool_size = 100
+
+[node name="PoolingNormalHit" type="Spatial" parent="."]
+script = ExtResource( 12 )
+object_scene = ExtResource( 14 )
+
+[node name="PoolingDamageHit" type="Spatial" parent="."]
+script = ExtResource( 12 )
+object_scene = ExtResource( 13 )
+
+[node name="PlanetaryShip" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 200, -100, 100 )
+
+[node name="PlanetaryShip2" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 100, -100 )
+
+[node name="PlayerFactory" parent="." instance=ExtResource( 5 )]
+player_type = 1
+in_space_or_water = true

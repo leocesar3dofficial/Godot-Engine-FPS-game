@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/UI/DebugInfo.gd" type="Script" id=1]
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=2]
+
+[node name="DebugInfo" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 40.0
+margin_top = 141.0
+margin_right = 256.0
+margin_bottom = 180.0
+theme = ExtResource( 2 )
+text = "FPS counter"
+script = ExtResource( 1 )

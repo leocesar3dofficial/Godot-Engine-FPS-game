@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SubScenes/VisualEffects/MotionTrail/MotionTrail.material" type="Material" id=1]
+[ext_resource path="res://SubScenes/VisualEffects/MotionTrail/MotionTrail.gd" type="Script" id=2]
+
+[node name="MotionTrail" type="ImmediateGeometry"]
+material_override = ExtResource( 1 )
+cast_shadow = 0
+script = ExtResource( 2 )
+fromWidth = 0.1
+scaleAcceleration = 0.5
+motionDelta = 0.5
+startColor = Color( 0.556863, 0.258824, 0, 0.380392 )
+endColor = Color( 0.686275, 0, 0, 0 )

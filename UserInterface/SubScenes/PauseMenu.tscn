@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scripts/UI/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://UserInterface/SubScenes/MouseMovementJoypad.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UserInterface/SubScenes/Settings.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UserInterface/SubScenes/KeyBindings.tscn" type="PackedScene" id=5]
+
+[node name="PauseMenu" type="Popup"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+popup_exclusive = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+main_menu_path = "res://UserInterface/SubScenes/MainMenu.tscn"
+
+[node name="ColorRect" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -148.5
+margin_top = -211.5
+margin_right = 148.5
+margin_bottom = 211.5
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -123.5
+margin_top = -184.5
+margin_right = 123.5
+margin_bottom = 184.5
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="ColorRect/VBoxContainer"]
+margin_right = 247.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Game paused"
+align = 1
+
+[node name="ButtonResume" type="Button" parent="ColorRect/VBoxContainer"]
+margin_top = 49.0
+margin_right = 247.0
+margin_bottom = 94.0
+text = "Resume"
+
+[node name="ButtonRestartLevel" type="Button" parent="ColorRect/VBoxContainer"]
+margin_top = 104.0
+margin_right = 247.0
+margin_bottom = 149.0
+text = "Restart level"
+
+[node name="ButtonSettings" type="Button" parent="ColorRect/VBoxContainer"]
+margin_top = 159.0
+margin_right = 247.0
+margin_bottom = 204.0
+text = "SETTINGS"
+
+[node name="ButtonKeyBindings" type="Button" parent="ColorRect/VBoxContainer"]
+margin_top = 214.0
+margin_right = 247.0
+margin_bottom = 259.0
+text = "KEY_BINDINGS"
+
+[node name="ButtonMainMenu" type="Button" parent="ColorRect/VBoxContainer"]
+margin_top = 269.0
+margin_right = 247.0
+margin_bottom = 314.0
+text = "Main menu"
+
+[node name="ButtonExit" type="Button" parent="ColorRect/VBoxContainer"]
+margin_top = 324.0
+margin_right = 247.0
+margin_bottom = 369.0
+text = "EXIT"
+
+[node name="MouseMovementJoypad" parent="." instance=ExtResource( 3 )]
+
+[node name="Settings" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="OptionButton" parent="Settings/BG/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer10" index="1"]
+margin_right = 431.0
+text = "Disabled"
+items = [ "Disabled", null, false, 0, null, "MSAA 2X", null, false, 1, null, "MSAA 4X", null, false, 2, null, "MSAA 8X", null, false, 3, null, "MSAA 16X", null, false, 4, null ]
+selected = 0
+
+[node name="ButtonCustomize" parent="Settings/BG/VBoxContainer/HBoxContainer2" index="1"]
+nodo_to_show_path = NodePath("../../../../../KeyBindings")
+
+[node name="KeyBindings" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="Button" parent="KeyBindings/ColorRect/VBoxContainer/Buttons" index="2"]
+nodo_to_show_path = NodePath("../../../../../Settings")
+
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ButtonResume" to="." method="_on_ButtonResume_mouse_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/ButtonResume" to="." method="_on_ButtonResume_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ButtonRestartLevel" to="." method="_on_ButtonRestartLevel_mouse_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/ButtonRestartLevel" to="." method="_on_ButtonRestartLevel_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ButtonSettings" to="." method="_on_ButtonSettings_mouse_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/ButtonSettings" to="." method="_on_ButtonSettings_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ButtonKeyBindings" to="." method="_on_ButtonKeyBindings_mouse_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/ButtonKeyBindings" to="." method="_on_ButtonKeyBindings_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ButtonMainMenu" to="." method="_on_ButtonMainMenu_mouse_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/ButtonMainMenu" to="." method="_on_ButtonMainMenu_pressed"]
+[connection signal="mouse_entered" from="ColorRect/VBoxContainer/ButtonExit" to="." method="_on_ButtonExit_mouse_entered"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/ButtonExit" to="." method="_on_ButtonExit_pressed"]
+
+[editable path="Settings"]
+[editable path="KeyBindings"]

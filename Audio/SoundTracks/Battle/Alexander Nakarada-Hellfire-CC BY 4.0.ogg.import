@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Alexander Nakarada-Hellfire-CC BY 4.0.ogg-3e6cebef140cee597b24f0f5280ac4e8.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Battle/Alexander Nakarada-Hellfire-CC BY 4.0.ogg"
+dest_files=[ "res://.import/Alexander Nakarada-Hellfire-CC BY 4.0.ogg-3e6cebef140cee597b24f0f5280ac4e8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

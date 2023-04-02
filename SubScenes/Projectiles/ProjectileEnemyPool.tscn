@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Weapons/ProjectilePool.gd" type="Script" id=1]
+[ext_resource path="res://Materials/EmissionOrange.material" type="Material" id=5]
+[ext_resource path="res://Audio/SoundEffects/SciFiGunFire01.wav" type="AudioStream" id=6]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 2, 2, 27 )
+
+[node name="Projectile" type="RayCast"]
+enabled = true
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 35
+script = ExtResource( 1 )
+speed = 60.0
+collide_with_layer_value = 2
+time_to_destroy = 4
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.0319791, 0, 0, 0, 0.0319791, 0, 0, 0, 0.0319791, 0, 0, -0.486372 )
+material_override = ExtResource( 5 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+light_color = Color( 1, 0.537255, 0, 1 )
+light_energy = 2.0
+light_specular = 1.0
+light_bake_mode = 0
+omni_range = 7.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+bus = "SoundFX"

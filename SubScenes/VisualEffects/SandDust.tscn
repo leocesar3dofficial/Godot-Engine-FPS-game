@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Models/SmokePlane.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/SandDust.material" type="Material" id=2]
+[ext_resource path="res://Scripts/General/AreaDamage.gd" type="Script" id=3]
+
+[sub_resource type="SphereShape" id=7]
+radius = 4.0
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.874074, 1 )
+colors = PoolColorArray( 0.414063, 0.414063, 0.414063, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0.1, 0 )
+radial_accel = 0.1
+radial_accel_random = 1.0
+scale = 3.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="Area" type="Area"]
+monitorable = false
+collision_layer = 0
+collision_mask = 6
+script = ExtResource( 3 )
+damage = 10.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 7 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -1.45068, 0 )
+material_override = ExtResource( 2 )
+emitting = false
+amount = 100
+visibility_aabb = AABB( -11.016, -33.3194, -16.0143, 22.0319, 66.6388, 32.0286 )
+process_material = SubResource( 6 )
+draw_pass_1 = ExtResource( 1 )

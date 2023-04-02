@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/PlantLowPoly.obj-ac385cc8789104a9e41e3c9c3a8ec104.mesh"
+
+[deps]
+
+files=[ "res://.import/PlantLowPoly.obj-ac385cc8789104a9e41e3c9c3a8ec104.mesh" ]
+
+source_file="res://Models/PlantLowPoly.obj"
+dest_files=[ "res://.import/PlantLowPoly.obj-ac385cc8789104a9e41e3c9c3a8ec104.mesh", "res://.import/PlantLowPoly.obj-ac385cc8789104a9e41e3c9c3a8ec104.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

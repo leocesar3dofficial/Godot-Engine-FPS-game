@@ -1,0 +1,214 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Scripts/General/DamageReceiver.gd" type="Script" id=1]
+[ext_resource path="res://Materials/Emission.material" type="Material" id=2]
+[ext_resource path="res://SubScenes/VisualEffects/MultipleExplosions.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/AI/FSM/BaseClasses/StateManager.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/AI/FSM/Implementation/States/Drone/IdleDrone.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/AI/FSM/BaseClasses/Transition.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/AI/FSM/Implementation/States/Drone/AttackDrone.gd" type="Script" id=7]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemy2Big.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Audio/SoundEffects/SciFiGunFire01.wav" type="AudioStream" id=9]
+[ext_resource path="res://Scripts/AI/FSM/Implementation/States/Drone/SeekDrone.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/AI/FSM/Implementation/Conditions/CanSeeTarget.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/AI/FSM/Implementation/Conditions/CanFire.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/AI/FSM/Implementation/Conditions/Timer.gd" type="Script" id=13]
+[ext_resource path="res://Materials/PrimaryWhite.material" type="Material" id=14]
+[ext_resource path="res://Models/SpaceFighter.obj" type="ArrayMesh" id=15]
+[ext_resource path="res://Materials/EmissionOrange.material" type="Material" id=16]
+[ext_resource path="res://Materials/Glass.material" type="Material" id=17]
+[ext_resource path="res://Audio/SoundEffects/EnemyHit02.wav" type="AudioStream" id=18]
+[ext_resource path="res://Audio/SoundEffects/EnemyHit01.wav" type="AudioStream" id=19]
+[ext_resource path="res://Audio/SoundEffects/EnemyHit03.wav" type="AudioStream" id=20]
+[ext_resource path="res://Audio/SoundEffects/EnemyHit04.wav" type="AudioStream" id=21]
+[ext_resource path="res://Scripts/AI/FSM/Implementation/Conditions/GoToStateRandom.gd" type="Script" id=22]
+[ext_resource path="res://SubScenes/Other/DestroyFarAway.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Materials/Secondary.material" type="Material" id=24]
+[ext_resource path="res://SubScenes/VisualEffects/ThrusterParticles.tscn" type="PackedScene" id=25]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 11.9399, 2.09827, 4.1267 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 9.05653, 1.4426, 4.02922 )
+
+[sub_resource type="SphereShape" id=3]
+radius = 300.0
+
+[node name="FighterEnemy" type="KinematicBody"]
+collision_layer = 4
+collision_mask = 55
+
+[node name="DamageReceiver" type="Node" parent="."]
+script = ExtResource( 1 )
+movement_node_path = NodePath("../Logic/FSM/StateManager")
+hit_meshes_paths = [ NodePath("../Model") ]
+blink_material = ExtResource( 2 )
+die_effect = ExtResource( 3 )
+hit_points = 50.0
+slam_back_force = 2.0
+die_effect_offset = 0.0
+audio_player_path = NodePath("../Grunts")
+grunts = [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ) ]
+enum_unit_type = 0
+die_effect_scale = 6.0
+wait_time_to_free = 0.5
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.195694, 0.986979 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.37, -5.9 )
+shape = SubResource( 2 )
+
+[node name="Tail" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, -6, 0 )
+__meta__ = {
+"_editor_description_": "Para o drone o Tail fica desligado: Enabled = false"
+}
+
+[node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 2
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 3 )
+
+[node name="Logic" type="Node" parent="."]
+
+[node name="FSM" type="Node" parent="Logic"]
+
+[node name="StateManager" type="Node" parent="Logic/FSM"]
+script = ExtResource( 4 )
+kinematic_body_path = NodePath("../../..")
+tail_path = NodePath("../../../Tail")
+apply_gravity = false
+gravity = -0.1
+
+[node name="Idle" type="Node" parent="Logic/FSM/StateManager"]
+script = ExtResource( 5 )
+rotation_speed = 0.1
+top_node_path = NodePath("../../../..")
+manager_path = NodePath("..")
+
+[node name="Transition 0" type="Node" parent="Logic/FSM/StateManager/Idle"]
+script = ExtResource( 6 )
+condition_path = NodePath("../../../Conditions/CanSeeTarget")
+target_state_path = NodePath("../../Seek")
+
+[node name="Transition 1" type="Node" parent="Logic/FSM/StateManager/Idle"]
+script = ExtResource( 6 )
+condition_path = NodePath("../../../Conditions/GoToStateRandom")
+target_state_path = NodePath("../../Seek")
+
+[node name="Attack" type="Node" parent="Logic/FSM/StateManager"]
+script = ExtResource( 7 )
+move_speed = 1000.0
+rotation_speed = 3.0
+top_node_path = NodePath("../../../..")
+manager_path = NodePath("..")
+projectile = ExtResource( 8 )
+fire_rate = 3.0
+fire_points_paths = [ NodePath("../../../../FirePoint1"), NodePath("../../../../FirePoint2"), NodePath("../../../../FirePoint3"), NodePath("../../../../FirePoint4") ]
+audio_player_path = NodePath("../../../../AudioStreamPlayer3D")
+gun_fire_sound_effect = ExtResource( 9 )
+dont_come_close = 80.0
+use_object_pooling = true
+
+[node name="Transition 0" type="Node" parent="Logic/FSM/StateManager/Attack"]
+script = ExtResource( 6 )
+condition_path = NodePath("../../../Conditions/CanNotSeeTarget")
+target_state_path = NodePath("../../Seek")
+
+[node name="Seek" type="Node" parent="Logic/FSM/StateManager"]
+script = ExtResource( 10 )
+move_speed = 1200.0
+rotation_speed = 2.0
+top_node_path = NodePath("../../../..")
+manager_path = NodePath("..")
+
+[node name="Transition 0" type="Node" parent="Logic/FSM/StateManager/Seek"]
+script = ExtResource( 6 )
+condition_path = NodePath("../../../Conditions/CanFire")
+target_state_path = NodePath("../../Attack")
+
+[node name="Transition 1" type="Node" parent="Logic/FSM/StateManager/Seek"]
+script = ExtResource( 6 )
+condition_path = NodePath("../../../Conditions/CanSeeTarget")
+target_state_path = NodePath("../../Attack")
+
+[node name="Transition 2" type="Node" parent="Logic/FSM/StateManager/Seek"]
+script = ExtResource( 6 )
+condition_path = NodePath("../../../Conditions/Timer")
+target_state_path = NodePath("../../Idle")
+
+[node name="Conditions" type="Node" parent="Logic/FSM"]
+
+[node name="CanSeeTarget" type="Node" parent="Logic/FSM/Conditions"]
+script = ExtResource( 11 )
+top_node_path = NodePath("../../../..")
+area_node_path = NodePath("../../../../Area")
+manager_path = NodePath("../../StateManager")
+
+[node name="CanNotSeeTarget" type="Node" parent="Logic/FSM/Conditions"]
+script = ExtResource( 11 )
+top_node_path = NodePath("../../../..")
+area_node_path = NodePath("../../../../Area")
+manager_path = NodePath("../../StateManager")
+negate = true
+
+[node name="CanFire" type="Node" parent="Logic/FSM/Conditions"]
+script = ExtResource( 12 )
+top_node_path = NodePath("../../../..")
+manager_path = NodePath("../../StateManager")
+shoot_range = 20.0
+gunshot_spread = 45.0
+
+[node name="GoToStateRandom" type="Node" parent="Logic/FSM/Conditions"]
+script = ExtResource( 22 )
+probability = 0.005
+
+[node name="Timer" type="Node" parent="Logic/FSM/Conditions"]
+script = ExtResource( 13 )
+timer = 5.0
+
+[node name="DestroyFarAway" parent="." instance=ExtResource( 23 )]
+
+[node name="Model" type="MeshInstance" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+mesh = ExtResource( 15 )
+material/0 = ExtResource( 14 )
+material/1 = ExtResource( 24 )
+material/2 = ExtResource( 16 )
+material/3 = ExtResource( 17 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = "SoundFX"
+
+[node name="Grunts" type="AudioStreamPlayer3D" parent="."]
+unit_db = 12.0
+bus = "SoundFX"
+
+[node name="FirePoint1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94431, -0.411923, -6.2677 )
+
+[node name="FirePoint2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96722, -0.411923, -6.24595 )
+
+[node name="FirePoint3" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.91653, -0.411923, -6.63734 )
+
+[node name="FirePoint4" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73814, -0.411923, -6.63734 )
+
+[node name="Fighter" type="Spatial" parent="."]
+
+[node name="ThrusterParticles" parent="Fighter" instance=ExtResource( 25 )]
+transform = Transform( 7, 0, 0, 0, -3.0598e-07, 7, 0, -7, -3.0598e-07, 10.0866, 0.370156, 8.68752 )
+
+[node name="ThrusterParticles2" parent="Fighter" instance=ExtResource( 25 )]
+transform = Transform( 7, 0, 0, 0, -3.0598e-07, 7, 0, -7, -3.0598e-07, -10.0732, 0.370156, 8.68752 )

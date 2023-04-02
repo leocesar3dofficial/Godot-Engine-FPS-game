@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Models/ScifiPanel001.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/EmissionBlue.material" type="Material" id=2]
+[ext_resource path="res://Materials/Primary.material" type="Material" id=3]
+[ext_resource path="res://Materials/Secondary.material" type="Material" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 3.07137, 0.119976, 3.07617 )
+
+[node name="ScifiPanel001" type="MeshInstance"]
+cast_shadow = 0
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 4 )
+material/2 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 1 )

@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Materials/EmissionGreen.material" type="Material" id=1]
+[ext_resource path="res://Models/Plant02.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Materials/Skin.material" type="Material" id=3]
+[ext_resource path="res://Materials/Glass.material" type="Material" id=4]
+
+[node name="Plant02" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+cast_shadow = 0
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 4 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 1 )

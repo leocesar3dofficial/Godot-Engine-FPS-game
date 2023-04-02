@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Devtrap-Lullaby-CC BY 4.0.ogg-4f34cf107f66b124db13e4a53e17c6c6.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Ambient/Devtrap-Lullaby-CC BY 4.0.ogg"
+dest_files=[ "res://.import/Devtrap-Lullaby-CC BY 4.0.ogg-4f34cf107f66b124db13e4a53e17c6c6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

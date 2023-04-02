@@ -1,0 +1,76 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://SubScenes/Tiles/Tile02.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Generators/ArenaGenerator.gd" type="Script" id=2]
+[ext_resource path="res://SubScenes/Props/WallNonDestructible.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemyPool.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Environments/MyEnvironmentDefault.tres" type="Environment" id=5]
+[ext_resource path="res://SubScenes/Tiles/Tile01.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/VisualEffects/Rain.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SubScenes/Tiles/Tile04.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SubScenes/Tiles/Tile03.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SubScenes/Other/AreaDamage.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SubScenes/Player/PlayerFactory.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scripts/Generators/RandomWorldEnvironment.gd" type="Script" id=13]
+[ext_resource path="res://SubScenes/Tiles/TilePlatform01.tscn" type="PackedScene" id=14]
+[ext_resource path="res://SubScenes/Tiles/TilePlatform02.tscn" type="PackedScene" id=15]
+[ext_resource path="res://SubScenes/Other/UnitsManager.tscn" type="PackedScene" id=16]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionPool.tscn" type="PackedScene" id=17]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileNormalHitPool.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scripts/ObjectPooling/ObjectPooling.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/General/ShadowSettings.gd" type="Script" id=21]
+
+[node name="Level" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )
+script = ExtResource( 13 )
+level_distance_culling = 40.0
+
+[node name="UnitsManager" parent="." instance=ExtResource( 16 )]
+badge_text = "DESTROY ENEMY RESISTANCE"
+enemies_to_destroy = 20
+
+[node name="ArenaGenerator" type="Spatial" parent="."]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+tiles = [ ExtResource( 6 ), ExtResource( 1 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 15 ) ]
+wall = ExtResource( 3 )
+length = 6
+width = 6
+tile_size = 20.0
+wall_thickness = -1.0
+
+[node name="InstantDeath" parent="." instance=ExtResource( 11 )]
+
+[node name="PoolingProjectileEnemy" type="Spatial" parent="."]
+script = ExtResource( 19 )
+object_scene = ExtResource( 4 )
+pool_size = 100
+
+[node name="PoolingNormalHit" type="Spatial" parent="."]
+script = ExtResource( 19 )
+object_scene = ExtResource( 18 )
+
+[node name="PoolingDamageHit" type="Spatial" parent="."]
+script = ExtResource( 19 )
+object_scene = ExtResource( 17 )
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80, 0 )
+extents = Vector3( 200, 100, 200 )
+origin_offset = Vector3( 0, -60, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.965926, 1.43934e-08, -0.258819, 0.183013, 0.707107, 0.683013, 0.183013, -0.707107, 0.683013, 0, 0, 0 )
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 20.0
+script = ExtResource( 21 )
+
+[node name="PlayerFactory" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0 )
+effects_scene = ExtResource( 8 )

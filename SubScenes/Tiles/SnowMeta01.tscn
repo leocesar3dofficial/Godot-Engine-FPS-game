@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://SubScenes/Tiles/Snow01.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SubScenes/Tiles/Snow02.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SubScenes/Props/Boulders/Boulder08.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Materials/BrokenIce.material" type="Material" id=6]
+[ext_resource path="res://SubScenes/Enemies/FourLegRobot.tscn" type="PackedScene" id=7]
+
+[node name="SnowMeta01" type="Spatial"]
+
+[node name="Snow01" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 90 )
+
+[node name="Snow02" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -90, 0, -90 )
+
+[node name="Snow03" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, -90 )
+
+[node name="Snow04" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -90, 0, 90 )
+
+[node name="Boulder08" parent="." instance=ExtResource( 5 )]
+transform = Transform( -3.81733e-07, 8.73304, 0, -8.73304, -3.81733e-07, 0, 0, 0, 8.73304, 0, 0, 0 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder09" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, 67.4574, 1.21447, 0 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder10" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, 130.077, 4.74478, 0 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder11" parent="." instance=ExtResource( 5 )]
+transform = Transform( -2.01348, -4.59461e-07, -8.49776, -8.49776, -2.83437e-07, 2.01348, -3.81733e-07, 8.73304, -3.81733e-07, -37.4903, 8.76157, 0 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder12" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, -117.229, 8.76157, 0 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder17" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, 67.4574, 1.21447, 175.782 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder18" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, 130.077, 4.74478, 175.782 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder19" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, -47.0063, 8.76157, 175.782 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder20" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, -117.229, 8.76157, 175.782 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder21" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, 67.4574, 1.21447, -174.564 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder22" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, 130.077, 4.74478, -174.564 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder23" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1.9939, -4.58806e-07, -8.50237, -8.50237, -2.84494e-07, 1.9939, -3.81733e-07, 8.73304, -3.81733e-07, -47.0063, 8.76157, -174.564 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder24" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1.66861e-14, -3.81733e-07, -8.73304, -8.73304, -3.81733e-07, 0, -3.81733e-07, 8.73304, -3.81733e-07, -117.229, 8.76157, -174.564 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder13" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, -2.60411, 8.76157, -67.1578 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder14" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, -2.60411, 8.76157, -129.156 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder15" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, -2.60411, 8.76157, 60.8806 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder16" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.23421, -1.05593e-07, 2.90926, -2.90926, -8.47025e-07, -8.23421, -2.60411, 8.76157, 155.307 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder25" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, -173.266, 8.76157, -67.1578 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder26" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, -173.266, 8.76157, -129.156 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder27" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, -173.266, 8.76157, 60.8806 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder28" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, -173.266, 8.76157, 138.493 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder29" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, 174.352, 8.76157, -67.1578 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder30" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, 174.352, 8.76157, -129.156 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder31" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, 174.352, 8.76157, 60.8806 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="Boulder32" parent="." instance=ExtResource( 5 )]
+transform = Transform( 3.81733e-07, -8.73304, 7.63467e-07, -8.73304, -3.81733e-07, 0, 3.33722e-14, -7.63467e-07, -8.73304, 174.352, 8.76157, 138.493 )
+on = true
+materials = [ ExtResource( 6 ) ]
+
+[node name="FourLegRobot" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -107.82, 22.0006, -96.0634 )

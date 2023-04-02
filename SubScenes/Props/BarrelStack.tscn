@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SubScenes/Props/Barrel.tscn" type="PackedScene" id=1]
+
+[node name="BarrelStack" type="Spatial"]
+
+[node name="Barrel" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.953117, 0, -0.302603, 0, 1, 0, 0.302603, 0, 0.953117, -0.538584, 0.756991, 0.0250014 )
+
+[node name="Barrel3" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.927236, 0, 0.374477, 0, 1, 0, -0.374477, 0, -0.927236, 0.016495, 2.25866, 0.0123625 )
+
+[node name="Barrel2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.690655, 0, 0.723184, 0, 1, 0, -0.723184, 0, -0.690655, 0.607125, 0.756991, 0.0435397 )

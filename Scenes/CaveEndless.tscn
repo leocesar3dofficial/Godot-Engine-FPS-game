@@ -1,0 +1,53 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Environments/MyEnvironmentDefault.tres" type="Environment" id=1]
+[ext_resource path="res://Scripts/Generators/EndlessTerrainAllAxis.gd" type="Script" id=2]
+[ext_resource path="res://SubScenes/Tiles/Blob01.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Generators/RandomWorldEnvironment.gd" type="Script" id=4]
+[ext_resource path="res://SubScenes/Player/PlayerFactory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/VisualEffects/ExplosionPool.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileNormalHitPool.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/ObjectPooling/ObjectPooling.gd" type="Script" id=8]
+[ext_resource path="res://SubScenes/Projectiles/ProjectileEnemyHexPool.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SubScenes/Other/UnitsManager.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SubScenes/Outpost/PortalRigidbody.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SubScenes/VisualEffects/PlayerFlashlight.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SubScenes/Tiles/Blob02.tscn" type="PackedScene" id=58]
+
+[node name="Level" type="Spatial"]
+
+[node name="UnitsManager" parent="." instance=ExtResource( 11 )]
+badge_text = "find the active portal"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+script = ExtResource( 4 )
+level_distance_culling = 40.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+extents = Vector3( 10000, 10000, 10000 )
+origin_offset = Vector3( 0, 20, 0 )
+
+[node name="EndlessAllAxis" type="Spatial" parent="."]
+script = ExtResource( 2 )
+tile_size = 55.0
+tiles_array = [ ExtResource( 3 ), ExtResource( 58 ) ]
+
+[node name="PoolingProjectileEnemy" type="Spatial" parent="."]
+script = ExtResource( 8 )
+object_scene = ExtResource( 9 )
+pool_size = 100
+
+[node name="PoolingNormalHit" type="Spatial" parent="."]
+script = ExtResource( 8 )
+object_scene = ExtResource( 7 )
+
+[node name="PoolingDamageHit" type="Spatial" parent="."]
+script = ExtResource( 8 )
+object_scene = ExtResource( 6 )
+
+[node name="PlayerFactory" parent="." instance=ExtResource( 5 )]
+effects_scene = ExtResource( 13 )
+
+[node name="PortalRigidbody" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/General/ShadowSettings.gd" type="Script" id=1]
+
+[node name="Flashlight" type="OmniLight"]
+light_color = Color( 1, 0.901961, 0.666667, 1 )
+light_energy = 3.0
+omni_range = 10.0
+script = ExtResource( 1 )

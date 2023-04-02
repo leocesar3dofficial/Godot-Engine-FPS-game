@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DavidKBD-The desolation of a civilization-CC BY 4.0.ogg-f60ee83d2a1b0e93b485f6a3a3f4af93.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Battle/DavidKBD-The desolation of a civilization-CC BY 4.0.ogg"
+dest_files=[ "res://.import/DavidKBD-The desolation of a civilization-CC BY 4.0.ogg-f60ee83d2a1b0e93b485f6a3a3f4af93.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,28 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://SubScenes/Other/OmniLightRandomColor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Generators/RandomNeonSign.gd" type="Script" id=2]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign010.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign014.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign008.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign016.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign013.tscn" type="PackedScene" id=7]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign017.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign002.tscn" type="PackedScene" id=9]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign003.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign015.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign001.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign012.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign005.tscn" type="PackedScene" id=14]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign007.tscn" type="PackedScene" id=15]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign011.tscn" type="PackedScene" id=16]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign009.tscn" type="PackedScene" id=17]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign004.tscn" type="PackedScene" id=18]
+[ext_resource path="res://SubScenes/Other/NeonSigns/NeonSign006.tscn" type="PackedScene" id=19]
+
+[node name="RandomNeonSign" type="Position3D"]
+script = ExtResource( 2 )
+neon_signs = [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 19 ), ExtResource( 15 ), ExtResource( 5 ), ExtResource( 17 ), ExtResource( 3 ), ExtResource( 16 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 8 ) ]
+size_multiplier = 10
+
+[node name="OmniLightRandomColor" parent="." instance=ExtResource( 1 )]

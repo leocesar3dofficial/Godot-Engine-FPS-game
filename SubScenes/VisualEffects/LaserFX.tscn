@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Textures/Other/shockwave.png" type="Texture" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -7.72727, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+gravity = Vector3( 0, 0, 0 )
+scale_curve = SubResource( 2 )
+color = Color( 1, 0.607843, 0, 1 )
+hue_variation = 0.1
+hue_variation_random = 0.5
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_cull_mode = 2
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=5]
+material = SubResource( 4 )
+
+[node name="LaserFX" type="Particles"]
+amount = 2
+lifetime = 0.3
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )

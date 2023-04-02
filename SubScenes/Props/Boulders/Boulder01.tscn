@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Models/RockBoulders/Boulder01.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/Sand.material" type="Material" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.0847769
+height = 0.246156
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.123404
+height = 0.246156
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.135592
+
+[sub_resource type="SphereShape" id=4]
+radius = 0.162373
+
+[node name="Boulder01" type="Spatial"]
+
+[node name="Mesh" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="Mesh"]
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 0.370655, 0, -0.928771, 0, 1, 0, 0.928771, 0, 0.370655, 0.00937815, 0.157356, 0.0632778 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 0.521042, 0.456714, -0.721061, -0.0957569, 0.870742, 0.482327, 0.848143, -0.182266, 0.497427, 0.185271, 0.105306, -0.0268259 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 0.306656, 0.561708, -0.768405, -0.2082, 0.827336, 0.521698, 0.928771, 0, 0.370655, 0.167139, 0.0964144, -0.0128855 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( -0.199102, -0.686999, -0.69885, 0.0831646, 0.69871, -0.710555, 0.976444, -0.199592, -0.0819805, -0.28226, 0.025406, 0.0982571 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.384552, -0.0611651, 0.0832669 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Mesh/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.283393, -0.0325862, -0.153457 )
+shape = SubResource( 4 )

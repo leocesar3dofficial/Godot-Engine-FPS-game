@@ -1,0 +1,22 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://SubScenes/Props/Boulders/Boulder02.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SubScenes/Props/Boulders/Boulder04.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SubScenes/Props/Boulders/Boulder01.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SubScenes/Props/Boulders/Boulder05.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SubScenes/Props/Boulders/Boulder03.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Materials/SnowGround.material" type="Material" id=6]
+[ext_resource path="res://Scripts/Generators/SpawnAtVertex.gd" type="Script" id=7]
+[ext_resource path="res://Materials/Stylized_Ice.material" type="Material" id=8]
+[ext_resource path="res://Materials/BrokenIce.material" type="Material" id=9]
+[ext_resource path="res://Materials/SnowStylized.material" type="Material" id=10]
+[ext_resource path="res://Materials/Ice.tres" type="Material" id=12]
+[ext_resource path="res://SubScenes/Props/Boulders/Boulder06.tscn" type="PackedScene" id=13]
+
+[node name="SpawnAtVertexRocks" type="Node"]
+script = ExtResource( 7 )
+entities = [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 13 ) ]
+min_scale = 8.0
+max_scale = 14.0
+change_material = true
+materials = [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 6 ), ExtResource( 10 ) ]

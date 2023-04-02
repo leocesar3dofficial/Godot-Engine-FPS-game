@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Generators/SpawnAtVertex.gd" type="Script" id=1]
+[ext_resource path="res://SubScenes/Props/Asteroids/Asteroid01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SubScenes/Props/Asteroids/Asteroid02.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Models/AsteroidFieldCube160m.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://SubScenes/Enemies/FighterEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SubScenes/Friendly/FighterFriend.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SubScenes/Other/Spawner.tscn" type="PackedScene" id=7]
+[ext_resource path="res://SubScenes/Props/MineBomb.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Materials/GroundRocky2.material" type="Material" id=11]
+[ext_resource path="res://Materials/GroundRocky.material" type="Material" id=12]
+[ext_resource path="res://Materials/RocksStylized.material" type="Material" id=16]
+
+[node name="AsteroidFieldTile01" type="Spatial"]
+
+[node name="CubeGrid" type="MeshInstance" parent="."]
+layers = 0
+cast_shadow = 0
+mesh = ExtResource( 4 )
+material/0 = null
+__meta__ = {
+"_editor_description_": "Disable render layer for this mesh"
+}
+
+[node name="SpawnAtVertex" type="Node" parent="CubeGrid"]
+script = ExtResource( 1 )
+entities = [ ExtResource( 2 ), ExtResource( 3 ) ]
+min_spawn = 25
+max_spawn = 50
+min_scale = 14.0
+max_scale = 42.0
+align_with_normal = false
+change_material = true
+materials = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 16 ) ]
+
+[node name="Spawner" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100 )
+entities = [ ExtResource( 5 ) ]
+
+[node name="Spawner2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0 )
+entities = [ ExtResource( 6 ) ]
+enum_unit_type = 1
+
+[node name="MineBomb" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0 )
+
+[node name="MineBomb3" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0 )
+
+[node name="MineBomb2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0 )

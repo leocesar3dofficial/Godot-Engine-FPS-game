@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DEgITx-Digital Tale (Intro)-CC BY 4.0.ogg-43fb53304fdc3c27c436c7437a8a8d18.oggstr"
+
+[deps]
+
+source_file="res://Audio/SoundTracks/Battle/DEgITx-Digital Tale (Intro)-CC BY 4.0.ogg"
+dest_files=[ "res://.import/DEgITx-Digital Tale (Intro)-CC BY 4.0.ogg-43fb53304fdc3c27c436c7437a8a8d18.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

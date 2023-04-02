@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SubScenes/Props/Wall3x3_01.tscn" type="PackedScene" id=1]
+
+[node name="Wall3x301FrontBack" type="Spatial"]
+
+[node name="Wall3x3_01" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.287834 )
+
+[node name="Wall3x3_02" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, -0.293166 )

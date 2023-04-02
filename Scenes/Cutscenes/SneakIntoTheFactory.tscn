@@ -1,0 +1,200 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Environments/MyEnvironmentDefault.tres" type="Environment" id=1]
+[ext_resource path="res://SubScenes/Outpost/AssemblyLine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Player/HandheldCamera.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/UI/CursorEnable.gd" type="Script" id=11]
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=12]
+[ext_resource path="res://UserInterface/Fonts/Conthrax Heavy.otf" type="DynamicFontData" id=13]
+[ext_resource path="res://UserInterface/SubScenes/MouseMovementJoypad.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scripts/UI/CutsceneDialogs.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/UI/ButtonGoToScene.gd" type="Script" id=16]
+[ext_resource path="res://SubScenes/Props/Greeble/Tiles/ScifiTile009.tscn" type="PackedScene" id=18]
+[ext_resource path="res://SubScenes/VisualEffects/SmokeParticles.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scripts/Generators/RandomWorldEnvironment.gd" type="Script" id=22]
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 13 )
+
+[node name="Level" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+script = ExtResource( 22 )
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73875, 1.04554 )
+extents = Vector3( 29.0176, 19.7808, 23.2407 )
+
+[node name="Model" type="Spatial" parent="."]
+
+[node name="OmniLight" type="OmniLight" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.619342, -0.20266, -1.27006 )
+light_color = Color( 0.196078, 0.270588, 0.411765, 1 )
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 11.7537
+
+[node name="OmniLight2" type="OmniLight" parent="Model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.947694, 1.47065, -1.27006 )
+light_color = Color( 0.678431, 0.0627451, 0, 1 )
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 11.7537
+
+[node name="SpotLight2" type="SpotLight" parent="Model"]
+transform = Transform( 0.597448, -0.747305, 0.290846, -0.768765, -0.430563, 0.472881, -0.228159, -0.506114, -0.831741, 2.16698, 3.45924, -5.94611 )
+light_color = Color( 0.262745, 0.862745, 1, 1 )
+light_energy = 3.0
+shadow_enabled = true
+shadow_bias = 0.05
+spot_range = 12.6851
+
+[node name="AssemblyLine" parent="Model" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.03367 )
+
+[node name="ScifiTile009" parent="Model" instance=ExtResource( 18 )]
+transform = Transform( 1.68317e-06, 9.69052e-07, 12.8355, -12.8355, 2.09117e-06, 1.68317e-06, -2.09117e-06, -12.8355, 9.69052e-07, -28.4393, -0.268031, 19.764 )
+
+[node name="ScifiTile010" parent="Model" instance=ExtResource( 18 )]
+transform = Transform( 1.68317e-06, 9.69052e-07, 12.8355, -12.8355, 2.09117e-06, 1.68317e-06, -2.09117e-06, -12.8355, 9.69052e-07, 20.7371, -0.268024, 19.764 )
+
+[node name="CameraControl" type="Spatial" parent="."]
+transform = Transform( -0.935133, -0.00927436, 0.354173, 0, 0.999657, 0.026177, -0.354294, 0.024479, -0.934813, 5.88735, -0.071685, -0.505095 )
+
+[node name="Camera" type="Camera" parent="CameraControl"]
+transform = Transform( 1, -2.6077e-08, 1.3411e-07, 0, 1, 1.93715e-07, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 10 )
+
+[node name="SmokeParticles" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.28873 )
+
+[node name="CursorEnable" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="MouseMovementJoypad" parent="." instance=ExtResource( 14 )]
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1152.0
+color = Color( 0, 0.054902, 0.137255, 0.8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 250.0
+margin_right = -50.0
+margin_bottom = -50.0
+custom_constants/separation = 30
+
+[node name="Dialog1" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_right = 668.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 7 )
+text = "Chet: We’re on the enemy’s nest now. Be ready!"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog2" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_top = 59.0
+margin_right = 668.0
+margin_bottom = 123.0
+custom_colors/font_color = Color( 1, 0.921569, 0.670588, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Furlong’s wrath: This used to be our own body shop, but the Pemakan’s AI turned it against us."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog3" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_top = 153.0
+margin_right = 668.0
+margin_bottom = 217.0
+custom_fonts/font = SubResource( 7 )
+text = "Dogbrain: By deactivating it, we will inflict a major blow at Soulhollower, whatever it might be."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog4" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_top = 247.0
+margin_right = 668.0
+margin_bottom = 381.0
+custom_colors/font_color = Color( 1, 0.921569, 0.670588, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Furlong’s wrath: Through the factory and in its very core lies its power source. It probably has defensive weapons and is tuned to aggressive mode."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog5" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_top = 411.0
+margin_right = 668.0
+margin_bottom = 545.0
+custom_fonts/font = SubResource( 7 )
+text = "Chet: They cannot hollow me! I must find Garret, my son, and Colleen, but we have no lead on them right now. Let’s waste no time and proceed to investigate."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ColorRect"]
+margin_left = 50.0
+margin_top = 963.0
+margin_right = 718.0
+margin_bottom = 1008.0
+theme = ExtResource( 12 )
+custom_constants/separation = 50
+alignment = 1
+
+[node name="ButtonNext" type="Button" parent="UI/ColorRect/HBoxContainer"]
+margin_left = 109.0
+margin_right = 309.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 0 )
+text = "NEXT"
+script = ExtResource( 15 )
+labels_parent_path = NodePath("../../VBoxContainer")
+
+[node name="ButtonSkip" type="Button" parent="UI/ColorRect/HBoxContainer"]
+margin_left = 359.0
+margin_right = 559.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 0 )
+text = "SKIP"
+script = ExtResource( 16 )
+play_badge = true
+badge_type_and_sound = Vector2( 2, 4 )
+immediate_loading = true
+
+[node name="Label" type="Label" parent="UI/ColorRect"]
+margin_left = 50.0
+margin_top = 150.0
+margin_right = 345.0
+margin_bottom = 205.0
+theme = ExtResource( 12 )
+custom_fonts/font = SubResource( 8 )
+text = "Sneak into the factory"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": true
+}

@@ -1,0 +1,74 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Models/DesertPlant.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Materials/AlienEggs.material" type="Material" id=2]
+[ext_resource path="res://Shaders/Grass_v1.1.shader" type="Shader" id=3]
+[ext_resource path="res://Scripts/General/ExplodeIfNear.gd" type="Script" id=4]
+[ext_resource path="res://SubScenes/VisualEffects/Explosion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf03.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/General/ChangeAlbedoTextureRandom.gd" type="Script" id=7]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf02.png" type="Texture" id=8]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf09.png" type="Texture" id=9]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf04.png" type="Texture" id=10]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf16.png" type="Texture" id=11]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf05.png" type="Texture" id=12]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf06.png" type="Texture" id=13]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf07.png" type="Texture" id=14]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf10.png" type="Texture" id=15]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf12.png" type="Texture" id=16]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf13.png" type="Texture" id=17]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf08.png" type="Texture" id=18]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf01.png" type="Texture" id=19]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf11.png" type="Texture" id=20]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf14.png" type="Texture" id=21]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf15.png" type="Texture" id=22]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf17.png" type="Texture" id=23]
+[ext_resource path="res://Textures/Other/AlienLeaves/alienleaf00.png" type="Texture" id=24]
+
+[sub_resource type="ShaderMaterial" id=2]
+render_priority = 10
+shader = ExtResource( 3 )
+shader_param/albedo = Color( 0.666667, 0.666667, 0.666667, 1 )
+shader_param/alpha_scissor_threshold = 0.8
+shader_param/speed = 1.0
+shader_param/minStrength = 0.005
+shader_param/maxStrength = 0.01
+shader_param/interval = 3.5
+shader_param/detail = 6.0
+shader_param/distortion = 1.0
+shader_param/direction = Vector2( 1, 0 )
+shader_param/heightOffset = 0.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 6 )
+
+[sub_resource type="SphereShape" id=1]
+radius = 2.93694
+
+[node name="DesertPlant" type="Area"]
+collision_layer = 0
+collision_mask = 6
+input_ray_pickable = false
+monitorable = false
+script = ExtResource( 4 )
+time_to_free = 0.2
+explode_fx = ExtResource( 5 )
+fx_scale = 40.0
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+material/1 = SubResource( 2 )
+script = ExtResource( 7 )
+textures = [ ExtResource( 24 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 11 ), ExtResource( 23 ) ]
+unique_material = true
+material_ID = 1
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.04933, 0 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

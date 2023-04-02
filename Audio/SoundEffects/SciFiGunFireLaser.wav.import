@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SciFiGunFireLaser.wav-3d783f96ac0e43f0f97466c83b52282f.sample"
+
+[deps]
+
+source_file="res://Audio/SoundEffects/SciFiGunFireLaser.wav"
+dest_files=[ "res://.import/SciFiGunFireLaser.wav-3d783f96ac0e43f0f97466c83b52282f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

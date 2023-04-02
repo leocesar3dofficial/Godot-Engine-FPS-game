@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/SciFiCar.obj-64d3f513e84a6508f0fc8c329fc90226.mesh"
+
+[deps]
+
+files=[ "res://.import/SciFiCar.obj-64d3f513e84a6508f0fc8c329fc90226.mesh" ]
+
+source_file="res://Models/SciFiCar.obj"
+dest_files=[ "res://.import/SciFiCar.obj-64d3f513e84a6508f0fc8c329fc90226.mesh", "res://.import/SciFiCar.obj-64d3f513e84a6508f0fc8c329fc90226.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

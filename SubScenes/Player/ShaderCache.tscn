@@ -1,0 +1,368 @@
+[gd_scene load_steps=54 format=2]
+
+[ext_resource path="res://Scripts/General/ShaderCache.gd" type="Script" id=1]
+[ext_resource path="res://Materials/Debris.material" type="Material" id=6]
+[ext_resource path="res://Materials/EmissionOrange.material" type="Material" id=10]
+[ext_resource path="res://Materials/Explosion.material" type="Material" id=12]
+[ext_resource path="res://Materials/Glass.material" type="Material" id=14]
+[ext_resource path="res://Materials/MuzzleFlash.material" type="Material" id=15]
+[ext_resource path="res://Materials/Screen.material" type="Material" id=16]
+[ext_resource path="res://Materials/Shockwave.material" type="Material" id=17]
+[ext_resource path="res://Materials/SmokeParticles.material" type="Material" id=18]
+[ext_resource path="res://Materials/SmokeStream.material" type="Material" id=19]
+[ext_resource path="res://Materials/SmokeTrail.material" type="Material" id=20]
+[ext_resource path="res://Materials/Spark.material" type="Material" id=21]
+[ext_resource path="res://Materials/Sun.material" type="Material" id=22]
+[ext_resource path="res://Materials/TrimSheet01.material" type="Material" id=23]
+[ext_resource path="res://Materials/Wall.material" type="Material" id=24]
+[ext_resource path="res://Materials/Forcefield.material" type="Material" id=25]
+[ext_resource path="res://Shaders/AnimateUVTextureVisual.tres" type="Material" id=26]
+[ext_resource path="res://Materials/Alloy.material" type="Material" id=27]
+[ext_resource path="res://Materials/ThinGlassGold.material" type="Material" id=28]
+[ext_resource path="res://Materials/SelectionFX.material" type="Material" id=29]
+[ext_resource path="res://Materials/Ice.tres" type="Material" id=30]
+[ext_resource path="res://Materials/PrimaryRed.material" type="Material" id=31]
+[ext_resource path="res://Materials/PrimaryYellow.material" type="Material" id=32]
+[ext_resource path="res://Materials/EmissionGreen.material" type="Material" id=33]
+[ext_resource path="res://Materials/ThinGlassRed.material" type="Material" id=34]
+[ext_resource path="res://Materials/WaterFX.material" type="Material" id=35]
+[ext_resource path="res://Materials/ProjectileNormalHit.material" type="Material" id=36]
+[ext_resource path="res://Materials/EnergyBeam01.material" type="Material" id=37]
+[ext_resource path="res://Materials/HeatDistortion.material" type="Material" id=38]
+[ext_resource path="res://Materials/PrimaryWhite.material" type="Material" id=40]
+[ext_resource path="res://Materials/EnergyBeam03.material" type="Material" id=43]
+[ext_resource path="res://Materials/EnergyBeam02.material" type="Material" id=44]
+[ext_resource path="res://Materials/FresnelTransparent.material" type="Material" id=45]
+[ext_resource path="res://Materials/NeonSignsFreepick.material" type="Material" id=46]
+[ext_resource path="res://Materials/NeonSignsLeo.material" type="Material" id=47]
+[ext_resource path="res://Materials/Stylized_Ice.material" type="Material" id=48]
+[ext_resource path="res://Materials/BrokenIce.material" type="Material" id=49]
+[ext_resource path="res://Materials/Smoke.material" type="Material" id=51]
+[ext_resource path="res://Materials/Rain.material" type="Material" id=56]
+[ext_resource path="res://Materials/RocksStylized.material" type="Material" id=57]
+[ext_resource path="res://Materials/Grate.material" type="Material" id=62]
+[ext_resource path="res://Shaders/AnimateUVTextureVisual2.tres" type="Material" id=63]
+[ext_resource path="res://Materials/Banner.material" type="Material" id=64]
+[ext_resource path="res://Materials/FireExplosion.material" type="Material" id=65]
+[ext_resource path="res://Materials/Explosion2.material" type="Material" id=66]
+[ext_resource path="res://Materials/CarWheelSmoke.material" type="Material" id=67]
+[ext_resource path="res://Materials/ThrusterSmoke.material" type="Material" id=68]
+[ext_resource path="res://Materials/ThrusterPlume.material" type="Material" id=69]
+[ext_resource path="res://Materials/PrimaryBlue.material" type="Material" id=71]
+[ext_resource path="res://Materials/WaterBasic.material" type="Material" id=72]
+[ext_resource path="res://SubScenes/VisualEffects/MotionTrail/MotionTrail.material" type="Material" id=73]
+[ext_resource path="res://SubScenes/VisualEffects/ParticleShaders.tscn" type="PackedScene" id=74]
+
+[sub_resource type="QuadMesh" id=1]
+
+[node name="ShaderCache" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="ObjectShaders" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0718634, 0.225389, 0 )
+
+[node name="PrimaryWhite" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.109829, 0, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 40 )
+
+[node name="PrimaryRed" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.100029, -0.329738, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 31 )
+
+[node name="PrimaryYellow" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.434581, -0.329738, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 32 )
+
+[node name="Debris" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.218798, 0.101066, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 6 )
+
+[node name="EnergyBeam01" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.439018, -0.233796, 0 )
+material_override = ExtResource( 37 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="EnergyBeam02" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.439018, -0.330812, 0 )
+material_override = ExtResource( 44 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="EnergyBeam03" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.439018, -0.434296, 0 )
+material_override = ExtResource( 43 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Smoke" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.13019, -0.445488, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 51 )
+
+[node name="RocksStylized" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.233427, -0.445488, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 57 )
+
+[node name="Rain" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.333202, -0.445488, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 56 )
+
+[node name="WaterBasic" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.333202, -0.221905, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 72 )
+
+[node name="WaterFX" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.225061, -0.110108, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 35 )
+
+[node name="MotionTrail" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.542849, -0.00830692, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 73 )
+
+[node name="EmissionOrange" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.10698, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 10 )
+
+[node name="Explosion" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.223099, -0.10913, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 12 )
+
+[node name="EmissionGreen" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.323825, -0.329738, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 33 )
+
+[node name="Ice" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.207999, -0.329738, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 30 )
+
+[node name="BrokenIce" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.539608, -0.561309, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 49 )
+
+[node name="Grate" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.427778, -0.442861, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 62 )
+
+[node name="Banner" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0102492, -0.329142, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 64 )
+
+[node name="Booster" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.112201, -0.324768, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 63 )
+
+[node name="Explosion2" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.429092, -0.108263, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 66 )
+
+[node name="CarWheelSmoke" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.324039, -0.11045, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 67 )
+
+[node name="Stylized_Ice" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.430307, -0.561309, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 48 )
+
+[node name="Alloy" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.32104, -0.561309, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 27 )
+
+[node name="ProjectileNormalHit" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.227142, -0.329738, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 36 )
+
+[node name="Glass" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.21611, -0.00053758, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 14 )
+
+[node name="ThinGlassRed" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.21611, -0.558376, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 34 )
+
+[node name="FresnelTransparent" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.208482, -0.442054, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 45 )
+
+[node name="ThinGlassGold" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.112594, -0.558376, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 28 )
+
+[node name="Neon" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.00737309, -0.558376, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 46 )
+
+[node name="Neon2" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.105258, -0.558376, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 47 )
+
+[node name="MuzzleFlash" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.219873, -0.10698, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 15 )
+
+[node name="Screen" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.325419, -0.216043, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 16 )
+
+[node name="Shockwave" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.212101, -0.217952, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 17 )
+
+[node name="SmokeParticles" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.106469, -0.218908, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="SmokeStream" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.217913, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 19 )
+
+[node name="SmokeTrail" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.108459, -0.218908, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 20 )
+
+[node name="Spark" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.221893, -0.217913, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 21 )
+
+[node name="Sun" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.329357, 0.103484, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 22 )
+
+[node name="TrimSheet01" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.324382, -0.00099504, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 23 )
+
+[node name="AnimateUVTextureVisual" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.432992, -0.00099504, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 26 )
+
+[node name="SelectionFX" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.432992, 0.105782, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 29 )
+
+[node name="FireExplosion" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.541024, 0.105782, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 65 )
+
+[node name="ThrusterPlume" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.33255, -0.00716501, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 69 )
+
+[node name="Forcefield" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.33255, 0.108742, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 25 )
+
+[node name="ThrusterSmoke" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.33255, -0.116582, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 68 )
+
+[node name="PrimaryBlue" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.33255, -0.328029, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 71 )
+
+[node name="HeatDistortion" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.317066, -0.445359, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 38 )
+
+[node name="Wall" type="MeshInstance" parent="ObjectShaders"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = ExtResource( 24 )
+
+[node name="ParticleShaders" parent="." instance=ExtResource( 74 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.432501 )

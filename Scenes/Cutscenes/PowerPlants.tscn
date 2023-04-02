@@ -1,0 +1,502 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Scripts/General/SimpleRotate.gd" type="Script" id=1]
+[ext_resource path="res://Audio/AmbientSFX/EnergyField.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Scripts/Player/HandheldCamera.gd" type="Script" id=3]
+[ext_resource path="res://UserInterface/MyTheme.tres" type="Theme" id=4]
+[ext_resource path="res://UserInterface/Fonts/Conthrax Heavy.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://UserInterface/SubScenes/MouseMovementJoypad.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Environments/MyEnvironmentDefault.tres" type="Environment" id=7]
+[ext_resource path="res://SubScenes/VisualEffects/EnergyBeam.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SubScenes/BuildingModules/Bases/Base.003.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/UI/CursorEnable.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/UI/ButtonGoToScene.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/UI/CutsceneDialogs.gd" type="Script" id=12]
+[ext_resource path="res://SubScenes/VisualEffects/EnergyPortal.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SubScenes/Props/StructuralBeam.tscn" type="PackedScene" id=14]
+[ext_resource path="res://SubScenes/Props/PropCylinder.tscn" type="PackedScene" id=15]
+[ext_resource path="res://SubScenes/Platforms/InstrumentMast.tscn" type="PackedScene" id=16]
+[ext_resource path="res://SubScenes/BuildingModules/Bases/Base.005.tscn" type="PackedScene" id=17]
+[ext_resource path="res://SubScenes/Platforms/PlatformBasic.tscn" type="PackedScene" id=18]
+[ext_resource path="res://SubScenes/BuildingModules/Tops/Top.010.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Materials/Alloy.material" type="Material" id=20]
+[ext_resource path="res://Scripts/Generators/RandomWorldEnvironment.gd" type="Script" id=21]
+[ext_resource path="res://SubScenes/VisualEffects/SmokeParticles.tscn" type="PackedScene" id=22]
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 14.4865, 14.4006, 22.6329 )
+
+[sub_resource type="CubeMesh" id=2]
+material = ExtResource( 20 )
+size = Vector3( 10, 30, 10 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 5, 15, 5 )
+
+[node name="Level" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 7 )
+script = ExtResource( 21 )
+level_distance_culling = 300.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65372, 0.440499 )
+extents = Vector3( 10000, 10000, 10000 )
+
+[node name="CameraControl" type="Spatial" parent="."]
+transform = Transform( -0.942045, 0.214982, 0.257554, 0, 0.767701, -0.640807, -0.335487, -0.60367, -0.723209, 64.2524, 47.0988, -62.2023 )
+
+[node name="Camera" type="Camera" parent="CameraControl"]
+far = 300.0
+script = ExtResource( 3 )
+
+[node name="SmokeParticles" parent="CameraControl/Camera" instance=ExtResource( 22 )]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.6338, 94.9351, 1.70524 )
+light_color = Color( 0.384314, 0.631373, 0.85098, 1 )
+light_energy = 3.0
+shadow_enabled = true
+omni_range = 600.0
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1152.0
+color = Color( 0, 0.054902, 0.137255, 0.8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 250.0
+margin_right = -50.0
+margin_bottom = -50.0
+custom_constants/separation = 30
+
+[node name="Dialog1" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_right = 668.0
+margin_bottom = 169.0
+custom_fonts/font = SubResource( 7 )
+text = "Furlong’s wrath: Well done Chet, with restored communications, we can now locate our allies. However, the power grid is offline and we can’t progress towards the space station to face Soulhollower."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog2" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_top = 199.0
+margin_right = 668.0
+margin_bottom = 263.0
+custom_colors/font_color = Color( 1, 0.921569, 0.670588, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Dogbrain: No juice: no access to the factory and no operational spaceport."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog3" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_top = 293.0
+margin_right = 668.0
+margin_bottom = 427.0
+custom_fonts/font = SubResource( 7 )
+text = "Chet: Cheer up, lads! We are near to the power stations. You go now and fire up the other power grids. I’ll do my best to do it also and teleport us to the factory."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog4" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_top = 457.0
+margin_right = 668.0
+margin_bottom = 521.0
+custom_colors/font_color = Color( 1, 0.921569, 0.670588, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Furlong’s wrath: May the energy running through our circuits show us the way!"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog5" type="Label" parent="UI/ColorRect/VBoxContainer"]
+margin_top = 551.0
+margin_right = 668.0
+margin_bottom = 580.0
+custom_fonts/font = SubResource( 7 )
+text = "Dogbrain: Zap!"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ColorRect"]
+margin_left = 50.0
+margin_top = 963.0
+margin_right = 718.0
+margin_bottom = 1008.0
+theme = ExtResource( 4 )
+custom_constants/separation = 50
+alignment = 1
+
+[node name="ButtonNext" type="Button" parent="UI/ColorRect/HBoxContainer"]
+margin_left = 109.0
+margin_right = 309.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 0 )
+text = "NEXT"
+script = ExtResource( 12 )
+labels_parent_path = NodePath("../../VBoxContainer")
+
+[node name="ButtonSkip" type="Button" parent="UI/ColorRect/HBoxContainer"]
+margin_left = 359.0
+margin_right = 559.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 200, 0 )
+text = "SKIP"
+script = ExtResource( 11 )
+play_badge = true
+badge_type_and_sound = Vector2( 2, 4 )
+immediate_loading = true
+
+[node name="Label" type="Label" parent="UI/ColorRect"]
+margin_left = 50.0
+margin_top = 150.0
+margin_right = 345.0
+margin_bottom = 205.0
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 8 )
+text = "Power plants"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CursorEnable" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="MouseMovementJoypad" parent="." instance=ExtResource( 6 )]
+
+[node name="PowerTower" type="Spatial" parent="."]
+
+[node name="Base" type="Spatial" parent="PowerTower"]
+transform = Transform( 1.54916, 0, 0, 0, 1.54916, 0, 0, 0, 1.54916, -13.8339, -0.779274, 17.8482 )
+
+[node name="PropCylinder" parent="PowerTower/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 0, 0, 0 )
+
+[node name="StructuralBeam" parent="PowerTower/Base/PropCylinder" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="PropCylinder2" parent="PowerTower/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 17.0802, 0, 0 )
+
+[node name="StructuralBeam" parent="PowerTower/Base/PropCylinder2" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="PropCylinder3" parent="PowerTower/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 0, 0, -21.4594 )
+
+[node name="StructuralBeam" parent="PowerTower/Base/PropCylinder3" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="PropCylinder4" parent="PowerTower/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 17.0802, 0, -21.4594 )
+
+[node name="StructuralBeam" parent="PowerTower/Base/PropCylinder4" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="Middle" parent="PowerTower" instance=ExtResource( 9 )]
+transform = Transform( 5.55266, 0, 0, 0, 5.55266, 0, 0, 0, 5.55266, -0.308422, 47.4014, 0.054615 )
+
+[node name="Top" parent="PowerTower" instance=ExtResource( 17 )]
+transform = Transform( 3.32949, 0, 0, 0, -3.32949, 2.91074e-07, 0, -2.91074e-07, -3.32949, -1.03989, 109.399, 0.548294 )
+
+[node name="PropCylinder" parent="PowerTower/Top" instance=ExtResource( 15 )]
+transform = Transform( 1.99586, 0, 0, 0, -1.99586, 1.74484e-07, 0, -1.74484e-07, -1.99586, 0, 0.03162, 0 )
+script = ExtResource( 1 )
+angle = 1.0
+
+[node name="Axis" type="Spatial" parent="PowerTower/Top/PropCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, -0.257977, 4.56348e-08 )
+
+[node name="InstrumentMast" parent="PowerTower/Top/PropCylinder/Axis" instance=ExtResource( 16 )]
+transform = Transform( -4.37114e-08, 1, -2.18557e-07, -1.74846e-07, -2.18557e-07, -1, -1, -4.37113e-08, 1.74846e-07, -7.45058e-08, 6.77813, 4.77531 )
+
+[node name="InstrumentMast2" parent="PowerTower/Top/PropCylinder/Axis" instance=ExtResource( 16 )]
+transform = Transform( 1.31134e-07, -1, 2.18557e-07, 1.74846e-07, -2.18557e-07, -1, 1, 1.31134e-07, 1.74845e-07, -8.9407e-08, 6.77813, -5.06588 )
+
+[node name="StructuralBeam" parent="PowerTower/Top/PropCylinder/Axis" instance=ExtResource( 14 )]
+transform = Transform( 0.422256, 0, 0, 0, 0.422256, -4.9738e-14, 0, 4.9738e-14, 0.422256, 0, 1.24781, -4.27712 )
+
+[node name="Axis2" type="Spatial" parent="PowerTower/Top/PropCylinder"]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, -1.74845e-07, 1, -1.74846e-07, -1, -1.74845e-07, -4.37113e-08, 0, -0.257977, 5.02914e-08 )
+
+[node name="InstrumentMast" parent="PowerTower/Top/PropCylinder/Axis2" instance=ExtResource( 16 )]
+transform = Transform( -4.37114e-08, 1, -2.18557e-07, -1.74846e-07, -2.18557e-07, -1, -1, -4.37113e-08, 1.74846e-07, -7.45058e-08, 6.77813, 4.77531 )
+
+[node name="InstrumentMast2" parent="PowerTower/Top/PropCylinder/Axis2" instance=ExtResource( 16 )]
+transform = Transform( 1.31134e-07, -1, 2.18557e-07, 1.74846e-07, -2.18557e-07, -1, 1, 1.31134e-07, 1.74845e-07, -8.9407e-08, 6.77813, -5.06588 )
+
+[node name="StructuralBeam" parent="PowerTower/Top/PropCylinder/Axis2" instance=ExtResource( 14 )]
+transform = Transform( 0.422256, 0, 0, 0, 0.422256, -4.9738e-14, 0, 4.9738e-14, 0.422256, 0, 1.24781, -4.27712 )
+
+[node name="Beam" type="Spatial" parent="PowerTower/Top/PropCylinder"]
+
+[node name="EnergyBeam" parent="PowerTower/Top/PropCylinder/Beam" instance=ExtResource( 8 )]
+transform = Transform( 2.827, 0, 0, 0, 2.827, 6.25278e-13, 0, -6.25278e-13, 2.827, -0.129226, 0.646137, -0.172303 )
+
+[node name="EnergyPortal" parent="PowerTower/Top/PropCylinder/Beam" instance=ExtResource( 13 )]
+transform = Transform( 24.487, 0, 0, 0, 24.487, 2.27374e-12, 0, -2.27374e-12, 24.487, 0, 2.85353, -4.99189e-07 )
+
+[node name="StaticBody2" type="StaticBody" parent="PowerTower/Top"]
+
+[node name="CollisionShape" type="CollisionShape" parent="PowerTower/Top/StaticBody2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -17.077, 1.47521e-06 )
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PowerTower"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.658, 0 )
+stream = ExtResource( 2 )
+unit_db = 30.0
+autoplay = true
+max_distance = 400.0
+bus = "SoundFX"
+
+[node name="Top010" parent="PowerTower" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1701, 24.1436, 0 )
+
+[node name="PlatformBasic" parent="PowerTower/Top010" instance=ExtResource( 18 )]
+transform = Transform( 2.1163, 0, 0, 0, 2.1163, 0, 0, 0, 2.1163, 0, 2.05513, 0.5109 )
+
+[node name="Base" type="MeshInstance" parent="PowerTower/Top010"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.2792, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="PowerTower/Top010/Base"]
+
+[node name="CollisionShape" type="CollisionShape" parent="PowerTower/Top010/Base/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="PowerTower2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6493, 0, 133.786 )
+
+[node name="Base" type="Spatial" parent="PowerTower2"]
+transform = Transform( 1.54916, 0, 0, 0, 1.54916, 0, 0, 0, 1.54916, -13.8339, -0.779274, 17.8482 )
+
+[node name="PropCylinder" parent="PowerTower2/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 0, 0, 0 )
+
+[node name="StructuralBeam" parent="PowerTower2/Base/PropCylinder" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="PropCylinder2" parent="PowerTower2/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 17.0802, 0, 0 )
+
+[node name="StructuralBeam" parent="PowerTower2/Base/PropCylinder2" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="PropCylinder3" parent="PowerTower2/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 0, 0, -21.4594 )
+
+[node name="StructuralBeam" parent="PowerTower2/Base/PropCylinder3" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="PropCylinder4" parent="PowerTower2/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 17.0802, 0, -21.4594 )
+
+[node name="StructuralBeam" parent="PowerTower2/Base/PropCylinder4" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="Middle" parent="PowerTower2" instance=ExtResource( 9 )]
+transform = Transform( 5.55266, 0, 0, 0, 5.55266, 0, 0, 0, 5.55266, -0.308422, 47.4014, 0.054615 )
+
+[node name="Top" parent="PowerTower2" instance=ExtResource( 17 )]
+transform = Transform( 3.32949, 0, 0, 0, -3.32949, 2.91074e-07, 0, -2.91074e-07, -3.32949, -1.03989, 109.399, 0.548294 )
+
+[node name="PropCylinder" parent="PowerTower2/Top" instance=ExtResource( 15 )]
+transform = Transform( 1.99586, 0, 0, 0, -1.99586, 1.74484e-07, 0, -1.74484e-07, -1.99586, 0, 0.03162, 0 )
+script = ExtResource( 1 )
+angle = 1.0
+
+[node name="Axis" type="Spatial" parent="PowerTower2/Top/PropCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, -0.257977, 4.56348e-08 )
+
+[node name="InstrumentMast" parent="PowerTower2/Top/PropCylinder/Axis" instance=ExtResource( 16 )]
+transform = Transform( -4.37114e-08, 1, -2.18557e-07, -1.74846e-07, -2.18557e-07, -1, -1, -4.37113e-08, 1.74846e-07, -7.45058e-08, 6.77813, 4.77531 )
+
+[node name="InstrumentMast2" parent="PowerTower2/Top/PropCylinder/Axis" instance=ExtResource( 16 )]
+transform = Transform( 1.31134e-07, -1, 2.18557e-07, 1.74846e-07, -2.18557e-07, -1, 1, 1.31134e-07, 1.74845e-07, -8.9407e-08, 6.77813, -5.06588 )
+
+[node name="StructuralBeam" parent="PowerTower2/Top/PropCylinder/Axis" instance=ExtResource( 14 )]
+transform = Transform( 0.422256, 0, 0, 0, 0.422256, -4.9738e-14, 0, 4.9738e-14, 0.422256, 0, 1.24781, -4.27712 )
+
+[node name="Axis2" type="Spatial" parent="PowerTower2/Top/PropCylinder"]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, -1.74845e-07, 1, -1.74846e-07, -1, -1.74845e-07, -4.37113e-08, 0, -0.257977, 5.02914e-08 )
+
+[node name="InstrumentMast" parent="PowerTower2/Top/PropCylinder/Axis2" instance=ExtResource( 16 )]
+transform = Transform( -4.37114e-08, 1, -2.18557e-07, -1.74846e-07, -2.18557e-07, -1, -1, -4.37113e-08, 1.74846e-07, -7.45058e-08, 6.77813, 4.77531 )
+
+[node name="InstrumentMast2" parent="PowerTower2/Top/PropCylinder/Axis2" instance=ExtResource( 16 )]
+transform = Transform( 1.31134e-07, -1, 2.18557e-07, 1.74846e-07, -2.18557e-07, -1, 1, 1.31134e-07, 1.74845e-07, -8.9407e-08, 6.77813, -5.06588 )
+
+[node name="StructuralBeam" parent="PowerTower2/Top/PropCylinder/Axis2" instance=ExtResource( 14 )]
+transform = Transform( 0.422256, 0, 0, 0, 0.422256, -4.9738e-14, 0, 4.9738e-14, 0.422256, 0, 1.24781, -4.27712 )
+
+[node name="Beam" type="Spatial" parent="PowerTower2/Top/PropCylinder"]
+
+[node name="EnergyBeam" parent="PowerTower2/Top/PropCylinder/Beam" instance=ExtResource( 8 )]
+transform = Transform( 2.827, 0, 0, 0, 2.827, 6.25278e-13, 0, -6.25278e-13, 2.827, -0.129226, 0.646137, -0.172303 )
+
+[node name="EnergyPortal" parent="PowerTower2/Top/PropCylinder/Beam" instance=ExtResource( 13 )]
+transform = Transform( 24.487, 0, 0, 0, 24.487, 2.27374e-12, 0, -2.27374e-12, 24.487, 0, 2.85353, -4.99189e-07 )
+
+[node name="StaticBody2" type="StaticBody" parent="PowerTower2/Top"]
+
+[node name="CollisionShape" type="CollisionShape" parent="PowerTower2/Top/StaticBody2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -17.077, 1.47521e-06 )
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PowerTower2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.658, 0 )
+stream = ExtResource( 2 )
+unit_db = 30.0
+autoplay = true
+max_distance = 400.0
+bus = "SoundFX"
+
+[node name="Top010" parent="PowerTower2" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1701, 24.1436, 0 )
+
+[node name="PlatformBasic" parent="PowerTower2/Top010" instance=ExtResource( 18 )]
+transform = Transform( 2.1163, 0, 0, 0, 2.1163, 0, 0, 0, 2.1163, 0, 2.05513, 0.5109 )
+
+[node name="Base" type="MeshInstance" parent="PowerTower2/Top010"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.2792, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="PowerTower2/Top010/Base"]
+
+[node name="CollisionShape" type="CollisionShape" parent="PowerTower2/Top010/Base/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="PowerTower3" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -171.594, 0, 24.6003 )
+
+[node name="Base" type="Spatial" parent="PowerTower3"]
+transform = Transform( 1.54916, 0, 0, 0, 1.54916, 0, 0, 0, 1.54916, -13.8339, -0.779274, 17.8482 )
+
+[node name="PropCylinder" parent="PowerTower3/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 0, 0, 0 )
+
+[node name="StructuralBeam" parent="PowerTower3/Base/PropCylinder" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="PropCylinder2" parent="PowerTower3/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 17.0802, 0, 0 )
+
+[node name="StructuralBeam" parent="PowerTower3/Base/PropCylinder2" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="PropCylinder3" parent="PowerTower3/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 0, 0, -21.4594 )
+
+[node name="StructuralBeam" parent="PowerTower3/Base/PropCylinder3" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="PropCylinder4" parent="PowerTower3/Base" instance=ExtResource( 15 )]
+transform = Transform( 3.90185, 0, 0, 0, 3.90185, 0, 0, 0, 3.90185, 17.0802, 0, -21.4594 )
+
+[node name="StructuralBeam" parent="PowerTower3/Base/PropCylinder4" instance=ExtResource( 14 )]
+transform = Transform( 0.370785, 0, 0, 0, -1.62075e-08, 0.370785, 0, -0.370785, -1.62075e-08, 0.0812097, 2.43651, -0.163211 )
+
+[node name="Middle" parent="PowerTower3" instance=ExtResource( 9 )]
+transform = Transform( 5.55266, 0, 0, 0, 5.55266, 0, 0, 0, 5.55266, -0.308422, 47.4014, 0.054615 )
+
+[node name="Top" parent="PowerTower3" instance=ExtResource( 17 )]
+transform = Transform( 3.32949, 0, 0, 0, -3.32949, 2.91074e-07, 0, -2.91074e-07, -3.32949, -1.03989, 109.399, 0.548294 )
+
+[node name="PropCylinder" parent="PowerTower3/Top" instance=ExtResource( 15 )]
+transform = Transform( 1.99586, 0, 0, 0, -1.99586, 1.74484e-07, 0, -1.74484e-07, -1.99586, 0, 0.03162, 0 )
+script = ExtResource( 1 )
+angle = 1.0
+
+[node name="Axis" type="Spatial" parent="PowerTower3/Top/PropCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, -0.257977, 4.56348e-08 )
+
+[node name="InstrumentMast" parent="PowerTower3/Top/PropCylinder/Axis" instance=ExtResource( 16 )]
+transform = Transform( -4.37114e-08, 1, -2.18557e-07, -1.74846e-07, -2.18557e-07, -1, -1, -4.37113e-08, 1.74846e-07, -7.45058e-08, 6.77813, 4.77531 )
+
+[node name="InstrumentMast2" parent="PowerTower3/Top/PropCylinder/Axis" instance=ExtResource( 16 )]
+transform = Transform( 1.31134e-07, -1, 2.18557e-07, 1.74846e-07, -2.18557e-07, -1, 1, 1.31134e-07, 1.74845e-07, -8.9407e-08, 6.77813, -5.06588 )
+
+[node name="StructuralBeam" parent="PowerTower3/Top/PropCylinder/Axis" instance=ExtResource( 14 )]
+transform = Transform( 0.422256, 0, 0, 0, 0.422256, -4.9738e-14, 0, 4.9738e-14, 0.422256, 0, 1.24781, -4.27712 )
+
+[node name="Axis2" type="Spatial" parent="PowerTower3/Top/PropCylinder"]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, -1.74845e-07, 1, -1.74846e-07, -1, -1.74845e-07, -4.37113e-08, 0, -0.257977, 5.02914e-08 )
+
+[node name="InstrumentMast" parent="PowerTower3/Top/PropCylinder/Axis2" instance=ExtResource( 16 )]
+transform = Transform( -4.37114e-08, 1, -2.18557e-07, -1.74846e-07, -2.18557e-07, -1, -1, -4.37113e-08, 1.74846e-07, -7.45058e-08, 6.77813, 4.77531 )
+
+[node name="InstrumentMast2" parent="PowerTower3/Top/PropCylinder/Axis2" instance=ExtResource( 16 )]
+transform = Transform( 1.31134e-07, -1, 2.18557e-07, 1.74846e-07, -2.18557e-07, -1, 1, 1.31134e-07, 1.74845e-07, -8.9407e-08, 6.77813, -5.06588 )
+
+[node name="StructuralBeam" parent="PowerTower3/Top/PropCylinder/Axis2" instance=ExtResource( 14 )]
+transform = Transform( 0.422256, 0, 0, 0, 0.422256, -4.9738e-14, 0, 4.9738e-14, 0.422256, 0, 1.24781, -4.27712 )
+
+[node name="Beam" type="Spatial" parent="PowerTower3/Top/PropCylinder"]
+
+[node name="EnergyBeam" parent="PowerTower3/Top/PropCylinder/Beam" instance=ExtResource( 8 )]
+transform = Transform( 2.827, 0, 0, 0, 2.827, 6.25278e-13, 0, -6.25278e-13, 2.827, -0.129226, 0.646137, -0.172303 )
+
+[node name="EnergyPortal" parent="PowerTower3/Top/PropCylinder/Beam" instance=ExtResource( 13 )]
+transform = Transform( 24.487, 0, 0, 0, 24.487, 2.27374e-12, 0, -2.27374e-12, 24.487, 0, 2.85353, -4.99189e-07 )
+
+[node name="StaticBody2" type="StaticBody" parent="PowerTower3/Top"]
+
+[node name="CollisionShape" type="CollisionShape" parent="PowerTower3/Top/StaticBody2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -17.077, 1.47521e-06 )
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PowerTower3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39.658, 0 )
+stream = ExtResource( 2 )
+unit_db = 30.0
+autoplay = true
+max_distance = 400.0
+bus = "SoundFX"
+
+[node name="Top010" parent="PowerTower3" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.1701, 24.1436, 0 )
+
+[node name="PlatformBasic" parent="PowerTower3/Top010" instance=ExtResource( 18 )]
+transform = Transform( 2.1163, 0, 0, 0, 2.1163, 0, 0, 0, 2.1163, 0, 2.05513, 0.5109 )
+
+[node name="Base" type="MeshInstance" parent="PowerTower3/Top010"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14.2792, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="PowerTower3/Top010/Base"]
+
+[node name="CollisionShape" type="CollisionShape" parent="PowerTower3/Top010/Base/StaticBody"]
+shape = SubResource( 3 )

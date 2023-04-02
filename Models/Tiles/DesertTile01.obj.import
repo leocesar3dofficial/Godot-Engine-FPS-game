@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/DesertTile01.obj-6a55753df022a43bf7f19449ba3f8323.mesh"
+
+[deps]
+
+files=[ "res://.import/DesertTile01.obj-6a55753df022a43bf7f19449ba3f8323.mesh" ]
+
+source_file="res://Models/Tiles/DesertTile01.obj"
+dest_files=[ "res://.import/DesertTile01.obj-6a55753df022a43bf7f19449ba3f8323.mesh", "res://.import/DesertTile01.obj-6a55753df022a43bf7f19449ba3f8323.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286
